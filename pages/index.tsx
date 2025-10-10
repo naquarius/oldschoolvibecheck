@@ -20,32 +20,85 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <div className="ethereal-container">
-        <h1 className="text-3xl font-bold mb-8 crystal-title text-center">
-          Old School Vibe Check
-        </h1>
-
-        <button
-          onClick={handleQigua}
-          disabled={isThrowing}
-          className="w-full crystal-button p-4 rounded-lg disabled:bg-gray-400 mb-6"
-        >
-          {isThrowing ? '投掷中...' : '开始起卦'}
-        </button>
-
-        <div className="content-area">
-          {isThrowing ? (
-            <CoinThrow />
-          ) : result ? (
-            <GuaResult result={result} />
-          ) : (
-            <div className="empty-state">
-              <p className="text-center text-gray-500">点击上方按钮开始起卦</p>
-            </div>
-          )}
+    <div className="app-container">
+      {/* Header */}
+      <header className="app-header">
+        <div className="logo-container">
+          <div className="logo-icon">✨</div>
+          <h1 className="app-title">Vibe Check</h1>
         </div>
-      </div>
-    </main>
+        <div className="tagline">ancient wisdom, modern vibes</div>
+      </header>
+
+      {/* Main Content */}
+      <main className="main-content">
+        {!result && !isThrowing && (
+          <div className="welcome-section">
+            <div className="hero-text">
+              <h2 className="hero-title">What's your vibe today?</h2>
+              <p className="hero-subtitle">
+                Get instant wisdom from ancient I Ching coins. No BS, just vibes ✨
+              </p>
+            </div>
+            
+            <button
+              onClick={handleQigua}
+              className="cta-button"
+            >
+              <span className="button-text">Throw Coins</span>
+              <div className="button-glow"></div>
+            </button>
+
+            <div className="quick-info">
+              <div className="info-item">
+                <span className="info-icon">🪙</span>
+                <span>3 coins</span>
+              </div>
+              <div className="info-item">
+                <span className="info-icon">⚡</span>
+                <span>instant results</span>
+              </div>
+              <div className="info-item">
+                <span className="info-icon">🔮</span>
+                <span>ancient wisdom</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {isThrowing && (
+          <div className="throwing-section">
+            <div className="throwing-header">
+              <h3 className="throwing-title">Reading your energy...</h3>
+              <div className="progress-bar">
+                <div className="progress-fill"></div>
+              </div>
+            </div>
+            <CoinThrow />
+          </div>
+        )}
+
+        {result && !isThrowing && (
+          <div className="result-section">
+            <div className="result-header">
+              <button 
+                onClick={() => setResult(null)}
+                className="back-button"
+              >
+                ← New Reading
+              </button>
+            </div>
+            <GuaResult result={result} />
+          </div>
+        )}
+      </main>
+
+      {/* Footer */}
+      <footer className="app-footer">
+        <div className="footer-text">
+          Made with ✨ for the spiritually curious
+        </div>
+      </footer>
+    </div>
   );
 }

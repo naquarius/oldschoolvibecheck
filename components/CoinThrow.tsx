@@ -16,35 +16,53 @@ export const CoinThrow = () => {
         results.push(Math.random() > 0.5 ? 'heads' : 'tails');
       }
       setCoins(results);
-    }, 4000); // 从2000ms增加到4000ms以匹配更慢的动画
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="crystal-card p-6">
-      <div className="text-center mb-4">
-        <p className="text-sm text-gray-600">铜钱旋转中...</p>
+    <div className="coin-throw-container">
+      <div className="throw-status">
+        <div className="status-indicator">
+          <div className="pulse-dot"></div>
+          <span className="status-text">
+            {coins.every((coin) => coin !== 'spinning')
+              ? 'Reading complete ✨'
+              : 'Channeling energy...'}
+          </span>
+        </div>
       </div>
 
-      <div className="coins-container">
+      <div className="coins-grid">
         {coins.map((face, index) => (
-          <div key={index} className="coin-wrapper">
+          <div key={index} className="coin-item">
             <div
-              className={`crystal-coin ${face} ${
-                face === 'spinning' ? 'coin-throwing' : ''
+              className={`modern-coin ${face} ${
+                face === 'spinning' ? 'coin-spinning' : 'coin-settled'
               }`}
-            />
-            <span className="coin-label">铜钱 {index + 1}</span>
+            >
+              <div className="coin-inner">
+                {face === 'heads' && <span className="coin-symbol">●</span>}
+                {face === 'tails' && <span className="coin-symbol">○</span>}
+                {face === 'spinning' && <div className="spinner"></div>}
+              </div>
+            </div>
+            <div className="coin-label-modern">
+              Coin {index + 1}
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="text-center mt-4">
-        <p className="text-xs text-gray-500">
+      <div className="throw-footer">
+        <div className="energy-bar">
+          <div className="energy-fill"></div>
+        </div>
+        <p className="throw-message">
           {coins.every((coin) => coin !== 'spinning')
-            ? '投掷完成！'
-            : '请稍候...'}
+            ? 'Your cosmic reading is ready! 🌟'
+            : 'The universe is aligning your answer...'}
         </p>
       </div>
     </div>
