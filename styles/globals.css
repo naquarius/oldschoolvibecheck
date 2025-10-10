@@ -1,0 +1,32 @@
+:root {
+  --bg: #0f172a;
+  --card: #0b1220;
+  --text: #e6eef8;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg), #071029);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  max-width: 720px;
+  margin: 6rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6);
+}
+
+h1 {
+  margin: 0 0 0.5rem 0;
+}
