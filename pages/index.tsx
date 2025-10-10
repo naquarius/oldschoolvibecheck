@@ -20,7 +20,14 @@ export default function Home() {
   };
 
   return (
-    <main className="max-w-md mx-auto p-4">
+    <main
+      style={{
+        maxWidth: '100%',
+        margin: '0 auto',
+        padding: '16px',
+        background: 'transparent',
+      }}
+    >
       <h1 className="text-2xl font-bold mb-4 crystal-title text-center">
         Old School Vibe Check
       </h1>
@@ -33,7 +40,7 @@ export default function Home() {
         {isThrowing ? '投掷中...' : '开始起卦'}
       </button>
 
-      <div className="mt-6">
+      <div style={{ marginTop: '16px', background: 'transparent' }}>
         {isThrowing ? (
           <CoinThrow />
         ) : result ? (
