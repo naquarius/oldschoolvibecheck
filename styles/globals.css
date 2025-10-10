@@ -2,25 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 基础样式 - 增强的水晶暖色调 */
+/* 基础样式 - 现代化水晶主题 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 body {
   background: linear-gradient(
     135deg,
-    #fff5f7 0%,
-    #ffe8f0 15%,
-    #ffd6e0 30%,
-    #f0e6ff 60%,
-    #e6f0ff 85%,
-    #d6eaff 100%
+    #fafafa 0%,
+    #f8f9ff 20%,
+    #f5f7ff 40%,
+    #f0f4ff 60%,
+    #ebf1ff 80%,
+    #e6efff 100%
   );
   background-attachment: fixed;
-  color: #5a5a5a;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #374151;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
   margin: 0;
-  padding: 20px;
+  padding: 0;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* 添加微妙的光晕效果 */
@@ -31,19 +37,31 @@ body::before {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(
-      circle at 30% 20%,
-      rgba(255, 182, 193, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 70% 80%,
-      rgba(214, 234, 255, 0.08) 0%,
-      transparent 50%
-    );
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.02) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
-  animation: ethereal-glow 20s ease-in-out infinite alternate;
+  animation: ethereal-glow 30s ease-in-out infinite alternate;
+}
+
+/* 添加浮动粒子效果 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.06) 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px, 200px 200px;
+  pointer-events: none;
+  z-index: -1;
+  animation: float-particles 60s linear infinite;
 }
 
 @keyframes ethereal-glow {
@@ -52,17 +70,30 @@ body::before {
     opacity: 0.6;
   }
   100% {
-    transform: rotate(5deg) scale(1.05);
+    transform: rotate(3deg) scale(1.02);
     opacity: 0.8;
   }
 }
 
+@keyframes float-particles {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-20px) rotate(360deg);
+  }
+}
+
 main {
-  max-width: 1200px !important;
-  margin: 10px auto !important;
-  padding: 16px !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  padding: 2rem 1rem !important;
   background: transparent !important;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* 布局类 */
@@ -238,23 +269,22 @@ main {
 .crystal-card {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.85) 0%,
-    rgba(255, 245, 247, 0.8) 25%,
-    rgba(255, 232, 240, 0.75) 50%,
-    rgba(240, 230, 255, 0.8) 75%,
-    rgba(255, 255, 255, 0.85) 100%
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(248, 250, 252, 0.85) 50%,
+    rgba(241, 245, 249, 0.8) 100%
   );
-  backdrop-filter: blur(25px) saturate(1.2);
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 25px 80px rgba(255, 182, 193, 0.2),
-    0 8px 32px rgba(214, 234, 255, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -1px 0 rgba(255, 182, 193, 0.1);
-  border-radius: 20px;
+  backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
   margin: 0 !important;
-  padding: 24px !important;
+  padding: 2rem !important;
   width: 100% !important;
   position: relative;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .crystal-card::before {
@@ -266,41 +296,78 @@ main {
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.3) 0%,
-    transparent 50%,
-    rgba(255, 182, 193, 0.1) 100%
+    rgba(99, 102, 241, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 30%,
+    transparent 60%,
+    rgba(139, 92, 246, 0.03) 100%
   );
-  border-radius: 20px;
+  border-radius: 24px;
   pointer-events: none;
   z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.crystal-card::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    rgba(99, 102, 241, 0.1),
+    rgba(139, 92, 246, 0.1),
+    rgba(168, 85, 247, 0.1),
+    rgba(192, 132, 252, 0.1)
+  );
+  border-radius: 26px;
+  z-index: -2;
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 0.3s ease;
 }
 
 .crystal-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 35px 100px rgba(255, 182, 193, 0.25),
-    0 12px 40px rgba(214, 234, 255, 0.2),
-    inset 0 2px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 0 rgba(255, 182, 193, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 32px 80px rgba(0, 0, 0, 0.08),
+    0 12px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-color: rgba(203, 213, 225, 0.8);
+}
+
+.crystal-card:hover::before {
+  opacity: 1;
+}
+
+.crystal-card:hover::after {
+  opacity: 1;
 }
 
 .crystal-button {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 245, 247, 0.85) 25%,
-    rgba(255, 232, 240, 0.8) 50%,
-    rgba(240, 230, 255, 0.85) 75%,
-    rgba(255, 255, 255, 0.9) 100%
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(248, 250, 252, 0.9) 50%,
+    rgba(241, 245, 249, 0.85) 100%
   );
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 6px 20px rgba(255, 182, 193, 0.25),
-    0 2px 8px rgba(214, 234, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  color: #6a6a6a;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    0 2px 8px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  color: #475569;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px) saturate(180%);
   position: relative;
   overflow: hidden;
+  border-radius: 12px;
 }
 
 .crystal-button::before {
@@ -313,10 +380,25 @@ main {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.4) 50%,
+    rgba(99, 102, 241, 0.1) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(139, 92, 246, 0.1) 75%,
     transparent 100%
   );
-  transition: left 0.6s ease;
+  transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.crystal-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .crystal-button:hover::before {
@@ -324,24 +406,33 @@ main {
 }
 
 .crystal-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255, 182, 193, 0.35),
-    0 4px 12px rgba(214, 234, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-color: rgba(203, 213, 225, 0.9);
+}
+
+.crystal-button:hover::after {
+  width: 100px;
+  height: 100px;
 }
 
 .crystal-title {
   background: linear-gradient(
     135deg,
-    #ff8fa3 0%,
-    #ffd6e0 25%,
-    #d6eaff 50%,
-    #b8d4ff 75%,
-    #a8c8ff 100%
+    #6366f1 0%,
+    #8b5cf6 25%,
+    #a855f7 50%,
+    #c084fc 75%,
+    #e879f9 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 2px 4px rgba(255, 182, 193, 0.3);
+  font-weight: 600;
+  letter-spacing: -0.025em;
   position: relative;
 }
 
@@ -607,8 +698,8 @@ main {
 @media (max-width: 1024px) {
   main {
     max-width: 100% !important;
-    padding: 12px !important;
-    margin: 5px auto !important;
+    padding: 1.5rem 1rem !important;
+    margin: 0 auto !important;
   }
 
   .horizontal-layout {
@@ -627,20 +718,28 @@ main {
 
 @media (max-width: 768px) {
   main {
-    padding: 8px !important;
+    padding: 1rem 0.75rem !important;
+    min-height: 100vh;
   }
 
   .crystal-card {
-    padding: 18px !important;
+    padding: 1.5rem !important;
+    border-radius: 20px;
   }
 
   .horizontal-layout {
-    gap: 16px;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .gua-container {
-    min-width: 250px;
-    padding: 0 8px;
+    min-width: auto;
+    padding: 0;
+    border-right: none;
+  }
+
+  .gua-container:not(:last-child)::after {
+    display: none;
   }
 
   .crystal-coin {
@@ -651,6 +750,11 @@ main {
   .coins-container {
     gap: 18px;
     padding: 18px;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
@@ -697,4 +801,60 @@ main {
   bottom: 15%;
   left: 25%;
   animation-delay: 2s;
+}
+
+/* 新增的以太容器和内容区域样式 */
+.ethereal-container {
+  position: relative;
+  z-index: 1;
+}
+
+.content-area {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.empty-state {
+  padding: 3rem 2rem;
+  text-align: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.empty-state:hover {
+  opacity: 1;
+}
+
+/* 增强的文本大小 */
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+/* 增强的按钮内边距 */
+.p-4 {
+  padding: 1rem;
+}
+
+/* 添加微妙的文本阴影给标题 */
+.crystal-title {
+  text-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+  animation: title-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes title-glow {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1.05);
+  }
 }

@@ -20,34 +20,31 @@ export default function Home() {
   };
 
   return (
-    <main
-      style={{
-        maxWidth: '100%',
-        margin: '0 auto',
-        padding: '16px',
-        background: 'transparent',
-      }}
-    >
-      <h1 className="text-2xl font-bold mb-4 crystal-title text-center">
-        Old School Vibe Check
-      </h1>
+    <main>
+      <div className="ethereal-container">
+        <h1 className="text-3xl font-bold mb-8 crystal-title text-center">
+          Old School Vibe Check
+        </h1>
 
-      <button
-        onClick={handleQigua}
-        disabled={isThrowing}
-        className="w-full crystal-button p-3 rounded-lg disabled:bg-gray-400"
-      >
-        {isThrowing ? '投掷中...' : '开始起卦'}
-      </button>
+        <button
+          onClick={handleQigua}
+          disabled={isThrowing}
+          className="w-full crystal-button p-4 rounded-lg disabled:bg-gray-400 mb-6"
+        >
+          {isThrowing ? '投掷中...' : '开始起卦'}
+        </button>
 
-      <div style={{ marginTop: '16px', background: 'transparent' }}>
-        {isThrowing ? (
-          <CoinThrow />
-        ) : result ? (
-          <GuaResult result={result} />
-        ) : (
-          <p className="text-center text-gray-500">点击上方按钮开始起卦</p>
-        )}
+        <div className="content-area">
+          {isThrowing ? (
+            <CoinThrow />
+          ) : result ? (
+            <GuaResult result={result} />
+          ) : (
+            <div className="empty-state">
+              <p className="text-center text-gray-500">点击上方按钮开始起卦</p>
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );
