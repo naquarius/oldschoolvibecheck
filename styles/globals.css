@@ -2,22 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 基础样式 */
+/* 基础样式 - 增强的水晶暖色调 */
 body {
-  background: linear-gradient(135deg, #ffd6e0 0%, #d6eaff 100%);
+  background: linear-gradient(
+    135deg,
+    #fff5f7 0%,
+    #ffe8f0 15%,
+    #ffd6e0 30%,
+    #f0e6ff 60%,
+    #e6f0ff 85%,
+    #d6eaff 100%
+  );
   background-attachment: fixed;
   color: #5a5a5a;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 20px;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 添加微妙的光晕效果 */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 182, 193, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(214, 234, 255, 0.08) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: -1;
+  animation: ethereal-glow 20s ease-in-out infinite alternate;
+}
+
+@keyframes ethereal-glow {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(5deg) scale(1.05);
+    opacity: 0.8;
+  }
 }
 
 main {
-  max-width: 1200px !important; /* 增加最大宽度 */
-  margin: 10px auto !important; /* 减少上下边距 */
-  padding: 16px !important; /* 减少内边距 */
-  background: transparent !important; /* 确保透明 */
+  max-width: 1200px !important;
+  margin: 10px auto !important;
+  padding: 16px !important;
+  background: transparent !important;
+  position: relative;
 }
 
 /* 布局类 */
@@ -189,110 +234,209 @@ main {
   border-radius: 0.5rem;
 }
 
-/* 水晶主题样式 */
+/* 增强的水晶主题样式 */
 .crystal-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 20px 60px rgba(255, 182, 193, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border-radius: 16px;
-  margin: 0 !important; /* 移除外边距 */
-  padding: 20px !important; /* 固定内边距 */
-  width: 100% !important; /* 占满容器 */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 245, 247, 0.8) 25%,
+    rgba(255, 232, 240, 0.75) 50%,
+    rgba(240, 230, 255, 0.8) 75%,
+    rgba(255, 255, 255, 0.85) 100%
+  );
+  backdrop-filter: blur(25px) saturate(1.2);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 25px 80px rgba(255, 182, 193, 0.2),
+    0 8px 32px rgba(214, 234, 255, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(255, 182, 193, 0.1);
+  border-radius: 20px;
+  margin: 0 !important;
+  padding: 24px !important;
+  width: 100% !important;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.crystal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 50%,
+    rgba(255, 182, 193, 0.1) 100%
+  );
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.crystal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 35px 100px rgba(255, 182, 193, 0.25),
+    0 12px 40px rgba(214, 234, 255, 0.2),
+    inset 0 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(255, 182, 193, 0.15);
 }
 
 .crystal-button {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 245, 247, 0.85) 25%,
+    rgba(255, 232, 240, 0.8) 50%,
+    rgba(240, 230, 255, 0.85) 75%,
     rgba(255, 255, 255, 0.9) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 4px 16px rgba(255, 182, 193, 0.2);
-  color: #7a7a7a;
-  transition: all 0.3s ease;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 20px rgba(255, 182, 193, 0.25),
+    0 2px 8px rgba(214, 234, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #6a6a6a;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+}
+
+.crystal-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+}
+
+.crystal-button:hover::before {
+  left: 100%;
 }
 
 .crystal-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 182, 193, 0.35),
+    0 4px 12px rgba(214, 234, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .crystal-title {
-  background: linear-gradient(135deg, #ffd6e0 0%, #d6eaff 100%);
+  background: linear-gradient(
+    135deg,
+    #ff8fa3 0%,
+    #ffd6e0 25%,
+    #d6eaff 50%,
+    #b8d4ff 75%,
+    #a8c8ff 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 2px 4px rgba(255, 182, 193, 0.3);
+  position: relative;
 }
 
 /* 水平布局优化 */
 .horizontal-layout {
   display: flex;
   flex-direction: row;
-  gap: 24px;
-  overflow-x: visible; /* 改为可见 */
+  gap: 28px;
+  overflow-x: visible;
   width: 100%;
-  min-height: 400px; /* 确保足够高度 */
+  min-height: 400px;
 }
 
 .gua-container {
   flex: 1;
-  min-width: 320px; /* 增加最小宽度 */
-  padding: 0 12px;
+  min-width: 320px;
+  padding: 0 16px;
+  position: relative;
 }
 
 .gua-container:not(:last-child) {
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-  padding-right: 24px;
+  border-right: 2px solid rgba(255, 255, 255, 0.4);
+  padding-right: 28px;
 }
 
-/* 水晶铜钱样式 */
+.gua-container:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 182, 193, 0.3) 20%,
+    rgba(214, 234, 255, 0.3) 80%,
+    transparent 100%
+  );
+}
+
+/* 增强的水晶铜钱样式 */
 .crystal-coin {
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
   background: radial-gradient(
-    circle at 30% 30%,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(255, 182, 193, 0.9) 30%,
-    rgba(255, 145, 164, 0.8) 60%,
-    rgba(255, 105, 130, 0.7) 100%
+    circle at 25% 25%,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 245, 247, 0.95) 15%,
+    rgba(255, 182, 193, 0.9) 35%,
+    rgba(255, 145, 164, 0.85) 55%,
+    rgba(255, 105, 130, 0.8) 75%,
+    rgba(230, 90, 115, 0.75) 100%
   );
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 12px 50px rgba(255, 105, 130, 0.6),
-    inset 0 4px 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 182, 193, 0.8);
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 15px 60px rgba(255, 105, 130, 0.4),
+    0 8px 32px rgba(255, 182, 193, 0.3),
+    inset 0 4px 20px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 10px rgba(255, 105, 130, 0.2),
+    0 0 50px rgba(255, 182, 193, 0.6);
   position: relative;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .crystal-coin::before {
   content: '';
   position: absolute;
-  top: 15%;
-  left: 15%;
-  width: 70%;
-  height: 70%;
+  top: 12%;
+  left: 12%;
+  width: 76%;
+  height: 76%;
   border-radius: 50%;
   background: radial-gradient(
-    circle at 40% 40%,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
+    circle at 35% 35%,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.6) 30%,
+    rgba(255, 255, 255, 0.3) 60%,
     transparent 100%
   );
+  z-index: 1;
 }
 
 .crystal-coin::after {
   content: '';
   position: absolute;
-  top: 25%;
-  left: 25%;
-  width: 50%;
-  height: 50%;
+  top: 22%;
+  left: 22%;
+  width: 56%;
+  height: 56%;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
   background: transparent;
+  z-index: 2;
 }
 
 /* 铜钱正反面标识 */
@@ -301,9 +445,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 105, 130, 0.9);
-  font-size: 24px;
-  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
+  color: rgba(255, 105, 130, 0.95);
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.8),
+    0 2px 4px rgba(255, 105, 130, 0.4);
+  z-index: 3;
 }
 
 .crystal-coin.tails::before {
@@ -311,61 +458,113 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(105, 165, 255, 0.9);
-  font-size: 24px;
-  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
+  color: rgba(105, 165, 255, 0.95);
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.8),
+    0 2px 4px rgba(105, 165, 255, 0.4);
+  z-index: 3;
 }
 
-/* 投掷动画 */
+/* 增强的投掷动画 */
 @keyframes crystal-coin-flip {
   0% {
-    transform: rotateY(0deg) scale(1);
-    box-shadow: 0 8px 32px rgba(255, 182, 193, 0.4);
+    transform: rotateY(0deg) scale(1) translateZ(0);
+    box-shadow: 0 12px 48px rgba(255, 182, 193, 0.4),
+      0 6px 24px rgba(255, 105, 130, 0.3), 0 0 40px rgba(255, 182, 193, 0.5);
   }
   25% {
-    transform: rotateY(90deg) scale(1.05);
+    transform: rotateY(90deg) scale(1.08) translateZ(10px);
+    box-shadow: 0 20px 60px rgba(214, 234, 255, 0.5),
+      0 10px 30px rgba(105, 165, 255, 0.4), 0 0 50px rgba(214, 234, 255, 0.6);
   }
   50% {
-    transform: rotateY(180deg) scale(1.1);
-    box-shadow: 0 15px 50px rgba(105, 165, 255, 0.6);
+    transform: rotateY(180deg) scale(1.15) translateZ(20px);
+    box-shadow: 0 25px 80px rgba(105, 165, 255, 0.6),
+      0 15px 40px rgba(214, 234, 255, 0.5), 0 0 60px rgba(105, 165, 255, 0.7);
   }
   75% {
-    transform: rotateY(270deg) scale(1.05);
+    transform: rotateY(270deg) scale(1.08) translateZ(10px);
+    box-shadow: 0 20px 60px rgba(255, 182, 193, 0.5),
+      0 10px 30px rgba(255, 105, 130, 0.4), 0 0 50px rgba(255, 182, 193, 0.6);
   }
   100% {
-    transform: rotateY(360deg) scale(1);
-    box-shadow: 0 8px 32px rgba(255, 182, 193, 0.4);
+    transform: rotateY(360deg) scale(1) translateZ(0);
+    box-shadow: 0 12px 48px rgba(255, 182, 193, 0.4),
+      0 6px 24px rgba(255, 105, 130, 0.3), 0 0 40px rgba(255, 182, 193, 0.5);
   }
 }
 
 .coin-throwing {
-  animation: crystal-coin-flip 2.5s ease-in-out infinite;
+  animation: crystal-coin-flip 2.8s ease-in-out infinite;
 }
 
 /* 铜钱容器布局 */
 .coins-container {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 24px;
+  padding: 24px;
+  position: relative;
+}
+
+.coins-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 182, 193, 0.05) 30%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .coin-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  position: relative;
+}
+
+.coin-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 8px;
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 182, 193, 0.2) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(4px);
 }
 
 .coin-label {
   font-size: 0.75rem;
-  color: rgba(122, 122, 122, 0.7);
+  color: rgba(122, 122, 122, 0.8);
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 /* 禁用状态 */
 .disabled\:bg-gray-400:disabled {
   background-color: #9ca3af;
+  opacity: 0.6;
 }
 
 /* 宽度 */
@@ -381,6 +580,29 @@ main {
   max-width: 42rem;
 }
 
+/* 添加微妙的浮动动画 */
+@keyframes ethereal-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.crystal-card {
+  animation: ethereal-float 6s ease-in-out infinite;
+}
+
+.crystal-card:nth-child(2n) {
+  animation-delay: -2s;
+}
+
+.crystal-card:nth-child(3n) {
+  animation-delay: -4s;
+}
+
 /* 响应式调整 */
 @media (max-width: 1024px) {
   main {
@@ -390,11 +612,16 @@ main {
   }
 
   .horizontal-layout {
-    gap: 16px;
+    gap: 20px;
   }
 
   .gua-container {
     min-width: 280px;
+  }
+
+  .crystal-coin {
+    width: 75px;
+    height: 75px;
   }
 }
 
@@ -404,15 +631,70 @@ main {
   }
 
   .crystal-card {
-    padding: 16px !important;
+    padding: 18px !important;
   }
 
   .horizontal-layout {
-    gap: 12px;
+    gap: 16px;
   }
 
   .gua-container {
     min-width: 250px;
     padding: 0 8px;
   }
+
+  .crystal-coin {
+    width: 70px;
+    height: 70px;
+  }
+
+  .coins-container {
+    gap: 18px;
+    padding: 18px;
+  }
+}
+
+/* 添加一些装饰性元素 */
+.crystal-decoration {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 182, 193, 0.4) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.crystal-decoration:nth-child(1) {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.crystal-decoration:nth-child(2) {
+  top: 20%;
+  right: 20%;
+  animation-delay: 1s;
+}
+
+.crystal-decoration:nth-child(3) {
+  bottom: 15%;
+  left: 25%;
+  animation-delay: 2s;
 }
