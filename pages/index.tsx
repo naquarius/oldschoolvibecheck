@@ -21,12 +21,14 @@ export default function Home() {
 
   return (
     <main className="max-w-md mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Old School Vibe Check</h1>
+      <h1 className="text-2xl font-bold mb-4 crystal-title text-center">
+        Old School Vibe Check
+      </h1>
 
       <button
         onClick={handleQigua}
         disabled={isThrowing}
-        className="w-full bg-black text-white p-3 rounded disabled:bg-gray-400"
+        className="w-full crystal-button p-3 rounded-lg disabled:bg-gray-400"
       >
         {isThrowing ? '投掷中...' : '开始起卦'}
       </button>
