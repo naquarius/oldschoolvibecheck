@@ -1,5 +1,6 @@
 'use client';
 
+import { useLanguage } from '@/lib/context/LanguageContext';
 import { useEffect, useState } from 'react';
 
 export const CoinThrow = () => {
@@ -8,6 +9,7 @@ export const CoinThrow = () => {
     'spinning',
     'spinning',
   ]);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,7 +30,11 @@ export const CoinThrow = () => {
           <div className="pulse-dot"></div>
           <span className="status-text">
             {coins.every((coin) => coin !== 'spinning')
-              ? 'Reading complete ✨'
+              ? language === 'zh'
+                ? '解读完成 ✨'
+                : 'Reading complete ✨'
+              : language === 'zh'
+              ? '汇聚能量中...'
               : 'Channeling energy...'}
           </span>
         </div>
@@ -49,7 +55,7 @@ export const CoinThrow = () => {
               </div>
             </div>
             <div className="coin-label-modern">
-              Coin {index + 1}
+              {language === 'zh' ? `硬币 ${index + 1}` : `Coin ${index + 1}`}
             </div>
           </div>
         ))}
@@ -61,7 +67,11 @@ export const CoinThrow = () => {
         </div>
         <p className="throw-message">
           {coins.every((coin) => coin !== 'spinning')
-            ? 'Your cosmic reading is ready! 🌟'
+            ? language === 'zh'
+              ? '你的宇宙解读已准备就绪！ 🌟'
+              : 'Your cosmic reading is ready! 🌟'
+            : language === 'zh'
+            ? '宇宙正在为你对齐答案...'
             : 'The universe is aligning your answer...'}
         </p>
       </div>
