@@ -1493,3 +1493,159 @@ body::after {
     padding: 1rem 1.5rem;
   }
 }
+
+/* Single Result Layout for Vibe Mode */
+.single-result {
+  display: flex;
+  justify-content: center;
+}
+
+.main-result {
+  max-width: 500px;
+  width: 100%;
+}
+
+.vibe-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(6, 182, 212, 0.05));
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  margin-top: 0.5rem;
+}
+
+/* Reference Section */
+.reference-section {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-light);
+  padding-top: 1.5rem;
+}
+
+.reference-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  backdrop-filter: blur(10px);
+}
+
+.reference-toggle:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.reference-toggle .arrow {
+  transition: transform 0.2s ease;
+  font-size: 0.75rem;
+}
+
+.reference-toggle .arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.reference-content {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  animation: reference-expand 0.3s ease-out;
+}
+
+@keyframes reference-expand {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reference-item {
+  margin-bottom: 1.25rem;
+}
+
+.reference-item:last-child {
+  margin-bottom: 0;
+}
+
+.reference-item h5 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.reference-item p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.classical-text {
+  font-family: 'Crimson Text', serif;
+  font-style: italic;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.03), rgba(6, 182, 212, 0.03));
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary);
+}
+
+/* Enhanced Toggle Buttons */
+.vibe-toggle .toggle-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.vibe-toggle .toggle-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.vibe-toggle .toggle-button.active::before {
+  left: 100%;
+}
+
+/* Mobile Responsive Adjustments for New Features */
+@media (max-width: 768px) {
+  .main-result {
+    max-width: 100%;
+  }
+  
+  .vibe-text {
+    font-size: 1rem;
+    padding: 1.25rem;
+  }
+  
+  .reference-content {
+    padding: 1.25rem;
+  }
+  
+  .reference-toggle {
+    padding: 0.875rem 1rem;
+  }
+}
