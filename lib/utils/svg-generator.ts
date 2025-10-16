@@ -1,7 +1,8 @@
 export const generateCrystalGuaSVG = (
-  binary: string,
+  binary: string, // binary string in bottom-up order (first char = bottom yao)
   color: 'pink' | 'blue' = 'pink'
 ): string => {
+  // Convert binary to yao types, preserving bottom-up order
   const yaos = binary.split('').map((bit) => (bit === '1' ? 'yang' : 'yin'));
   const colorConfig = {
     pink: {
@@ -40,7 +41,8 @@ export const generateCrystalGuaSVG = (
   `;
 
   const generateYao = (type: string, index: number) => {
-    const y = 90 - 18 - index * 12;
+    // Draw from bottom up: index 0 = bottom yao at y=72, each subsequent yao 12px higher
+    const y = 72 - index * 12; // 72 = 90 - 18 (total height minus initial offset)
 
     if (type === 'yang') {
       return `

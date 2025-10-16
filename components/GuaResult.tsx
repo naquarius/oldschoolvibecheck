@@ -3,8 +3,8 @@
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
-import { generateCrystalGuaSVG } from '@/lib/utils/svg-generator';
 import { useState } from 'react';
+import GuaCard from './GuaCard';
 
 interface Props {
   result: GuaResultType;
@@ -13,9 +13,8 @@ interface Props {
 export const GuaResult = ({ result }: Props) => {
   const [showVibe, setShowVibe] = useState(true);
   const [colorTheme, setColorTheme] = useState<'pink' | 'blue'>('pink');
-  const [showReference, setShowReference] = useState<{
-    [key: number]: boolean;
-  }>({});
+  // GuaCard component handles rendering and its own reference toggle state
+
   const { language } = useLanguage();
 
   const originalGuaData = i18n.getGuaData(result.originalGua.id);
@@ -33,85 +32,6 @@ export const GuaResult = ({ result }: Props) => {
   const finalGuaData = changedGuaData || originalGuaData;
   const finalModern = changedModern || originalModern;
   const finalBinary = result.changedBinary || result.originalBinary;
-
-  const toggleReference = (guaId: number) => {
-    setShowReference((prev) => ({
-      ...prev,
-      [guaId]: !prev[guaId],
-    }));
-  };
-
-  const renderGuaCard = (
-    guaData: any,
-    modernData: any,
-    binary: string,
-    title: string,
-    subtitle: string,
-    showVibeText: boolean = false
-  ) => (
-    <div className="gua-card">
-      <div className="gua-header">
-        <div className="gua-info">
-          <h3 className="gua-title">{title}</h3>
-          <div className="gua-name">{guaData.name}</div>
-          <span className="gua-number">#{guaData.id}</span>
-        </div>
-      </div>
-
-      <div className="gua-visual">
-        <div
-          dangerouslySetInnerHTML={{
-            __html: generateCrystalGuaSVG(binary, colorTheme),
-          }}
-        />
-      </div>
-
-      <div className="gua-reading">
-        <h4 className="reading-label">{subtitle}</h4>
-        <p className={`reading-text ${showVibeText ? 'vibe-text' : ''}`}>
-          {showVibeText ? modernData.vibe : modernData.standard}
-        </p>
-      </div>
-
-      {/* Reference Section */}
-      <div className="reference-section">
-        <button
-          onClick={() => toggleReference(guaData.id)}
-          className="reference-toggle"
-        >
-          <span>
-            {language === 'zh' ? '📜 经典参考' : '📜 Classical Reference'}
-          </span>
-          <span
-            className={`arrow ${showReference[guaData.id] ? 'expanded' : ''}`}
-          >
-            ▼
-          </span>
-        </button>
-
-        {showReference[guaData.id] && (
-          <div className="reference-content">
-            <div className="reference-item">
-              <h5>{language === 'zh' ? '全名' : 'Full Name'}</h5>
-              <p>{guaData.full_name}</p>
-            </div>
-            <div className="reference-item">
-              <h5>{language === 'zh' ? '经典卦辞' : 'Classical Judgment'}</h5>
-              <p className="classical-text">{guaData.judgment}</p>
-            </div>
-            {!showVibeText && (
-              <div className="reference-item">
-                <h5>
-                  {language === 'zh' ? '现代解读' : 'Modern Interpretation'}
-                </h5>
-                <p>{modernData.standard}</p>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
 
   const renderChangeInfo = () => {
     if (result.changingPositions.length > 0) {
@@ -194,36 +114,42 @@ export const GuaResult = ({ result }: Props) => {
       {showVibe ? (
         // VIBE MODE: Show only the final result
         <div className="gua-results single-result">
-          {renderGuaCard(
-            finalGuaData,
-            finalModern,
-            finalBinary,
-            language === 'zh' ? '今日氛围' : 'Your Vibe Today',
-            language === 'zh' ? '氛围解读:' : 'The Vibe:',
-            true
-          )}
+          <GuaCard
+            guaData={finalGuaData}
+            modernData={finalModern}
+            binary={finalBinary}
+            title={language === 'zh' ? '今日氛围' : 'Your Vibe Today'}
+            subtitle={language === 'zh' ? '氛围解读:' : 'The Vibe:'}
+            showVibeText={true}
+            colorTheme={colorTheme}
+          />
         </div>
       ) : (
         // STANDARD MODE: Show the progression
         <div className="gua-results">
           {/* Original Gua */}
-          {renderGuaCard(
-            originalGuaData,
-            originalModern,
-            result.originalBinary,
-            language === 'zh' ? '当前状况' : 'Current Situation',
-            language === 'zh' ? '当前能量:' : 'Current Energy:'
-          )}
+          <GuaCard
+            guaData={originalGuaData}
+            modernData={originalModern}
+            binary={result.originalBinary}
+            title={language === 'zh' ? '当前状况' : 'Current Situation'}
+            subtitle={language === 'zh' ? '当前能量:' : 'Current Energy:'}
+            colorTheme={colorTheme}
+          />
 
           {/* Changed Gua */}
-          {changedGuaData &&
-            renderGuaCard(
-              changedGuaData,
-              changedModern!,
-              result.changedBinary!,
-              language === 'zh' ? '未来方向' : 'Future Direction',
-              language === 'zh' ? '未来走向:' : "Where You're Headed:"
-            )}
+          {changedGuaData && (
+            <GuaCard
+              guaData={changedGuaData}
+              modernData={changedModern!}
+              binary={result.changedBinary!}
+              title={language === 'zh' ? '未来方向' : 'Future Direction'}
+              subtitle={
+                language === 'zh' ? '未来走向:' : "Where You're Headed:"
+              }
+              colorTheme={colorTheme}
+            />
+          )}
         </div>
       )}
 
