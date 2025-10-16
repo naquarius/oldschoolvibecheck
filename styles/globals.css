@@ -1649,3 +1649,50 @@ body::after {
     padding: 0.875rem 1rem;
   }
 }
+
+/* Language Toggle */
+.language-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.language-button {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.language-button:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--border);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+/* App Header Positioning */
+.app-header {
+  position: relative;
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  animation: gentle-fade-in 1s ease-out;
+}
+
+@media (max-width: 768px) {
+  .language-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+  
+  .language-button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}
