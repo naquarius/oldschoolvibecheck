@@ -1,5 +1,6 @@
 'use client';
 
+import { BuyMeCoffeeButton } from '@/components/BuyMeCoffeeButton';
 import { CoinThrow } from '@/components/CoinThrow';
 import { GuaResult } from '@/components/GuaResult';
 import { useLanguage } from '@/lib/context/LanguageContext';
@@ -65,14 +66,17 @@ export default function Home() {
               : 'ancient wisdom, modern vibes'}
           </div>
 
-          {/* Language Toggle */}
-          <div className="language-toggle">
-            <button
-              onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
-              className="language-button"
-            >
-              {language === 'zh' ? 'EN' : '中文'}
-            </button>
+          {/* Header Controls */}
+          <div className="header-controls">
+            <div className="language-toggle">
+              <button
+                onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
+                className="language-button"
+              >
+                {language === 'zh' ? 'EN' : '中文'}
+              </button>
+            </div>
+            <BuyMeCoffeeButton />
           </div>
         </header>
 
