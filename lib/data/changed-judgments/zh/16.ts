@@ -1,4 +1,4 @@
-export const biangua16 = [
+export const changedJudgments16 = [
   {
     changedToId: 1,
     interpretation:

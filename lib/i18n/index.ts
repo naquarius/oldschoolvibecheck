@@ -4,6 +4,7 @@ import {
   modernJudgmentsZh,
 } from '@/lib/data/modern-judgments';
 import { Language, LocalizedGuaData, ModernJudgment } from './types';
+import { getUiStrings } from './ui';
 
 let currentLanguage: Language = 'zh';
 
@@ -13,6 +14,8 @@ export const i18n = {
   },
 
   getLanguage: (): Language => currentLanguage,
+
+  getUiStrings: () => getUiStrings(currentLanguage),
 
   getGuaData: (id: number): LocalizedGuaData => {
     const baseData = guaData.find((g) => g.id === id);
