@@ -59,21 +59,6 @@ export default function Document() {
         />
         <meta name="twitter:image" content="/og-image.png" />
 
-        {/* Buy Me A Coffee */}
-        <script
-          data-name="bmc-button"
-          data-slug="earthedsouls"
-          data-color="#BD5FFF"
-          data-emoji="✨"
-          data-font="Cookie"
-          data-text="Send vibes"
-          data-outline-color="#000000"
-          data-font-color="#ffffff"
-          data-coffee-color="#FFDD00"
-          src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-          async
-        ></script>
-
         {/* Theme color */}
         <meta name="theme-color" content="#8b5cf6" />
         <meta name="msapplication-TileColor" content="#8b5cf6" />

@@ -146,20 +146,9 @@ body::after {
   background: rgba(254, 254, 254, 0.9);
 }
 
-.header-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1rem;
-  position: relative;
-  min-height: 42px;
-}
-
 .language-toggle {
   display: flex;
-  z-index: 2;
-  position: relative;
+  margin-top: 1rem;
 }
 
 .language-button {
@@ -179,13 +168,6 @@ body::after {
   background: rgba(255, 255, 255, 0.9);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px var(--crystal-shadow);
-}
-
-.bmc-container {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .logo-container {
