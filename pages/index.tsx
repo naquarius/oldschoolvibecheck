@@ -13,6 +13,8 @@ export default function Home() {
   const [isThrowing, setIsThrowing] = useState(false);
   const { language, setLanguage } = useLanguage();
 
+  const [isOn, setIsOn] = useState(false);
+
   const handleQigua = async () => {
     setIsThrowing(true);
     setTimeout(() => {

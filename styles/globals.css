@@ -1,9 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* Crystal-Ethereal Light Theme inspired by clean, nurturing aesthetics */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+/* Import Cormorant Garamond with all weights */
+/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap'); */
 
 :root {
   --primary: #8b5cf6;
@@ -30,6 +28,15 @@
   --border-light: rgba(139, 92, 246, 0.05);
   --glow: rgba(139, 92, 246, 0.15);
   --crystal-shadow: rgba(139, 92, 246, 0.08);
+
+  --paper-sage: url('/textures/sage-texture.png');
+  --paper-rust: url('/textures/terracotta-texture.png');
+  --grain: url('/textures/paper-texture.png');
+
+  --btn-text: #fefcf7;
+  --sage-border: #7a9168;
+  --rust-border: #a86b52;
+  --focus: #000;
 }
 
 * {
@@ -38,8 +45,18 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Typography */
+html {
+  font-size: 16px;
+}
+
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   background: linear-gradient(
     135deg,
     #fefefe 0%,
@@ -55,6 +72,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   min-height: 100vh;
+  font-weight: 400;
 }
 
 /* Ethereal floating elements */
@@ -197,9 +215,10 @@ body::after {
 }
 
 .app-title {
-  font-family: 'Crimson Text', serif;
+  font-family: 'Crimson Text', Georgia, serif;
   font-size: 2rem;
   font-weight: 600;
+  font-style: normal;
   background: linear-gradient(
     135deg,
     var(--primary),
@@ -1802,4 +1821,135 @@ body::after {
     padding: 0.4rem 0.6rem;
     font-size: 0.7rem;
   }
+}
+
+/* ==== Base button skin (apply to TexturedButton root) ====
+   className: "btn" plus a variant: "btn--sage" | "btn--rust" */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--font-display), ui-serif, Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--btn-text);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.25), 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  background-blend-mode: multiply;
+  background-size: cover;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* grain overlay */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  background-size: cover;
+  opacity: 0.25;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* variants */
+.btn--sage {
+  background-image: var(--paper-sage);
+  border-color: var(--sage-border);
+}
+
+.btn--rust {
+  background-image: var(--paper-rust);
+  border-color: var(--rust-border);
+}
+
+/* ==== ToggleGroup items (VIBE / STANDARD) ====
+   On each Radix ToggleGroup.Item add class "mode-item".
+   Radix sets [data-state="on"] when selected. */
+.mode-item {
+  composes: btn; /* if you use CSS Modules; otherwise copy .btn classes */
+  padding: 0.6rem 1.1rem;
+  font-size: 1.05rem;
+  border-width: 2px;
+}
+.mode-item {
+  background-image: var(--paper-sage);
+  border-color: var(--sage-border);
+  color: var(--btn-text);
+}
+.mode-item[data-state='on'] {
+  background-image: var(--paper-rust);
+  border-color: var(--rust-border);
+}
+
+/* sizing tokens you can tweak */
+.switch {
+  --w: 320px;
+  --h: 64px;
+  --pad: 16px;
+  --thumb: 116px;
+}
+
+.switch {
+  position: relative;
+  width: var(--w);
+  height: var(--h);
+  border-radius: 9999px;
+  overflow: hidden;
+  background-image: var(--paper-sage); /* you already set these vars */
+  background-size: cover;
+  border: 2px solid var(--sage-border);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.25);
+}
+.switch:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.switch__label {
+  position: absolute;
+  left: var(--pad);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--btn-text);
+  font-family: var(--font-display, ui-serif, Georgia, 'Times New Roman', serif);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.switch__thumb {
+  position: absolute;
+  top: 50%;
+  left: var(--pad);
+  width: var(--thumb);
+  height: calc(var(--h) - var(--pad) * 1);
+  transform: translate(184px, -50%); /* ≈ ON position */
+  border-radius: 9999px;
+  background-image: var(--paper-rust);
+  background-size: cover;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+  transition: transform 250ms ease;
+}
+
+/* slide distances tuned to the sizes above */
+.switch[data-state='unchecked'] .switch__thumb {
+  transform: translate(152px, -50%);
+}
+.switch[data-state='checked'] .switch__thumb {
+  transform: translate(184px, -50%);
 }
