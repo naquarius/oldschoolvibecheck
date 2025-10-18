@@ -13,7 +13,8 @@ export default function Home() {
   const [isThrowing, setIsThrowing] = useState(false);
   const { language, setLanguage } = useLanguage();
 
-  const [isOn, setIsOn] = useState(false);
+  const [mode, setMode] = useState<'vibe' | 'standard'>('vibe');
+  const [en, setEn] = useState(true);
 
   const handleQigua = async () => {
     setIsThrowing(true);
@@ -71,7 +72,7 @@ export default function Home() {
           <div className="language-toggle">
             <button
               onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
-              className="language-button"
+              className="btn btn--rust language-button"
             >
               {language === 'zh' ? 'EN' : '中文'}
             </button>

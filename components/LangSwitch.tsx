@@ -10,15 +10,14 @@ export function LangSwitch({
   label?: string;
 }) {
   return (
-    <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-      <Switch.Root
-        checked={checked}
-        onCheckedChange={onCheckedChange}
-        className="switch-root"
-      >
-        <span className="switch-label">{label}</span>
-        <Switch.Thumb className="switch-thumb" />
-      </Switch.Root>
-    </div>
+    <Switch.Root
+      checked={checked}
+      onCheckedChange={onCheckedChange}
+      className="switch-root"
+      aria-label="Language toggle"
+    >
+      <span className="switch-label">{label}</span>
+      <Switch.Thumb className="switch-thumb" />
+    </Switch.Root>
   );
 }
