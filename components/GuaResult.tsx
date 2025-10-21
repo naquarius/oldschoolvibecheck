@@ -3,8 +3,8 @@
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { useQuestion } from '@/lib/context/QuestionContext';
 import { GuaResultType } from '@/lib/core/types';
-import { i18n } from '@/lib/i18n';
 import { usePersistentState } from '@/lib/hooks/usePersistentState';
+import { i18n } from '@/lib/i18n';
 import { useState } from 'react';
 import GuaCard from './GuaCard';
 
@@ -33,6 +33,7 @@ export const GuaResult = ({ result }: Props) => {
 
   const { language } = useLanguage();
   const { question } = useQuestion();
+  const [copySuccess, setCopySuccess] = useState(false);
 
   const originalGuaData = i18n.getGuaData(result.originalGua.id);
   const originalModern = i18n.getModernJudgment(result.originalGua.id);
@@ -49,6 +50,43 @@ export const GuaResult = ({ result }: Props) => {
   const finalGuaData = changedGuaData || originalGuaData;
   const finalModern = changedModern || originalModern;
   const finalBinary = result.changedBinary || result.originalBinary;
+
+  const handleCopyResult = async () => {
+    const copyData = {
+      question: question || 'No question provided',
+      originalGua: {
+        id: result.originalGua.id,
+        name: result.originalGua.name,
+      },
+      changedGua: result.changedGua
+        ? {
+            id: result.changedGua.id,
+            name: result.changedGua.name,
+          }
+        : null,
+      changingPositions: result.changingPositions,
+    };
+
+    const formattedText = `我问了: ${copyData.question}\n\n原卦: ${
+      copyData.originalGua.name.en
+    } (${copyData.originalGua.name.zh}) - ID: ${copyData.originalGua.id}\n${
+      copyData.changedGua
+        ? `变卦: ${copyData.changedGua.name.en} (${copyData.changedGua.name.zh}) - ID: ${copyData.changedGua.id}\n`
+        : ''
+    }变爻: ${
+      copyData.changingPositions.length > 0
+        ? copyData.changingPositions.join(', ')
+        : 'None'
+    }`;
+
+    try {
+      await navigator.clipboard.writeText(formattedText);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
 
   const renderChangeInfo = () => {
     if (result.changingPositions.length > 0) {
@@ -128,14 +166,22 @@ export const GuaResult = ({ result }: Props) => {
       </div>
 
       {/* Main Results */}
-      {question && (
-        <div className="question-reminder">
-          <h3 className="question-title">
-            {language === 'zh' ? '你的提问' : 'Your Question'}
-          </h3>
-          <p className="question-text">{question}</p>
-        </div>
-      )}
+      {/* Main Results */}
+      <div className="copy-result-container">
+        <button onClick={handleCopyResult} className="copy-result-button">
+          <span className="copy-icon">{copySuccess ? '✓' : '📋'}</span>
+          <span className="copy-text">
+            {copySuccess
+              ? language === 'zh'
+                ? '已复制！'
+                : 'Copied!'
+              : language === 'zh'
+              ? '复制结果'
+              : 'Copy Result'}
+          </span>
+        </button>
+      </div>
+
       {showVibe ? (
         // VIBE MODE: Show only the final result
         <div className="gua-results single-result">
@@ -151,6 +197,7 @@ export const GuaResult = ({ result }: Props) => {
         </div>
       ) : (
         // STANDARD MODE: Show the progression
+
         <div className="gua-results">
           {/* Original Gua */}
           <GuaCard
