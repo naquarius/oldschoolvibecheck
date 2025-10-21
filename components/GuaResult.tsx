@@ -3,6 +3,7 @@
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
+import { usePersistentState } from '@/lib/hooks/usePersistentState';
 import { useState } from 'react';
 import GuaCard from './GuaCard';
 
@@ -10,8 +11,22 @@ interface Props {
   result: GuaResultType;
 }
 
+const serializeMode = (value: 'vibe' | 'standard') => value;
+const deserializeMode = (value: string) => value as 'vibe' | 'standard';
+const isValidMode = (value: 'vibe' | 'standard') =>
+  value === 'vibe' || value === 'standard';
+
 export const GuaResult = ({ result }: Props) => {
-  const [showVibe, setShowVibe] = useState(true);
+  const [mode, setMode] = usePersistentState<'vibe' | 'standard'>(
+    'vibecheck.mode',
+    'vibe',
+    {
+      serialize: serializeMode,
+      deserialize: deserializeMode,
+      validate: isValidMode,
+    }
+  );
+  const showVibe = mode === 'vibe';
   const [colorTheme, setColorTheme] = useState<'pink' | 'blue'>('pink');
   // GuaCard component handles rendering and its own reference toggle state
 
@@ -96,13 +111,13 @@ export const GuaResult = ({ result }: Props) => {
 
         <div className="vibe-toggle">
           <button
-            onClick={() => setShowVibe(true)}
+            onClick={() => setMode('vibe')}
             className={`toggle-button ${showVibe ? 'active' : ''}`}
           >
             {language === 'zh' ? 'Vibe模式' : 'Vibe Mode'}
           </button>
           <button
-            onClick={() => setShowVibe(false)}
+            onClick={() => setMode('standard')}
             className={`toggle-button ${!showVibe ? 'active' : ''}`}
           >
             {language === 'zh' ? '标准模式' : 'Standard'}

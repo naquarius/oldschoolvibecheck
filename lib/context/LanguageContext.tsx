@@ -2,12 +2,11 @@
 
 import { i18n } from '@/lib/i18n';
 import { Language } from '@/lib/i18n/types';
+import { usePersistentState } from '@/lib/hooks/usePersistentState';
 import React, {
   createContext,
   ReactNode,
   useContext,
-  useEffect,
-  useState,
 } from 'react';
 
 interface LanguageContextType {
@@ -19,21 +18,29 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined
 );
 
+const serializeLanguage = (value: Language) => value;
+const deserializeLanguage = (value: string) => value as Language;
+const isValidLanguage = (value: Language) => value === 'en' || value === 'zh';
+
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [language, setLanguage] = useState<Language>(() => {
-    return i18n.getLanguage();
-  });
+  const [language, setLanguage] = usePersistentState<Language>(
+    'vibecheck.language',
+    () => i18n.getLanguage(),
+    {
+      serialize: serializeLanguage,
+      deserialize: deserializeLanguage,
+      validate: isValidLanguage,
+    }
+  );
 
-  useEffect(() => {
-    // 确保 i18n 和 context 状态同步
+  if (i18n.getLanguage() !== language) {
     i18n.setLanguage(language);
-  }, [language]);
+  }
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
-    i18n.setLanguage(lang);
   };
 
   return (
