@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/lib/context/LanguageContext';
+import { useQuestion } from '@/lib/context/QuestionContext';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
 import { usePersistentState } from '@/lib/hooks/usePersistentState';
@@ -31,6 +32,7 @@ export const GuaResult = ({ result }: Props) => {
   // GuaCard component handles rendering and its own reference toggle state
 
   const { language } = useLanguage();
+  const { question } = useQuestion();
 
   const originalGuaData = i18n.getGuaData(result.originalGua.id);
   const originalModern = i18n.getModernJudgment(result.originalGua.id);
@@ -126,6 +128,14 @@ export const GuaResult = ({ result }: Props) => {
       </div>
 
       {/* Main Results */}
+      {question && (
+        <div className="question-reminder">
+          <h3 className="question-title">
+            {language === 'zh' ? '你的提问' : 'Your Question'}
+          </h3>
+          <p className="question-text">{question}</p>
+        </div>
+      )}
       {showVibe ? (
         // VIBE MODE: Show only the final result
         <div className="gua-results single-result">

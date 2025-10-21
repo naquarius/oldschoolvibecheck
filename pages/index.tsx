@@ -3,6 +3,7 @@
 import { CoinThrow } from '@/components/CoinThrow';
 import { GuaResult } from '@/components/GuaResult';
 import { useLanguage } from '@/lib/context/LanguageContext';
+import { useQuestion } from '@/lib/context/QuestionContext';
 import { qigua } from '@/lib/core/qigua';
 import { GuaResultType } from '@/lib/core/types';
 import Head from 'next/head';
@@ -12,8 +13,7 @@ export default function Home() {
   const [result, setResult] = useState<GuaResultType | null>(null);
   const [isThrowing, setIsThrowing] = useState(false);
   const { language, setLanguage } = useLanguage();
-
-  const [isOn, setIsOn] = useState(false);
+  const { question, setQuestion } = useQuestion();
 
   const handleQigua = async () => {
     setIsThrowing(true);
@@ -27,6 +27,7 @@ export default function Home() {
   const handleNewReading = () => {
     setResult(null);
     setIsThrowing(false);
+    setQuestion('');
   };
 
   // Dynamic page title based on state
@@ -99,6 +100,24 @@ export default function Home() {
                       ? '从古老的易经铜钱中获得即时智慧。没有废话，只有氛围 ✨'
                       : 'Get instant wisdom from ancient I Ching coins. No BS, just vibes ✨'}
                   </p>
+                </div>
+
+                <div className="question-input-wrapper">
+                  <label className="question-label" htmlFor="question-box">
+                    {language === 'zh' ? '向宇宙提问' : 'Ask the universe'}
+                  </label>
+                  <textarea
+                    id="question-box"
+                    className="question-input"
+                    value={question}
+                    onChange={(event) => setQuestion(event.target.value)}
+                    placeholder={
+                      language === 'zh'
+                        ? '在此输入你的问题或意图'
+                        : 'Type your question or intention here'
+                    }
+                    rows={3}
+                  />
                 </div>
 
                 <button onClick={handleQigua} className="cta-button">
