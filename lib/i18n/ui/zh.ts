@@ -16,6 +16,14 @@ export const uiStringsZh = {
   instantResults: '即时结果',
   ancientWisdom: '古老智慧',
 
+  // Language Toggle
+  languageToggle: 'EN',
+  languageToggleAlt: '中文',
+
+  // Question Input
+  askTheUniverse: '向宇宙提问',
+  questionPlaceholder: '在此输入你的问题或意图',
+
   // Footer
   footerText: '为精神好奇者而制 ✨',
 
@@ -29,8 +37,11 @@ export const uiStringsZh = {
   vibeMode: 'Vibe模式',
   standardMode: '标准模式',
   currentSituation: '当前状况',
+  currentEnergy: '当前能量:',
   yourVibeToday: '今日氛围',
   theVibe: '氛围解读:',
+  futureDirection: '未来方向',
+  whereYoureHeaded: '未来走向:',
 
   // Energy States
   energyShiftDetected: '能量变化检测',
@@ -47,4 +58,8 @@ export const uiStringsZh = {
 
   // Vibe Mode
   suitableFor: '特别适合',
+
+  // Copy Result
+  copyResult: '复制结果',
+  copied: '已复制！',
 } as const;

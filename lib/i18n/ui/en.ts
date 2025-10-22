@@ -17,6 +17,14 @@ export const uiStringsEn = {
   instantResults: 'instant results',
   ancientWisdom: 'ancient wisdom',
 
+  // Language Toggle
+  languageToggle: 'EN',
+  languageToggleAlt: '中文',
+
+  // Question Input
+  askTheUniverse: 'Ask the universe',
+  questionPlaceholder: 'Type your question or intention here',
+
   // Footer
   footerText: 'Made with ✨ for the spiritually curious',
 
@@ -30,8 +38,11 @@ export const uiStringsEn = {
   vibeMode: 'Vibe Mode',
   standardMode: 'Standard',
   currentSituation: 'Current Situation',
+  currentEnergy: 'Current Energy:',
   yourVibeToday: 'Your Vibe Today',
   theVibe: 'The Vibe:',
+  futureDirection: 'Future Direction',
+  whereYoureHeaded: "Where You're Headed:",
 
   // Energy States
   energyShiftDetected: 'Energy Shift Detected',
@@ -50,4 +61,8 @@ export const uiStringsEn = {
 
   // Vibe Mode
   suitableFor: 'Best suited for',
+
+  // Copy Result
+  copyResult: 'Copy Result',
+  copied: 'Copied!',
 } as const;

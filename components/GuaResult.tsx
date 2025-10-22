@@ -5,6 +5,7 @@ import { useQuestion } from '@/lib/context/QuestionContext';
 import { GuaResultType } from '@/lib/core/types';
 import { usePersistentState } from '@/lib/hooks/usePersistentState';
 import { i18n } from '@/lib/i18n';
+import { getUiStrings } from '@/lib/i18n/ui';
 import { useState } from 'react';
 import GuaCard from './GuaCard';
 
@@ -34,6 +35,7 @@ export const GuaResult = ({ result }: Props) => {
   const { language } = useLanguage();
   const { question } = useQuestion();
   const [copySuccess, setCopySuccess] = useState(false);
+  const strings = getUiStrings(language);
 
   const originalGuaData = i18n.getGuaData(result.originalGua.id);
   const originalModern = i18n.getModernJudgment(result.originalGua.id);
@@ -94,22 +96,14 @@ export const GuaResult = ({ result }: Props) => {
         <div className="change-info">
           <div className="change-badge">
             <span className="change-icon">⚡</span>
-            <span>
-              {language === 'zh' ? '能量变化检测' : 'Energy Shift Detected'}
-            </span>
+            <span>{strings.energyShiftDetected}</span>
           </div>
           <p className="change-text">
             {showVibe
-              ? language === 'zh'
-                ? '你的能量正在转化。上面的解读显示你的最终氛围。'
-                : 'Your energy is transforming. The reading above shows your final vibe.'
-              : language === 'zh'
-              ? `变爻位置: 第 ${result.changingPositions.join(
-                  '、'
-                )} 爻 - 重点关注"未来方向"`
-              : `Changing lines at positions: ${result.changingPositions.join(
+              ? strings.energyTransforming
+              : `${strings.changingLinesAt} ${result.changingPositions.join(
                   ', '
-                )} - focus on "Future Direction"`}
+                )} - ${strings.focusFutureDirection}`}
           </p>
         </div>
       );
@@ -118,16 +112,10 @@ export const GuaResult = ({ result }: Props) => {
         <div className="stable-info">
           <div className="stable-badge">
             <span className="stable-icon">🎯</span>
-            <span>{language === 'zh' ? '稳定能量' : 'Stable Energy'}</span>
+            <span>{strings.stableEnergy}</span>
           </div>
           <p className="stable-text">
-            {showVibe
-              ? language === 'zh'
-                ? '你的能量稳定清晰。专注上面的指导。'
-                : 'Your energy is stable and clear. Focus on the guidance above.'
-              : language === 'zh'
-              ? '无变爻，专注当前状态的指导'
-              : 'No changing lines, focus on current situation guidance'}
+            {showVibe ? strings.stableEnergyClear : strings.noChangingLines}
           </p>
         </div>
       );
@@ -154,13 +142,13 @@ export const GuaResult = ({ result }: Props) => {
             onClick={() => setMode('vibe')}
             className={`toggle-button ${showVibe ? 'active' : ''}`}
           >
-            {language === 'zh' ? 'Vibe模式' : 'Vibe Mode'}
+            {strings.vibeMode}
           </button>
           <button
             onClick={() => setMode('standard')}
             className={`toggle-button ${!showVibe ? 'active' : ''}`}
           >
-            {language === 'zh' ? '标准模式' : 'Standard'}
+            {strings.standardMode}
           </button>
         </div>
       </div>
@@ -171,13 +159,7 @@ export const GuaResult = ({ result }: Props) => {
         <button onClick={handleCopyResult} className="copy-result-button">
           <span className="copy-icon">{copySuccess ? '✓' : '📋'}</span>
           <span className="copy-text">
-            {copySuccess
-              ? language === 'zh'
-                ? '已复制！'
-                : 'Copied!'
-              : language === 'zh'
-              ? '复制结果'
-              : 'Copy Result'}
+            {copySuccess ? strings.copied : strings.copyResult}
           </span>
         </button>
       </div>
@@ -189,8 +171,8 @@ export const GuaResult = ({ result }: Props) => {
             guaData={finalGuaData}
             modernData={finalModern}
             binary={finalBinary}
-            title={language === 'zh' ? '今日氛围' : 'Your Vibe Today'}
-            subtitle={language === 'zh' ? '氛围解读:' : 'The Vibe:'}
+            title={strings.yourVibeToday}
+            subtitle={strings.theVibe}
             showVibeText={true}
             colorTheme={colorTheme}
           />
@@ -204,8 +186,8 @@ export const GuaResult = ({ result }: Props) => {
             guaData={originalGuaData}
             modernData={originalModern}
             binary={result.originalBinary}
-            title={language === 'zh' ? '当前状况' : 'Current Situation'}
-            subtitle={language === 'zh' ? '当前能量:' : 'Current Energy:'}
+            title={strings.currentSituation}
+            subtitle={strings.currentEnergy}
             colorTheme={colorTheme}
           />
 
@@ -215,10 +197,8 @@ export const GuaResult = ({ result }: Props) => {
               guaData={changedGuaData}
               modernData={changedModern!}
               binary={result.changedBinary!}
-              title={language === 'zh' ? '未来方向' : 'Future Direction'}
-              subtitle={
-                language === 'zh' ? '未来走向:' : "Where You're Headed:"
-              }
+              title={strings.futureDirection}
+              subtitle={strings.whereYoureHeaded}
               colorTheme={colorTheme}
             />
           )}

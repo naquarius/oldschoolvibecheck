@@ -6,6 +6,7 @@ import { useLanguage } from '@/lib/context/LanguageContext';
 import { useQuestion } from '@/lib/context/QuestionContext';
 import { qigua } from '@/lib/core/qigua';
 import { GuaResultType } from '@/lib/core/types';
+import { getUiStrings } from '@/lib/i18n/ui';
 import Head from 'next/head';
 import { useState } from 'react';
 
@@ -14,6 +15,7 @@ export default function Home() {
   const [isThrowing, setIsThrowing] = useState(false);
   const { language, setLanguage } = useLanguage();
   const { question, setQuestion } = useQuestion();
+  const strings = getUiStrings(language);
 
   const handleQigua = async () => {
     setIsThrowing(true);
@@ -62,11 +64,7 @@ export default function Home() {
             <div className="logo-icon">✨</div>
             <h1 className="app-title">Vibe Check</h1>
           </div>
-          <div className="tagline">
-            {language === 'zh'
-              ? '古老智慧，现代氛围'
-              : 'ancient wisdom, modern vibes'}
-          </div>
+          <div className="tagline">{strings.appTagline}</div>
 
           {/* Language Toggle */}
           <div className="language-toggle">
@@ -74,7 +72,7 @@ export default function Home() {
               onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
               className="language-button"
             >
-              {language === 'zh' ? 'EN' : '中文'}
+              {language === 'zh' ? strings.languageToggle : strings.languageToggleAlt}
             </button>
           </div>
         </header>
@@ -90,59 +88,41 @@ export default function Home() {
             {!result && !isThrowing && (
               <>
                 <div className="hero-text">
-                  <h2 className="hero-title">
-                    {language === 'zh'
-                      ? '今天的氛围如何？'
-                      : "What's your vibe today?"}
-                  </h2>
-                  <p className="hero-subtitle">
-                    {language === 'zh'
-                      ? '从古老的易经铜钱中获得即时智慧。没有废话，只有氛围 ✨'
-                      : 'Get instant wisdom from ancient I Ching coins. No BS, just vibes ✨'}
-                  </p>
+                  <h2 className="hero-title">{strings.whatIsYourVibe}</h2>
+                  <p className="hero-subtitle">{strings.heroSubtitle}</p>
                 </div>
 
                 <div className="question-input-wrapper">
                   <label className="question-label" htmlFor="question-box">
-                    {language === 'zh' ? '向宇宙提问' : 'Ask the universe'}
+                    {strings.askTheUniverse}
                   </label>
                   <textarea
                     id="question-box"
                     className="question-input"
                     value={question}
                     onChange={(event) => setQuestion(event.target.value)}
-                    placeholder={
-                      language === 'zh'
-                        ? '在此输入你的问题或意图'
-                        : 'Type your question or intention here'
-                    }
+                    placeholder={strings.questionPlaceholder}
                     rows={3}
                   />
                 </div>
 
                 <button onClick={handleQigua} className="cta-button">
-                  <span className="button-text">
-                    {language === 'zh' ? '投掷铜钱' : 'Throw Coins'}
-                  </span>
+                  <span className="button-text">{strings.throwCoins}</span>
                   <div className="button-glow"></div>
                 </button>
 
                 <div className="quick-info">
                   <div className="info-item">
                     <span className="info-icon">🪙</span>
-                    <span>{language === 'zh' ? '3枚铜钱' : '3 coins'}</span>
+                    <span>{strings.threeCoins}</span>
                   </div>
                   <div className="info-item">
                     <span className="info-icon">⚡</span>
-                    <span>
-                      {language === 'zh' ? '即时结果' : 'instant results'}
-                    </span>
+                    <span>{strings.instantResults}</span>
                   </div>
                   <div className="info-item">
                     <span className="info-icon">🔮</span>
-                    <span>
-                      {language === 'zh' ? '古老智慧' : 'ancient wisdom'}
-                    </span>
+                    <span>{strings.ancientWisdom}</span>
                   </div>
                 </div>
               </>
@@ -159,13 +139,7 @@ export default function Home() {
                   className="new-reading-button"
                   disabled={isThrowing}
                 >
-                  {isThrowing
-                    ? language === 'zh'
-                      ? '解读中...'
-                      : 'Reading...'
-                    : language === 'zh'
-                    ? '新的解读'
-                    : 'New Reading'}
+                  {isThrowing ? strings.reading : strings.newReading}
                 </button>
               </div>
             )}
@@ -175,11 +149,7 @@ export default function Home() {
           {isThrowing && (
             <div className="throwing-section">
               <div className="throwing-header">
-                <h3 className="throwing-title">
-                  {language === 'zh'
-                    ? '正在解读你的能量...'
-                    : 'Reading your energy...'}
-                </h3>
+                <h3 className="throwing-title">{strings.readingYourEnergy}</h3>
                 <div className="progress-bar">
                   <div className="progress-fill"></div>
                 </div>
@@ -198,11 +168,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="app-footer">
-          <div className="footer-text">
-            {language === 'zh'
-              ? '为精神好奇者而制 ✨'
-              : 'Made with ✨ for the spiritually curious'}
-          </div>
+          <div className="footer-text">{strings.footerText}</div>
         </footer>
       </div>
     </>
