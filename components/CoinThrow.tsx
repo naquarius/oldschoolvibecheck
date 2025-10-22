@@ -3,6 +3,7 @@
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { getUiStrings } from '@/lib/i18n/ui';
 import { useEffect, useState } from 'react';
+import styles from './CoinThrow.module.css';
 
 export const CoinThrow = () => {
   const [coins, setCoins] = useState<Array<'heads' | 'tails' | 'spinning'>>([
@@ -26,11 +27,11 @@ export const CoinThrow = () => {
   }, []);
 
   return (
-    <div className="coin-throw-container">
-      <div className="throw-status">
-        <div className="status-indicator">
-          <div className="pulse-dot"></div>
-          <span className="status-text">
+    <div className={styles.coinThrowContainer}>
+      <div className={styles.throwStatus}>
+        <div className={styles.statusIndicator}>
+          <div className={styles.pulseDot}></div>
+          <span className={styles.statusText}>
             {coins.every((coin) => coin !== 'spinning')
               ? strings.readingComplete
               : strings.channelingEnergy}
@@ -38,32 +39,32 @@ export const CoinThrow = () => {
         </div>
       </div>
 
-      <div className="coins-grid">
+      <div className={styles.coinsGrid}>
         {coins.map((face, index) => (
-          <div key={index} className="coin-item">
+          <div key={index} className={styles.coinItem}>
             <div
-              className={`modern-coin ${face} ${
-                face === 'spinning' ? 'coin-spinning' : 'coin-settled'
+              className={`${styles.modernCoin} ${face} ${
+                face === 'spinning' ? styles.coinSpinning : styles.coinSettled
               }`}
             >
-              <div className="coin-inner">
-                {face === 'heads' && <span className="coin-symbol">●</span>}
-                {face === 'tails' && <span className="coin-symbol">○</span>}
-                {face === 'spinning' && <div className="spinner"></div>}
+              <div className={styles.coinInner}>
+                {face === 'heads' && <span className={styles.coinSymbol}>●</span>}
+                {face === 'tails' && <span className={styles.coinSymbol}>○</span>}
+                {face === 'spinning' && <div className={styles.spinner}></div>}
               </div>
             </div>
-            <div className="coin-label-modern">
+            <div className={styles.coinLabelModern}>
               {strings.coin} {index + 1}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="throw-footer">
-        <div className="energy-bar">
-          <div className="energy-fill"></div>
+      <div className={styles.throwFooter}>
+        <div className={styles.energyBar}>
+          <div className={styles.energyFill}></div>
         </div>
-        <p className="throw-message">
+        <p className={styles.throwMessage}>
           {coins.every((coin) => coin !== 'spinning')
             ? strings.cosmicReadingReady
             : strings.universeAligning}

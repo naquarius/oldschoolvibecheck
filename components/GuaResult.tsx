@@ -8,6 +8,7 @@ import { i18n } from '@/lib/i18n';
 import { getUiStrings } from '@/lib/i18n/ui';
 import { useState } from 'react';
 import GuaCard from './GuaCard';
+import styles from './GuaResult.module.css';
 
 interface Props {
   result: GuaResultType;
@@ -93,12 +94,12 @@ export const GuaResult = ({ result }: Props) => {
   const renderChangeInfo = () => {
     if (result.changingPositions.length > 0) {
       return (
-        <div className="change-info">
-          <div className="change-badge">
-            <span className="change-icon">⚡</span>
+        <div className={styles.changeInfo}>
+          <div className={styles.changeBadge}>
+            <span className={styles.changeIcon}>⚡</span>
             <span>{strings.energyShiftDetected}</span>
           </div>
-          <p className="change-text">
+          <p className={styles.changeText}>
             {showVibe
               ? strings.energyTransforming
               : `${strings.changingLinesAt} ${result.changingPositions.join(
@@ -109,12 +110,12 @@ export const GuaResult = ({ result }: Props) => {
       );
     } else {
       return (
-        <div className="stable-info">
-          <div className="stable-badge">
-            <span className="stable-icon">🎯</span>
+        <div className={styles.stableInfo}>
+          <div className={styles.stableBadge}>
+            <span className={styles.stableIcon}>🎯</span>
             <span>{strings.stableEnergy}</span>
           </div>
-          <p className="stable-text">
+          <p className={styles.stableText}>
             {showVibe ? strings.stableEnergyClear : strings.noChangingLines}
           </p>
         </div>
@@ -122,31 +123,30 @@ export const GuaResult = ({ result }: Props) => {
     }
   };
 
-  return (
-    <div className="result-container">
+  return (    <div className={styles.resultContainer}>
       {/* Header with controls */}
-      <div className="result-controls">
-        <div className="theme-toggle">
+      <div className={styles.resultControls}>
+        <div className={styles.themeToggle}>
           <button
             onClick={() =>
               setColorTheme(colorTheme === 'pink' ? 'blue' : 'pink')
             }
-            className="control-button"
+            className={styles.controlButton}>
           >
             {colorTheme === 'pink' ? '💙' : '💗'}
           </button>
         </div>
 
-        <div className="vibe-toggle">
+        <div className={styles.vibeToggle}>
           <button
             onClick={() => setMode('vibe')}
-            className={`toggle-button ${showVibe ? 'active' : ''}`}
+            className={`${styles.toggleButton} ${showVibe ? 'active' : ''}`}
           >
             {strings.vibeMode}
           </button>
           <button
             onClick={() => setMode('standard')}
-            className={`toggle-button ${!showVibe ? 'active' : ''}`}
+            className={`${styles.toggleButton} ${!showVibe ? 'active' : ''}`}
           >
             {strings.standardMode}
           </button>
@@ -155,10 +155,10 @@ export const GuaResult = ({ result }: Props) => {
 
       {/* Main Results */}
       {/* Main Results */}
-      <div className="copy-result-container">
-        <button onClick={handleCopyResult} className="copy-result-button">
-          <span className="copy-icon">{copySuccess ? '✓' : '📋'}</span>
-          <span className="copy-text">
+      <div className={styles.copyResultContainer}>
+        <button onClick={handleCopyResult} className={styles.copyResultButton}>
+          <span className={styles.copyIcon}>{copySuccess ? '✓' : '📋'}</span>
+          <span className={styles.copyText}>
             {copySuccess ? strings.copied : strings.copyResult}
           </span>
         </button>
@@ -166,7 +166,7 @@ export const GuaResult = ({ result }: Props) => {
 
       {showVibe ? (
         // VIBE MODE: Show only the final result
-        <div className="gua-results single-result">
+        <div className={`${styles.guaResults} ${styles.singleResult}`}>
           <GuaCard
             guaData={finalGuaData}
             modernData={finalModern}
@@ -180,7 +180,7 @@ export const GuaResult = ({ result }: Props) => {
       ) : (
         // STANDARD MODE: Show the progression
 
-        <div className="gua-results">
+        <div className={styles.guaResults}>
           {/* Original Gua */}
           <GuaCard
             guaData={originalGuaData}
@@ -206,7 +206,7 @@ export const GuaResult = ({ result }: Props) => {
       )}
 
       {/* Bottom Info */}
-      <div className="result-footer">{renderChangeInfo()}</div>
+      <div className={styles.resultFooter}>{renderChangeInfo()}</div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { generateCrystalGuaSVG } from '@/lib/utils/svg-generator';
+import styles from './GuaHeader.module.css';
 
 interface GuaHeaderProps {
   guaData: any;
@@ -14,18 +15,18 @@ export const GuaHeader = ({
   colorTheme,
 }: GuaHeaderProps) => {
   return (
-    <div className="gua-header-section">
-      <div className="gua-header">
-        <div className="gua-info">
-          <h3 className="gua-title">{title}</h3>
-          <div className="gua-name-container">
-            <div className="gua-name">{guaData.name}</div>
-            <span className="gua-number">#{guaData.id}</span>
+    <div className={styles.guaHeaderSection}>
+      <div className={styles.guaHeader}>
+        <div className={styles.guaInfo}>
+          <h3 className={styles.guaTitle}>{title}</h3>
+          <div className={styles.guaNameContainer}>
+            <div className={styles.guaName}>{guaData.name}</div>
+            <span className={styles.guaNumber}>#{guaData.id}</span>
           </div>
         </div>
       </div>
 
-      <div className="gua-visual">
+      <div className={styles.guaVisual}>
         <div
           dangerouslySetInnerHTML={{
             __html: generateCrystalGuaSVG(binary, colorTheme),

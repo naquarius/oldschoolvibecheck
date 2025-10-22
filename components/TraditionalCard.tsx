@@ -1,6 +1,8 @@
 import { i18n } from '@/lib/i18n';
 import { useState } from 'react';
 import { GuaHeader } from './GuaHeader';
+import styles from './TraditionalCard.module.css';
+import cardStyles from './GuaCard.module.css';
 
 interface TraditionalCardProps {
   guaData: any;
@@ -22,23 +24,23 @@ export const TraditionalCard = ({
   const strings = i18n.getUiStrings();
 
   return (
-    <div className="gua-card">
+    <div className={cardStyles.guaCard}>
       <GuaHeader
         guaData={guaData}
         title={title}
         binary={binary}
         colorTheme={colorTheme}
       />
-      <div className="traditional-section">
-        <div className="modern-standard">
-          <h4 className="reading-label">{strings.modernInterpretation}</h4>
-          <p className="reading-text">{modernData.standard}</p>
+      <div className={styles.traditionalSection}>
+        <div className={styles.modernStandard}>
+          <h4 className={styles.readingLabel}>{strings.modernInterpretation}</h4>
+          <p className={styles.readingText}>{modernData.standard}</p>
         </div>
 
-        <div className="reference-section">
+        <div className={styles.referenceSection}>
           <button
             onClick={() => setShowReference(!showReference)}
-            className="reference-toggle"
+            className={styles.referenceToggle}
           >
             <span>{strings.classicalReference}</span>
             <span className={`arrow ${showReference ? 'expanded' : ''}`}>
@@ -47,14 +49,14 @@ export const TraditionalCard = ({
           </button>
 
           {showReference && (
-            <div className="reference-content">
-              <div className="reference-item">
+            <div className={styles.referenceContent}>
+              <div className={styles.referenceItem}>
                 <h5>{strings.fullName}</h5>
                 <p>{guaData.full_name}</p>
               </div>
-              <div className="reference-item">
+              <div className={styles.referenceItem}>
                 <h5>{strings.classicalJudgment}</h5>
-                <p className="classical-text">{guaData.judgment}</p>
+                <p className={styles.classicalText}>{guaData.judgment}</p>
               </div>
             </div>
           )}

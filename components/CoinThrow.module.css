@@ -1,16 +1,16 @@
 /* CoinThrow Component Styles */
 
-.coin-throw-container {
+.coinThrowContainer {
   text-align: center;
   padding: 2.5rem;
   animation: gentle-fade-in 0.8s ease-out;
 }
 
-.throw-status {
+.throwStatus {
   margin-bottom: 3.5rem;
 }
 
-.status-indicator {
+.statusIndicator {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
@@ -23,7 +23,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-.pulse-dot {
+.pulseDot {
   width: 10px;
   height: 10px;
   background: var(--primary);
@@ -45,14 +45,14 @@
   }
 }
 
-.status-text {
+.statusText {
   font-size: 1.05rem;
   font-weight: 500;
   color: var(--text-primary);
 }
 
 /* Coins Grid */
-.coins-grid {
+.coinsGrid {
   display: flex;
   justify-content: center;
   gap: 2.5rem;
@@ -60,14 +60,14 @@
   flex-wrap: wrap;
 }
 
-.coin-item {
+.coinItem {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
 }
 
-.modern-coin {
+.modernCoin {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -82,7 +82,7 @@
     0 6px 20px rgba(139, 92, 246, 0.1), inset 0 2px 0 rgba(255, 255, 255, 0.3);
 }
 
-.modern-coin::before {
+.modernCoin::before {
   content: '';
   position: absolute;
   top: 15%;
@@ -94,7 +94,7 @@
   pointer-events: none;
 }
 
-.coin-inner {
+.coinInner {
   position: relative;
   z-index: 2;
   display: flex;
@@ -104,7 +104,7 @@
   height: 100%;
 }
 
-.coin-symbol {
+.coinSymbol {
   font-size: 2.5rem;
   color: white;
   font-weight: bold;
@@ -130,7 +130,7 @@
 }
 
 /* Coin Animations */
-.coin-spinning {
+.coinSpinning {
   animation: crystal-coin-flip 2.5s ease-in-out infinite;
 }
 
@@ -157,7 +157,7 @@
   }
 }
 
-.coin-settled {
+.coinSettled {
   animation: gentle-settle 0.8s ease-out;
 }
 
@@ -176,7 +176,7 @@
   }
 }
 
-.coin-label-modern {
+.coinLabelModern {
   font-size: 0.8rem;
   color: var(--text-muted);
   font-weight: 500;
@@ -185,11 +185,11 @@
 }
 
 /* Throw Footer */
-.throw-footer {
+.throwFooter {
   margin-top: 2.5rem;
 }
 
-.energy-bar {
+.energyBar {
   width: 260px;
   height: 8px;
   background: var(--bg-glass);
@@ -200,7 +200,7 @@
   backdrop-filter: blur(10px);
 }
 
-.energy-fill {
+.energyFill {
   height: 100%;
   background: linear-gradient(
     90deg,
@@ -224,7 +224,7 @@
   }
 }
 
-.throw-message {
+.throwMessage {
   font-size: 1.05rem;
   color: var(--text-secondary);
   margin: 0;
@@ -234,16 +234,16 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .coins-grid {
+  .coinsGrid {
     gap: 2rem;
   }
 
-  .modern-coin {
+  .modernCoin {
     width: 85px;
     height: 85px;
   }
 
-  .coin-symbol {
+  .coinSymbol {
     font-size: 2.25rem;
   }
 
@@ -252,11 +252,12 @@
     height: 28px;
   }
 
-  .coin-throw-container {
+  .coinThrowContainer {
     padding: 2rem;
   }
 
-  .status-indicator {
+  .statusIndicator {
     padding: 1rem 1.5rem;
   }
 }
+

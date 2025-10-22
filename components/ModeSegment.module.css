@@ -1,6 +1,6 @@
 /* ModeSegment Component Styles */
 
-.mode-item {
+.modeItem {
   padding: 0.6rem 1.1rem;
   font-size: 1.05rem;
   border-width: 2px;
@@ -9,7 +9,7 @@
   color: var(--btn-text);
 }
 
-.mode-item[data-state='on'] {
+.modeItem[data-state='on'] {
   background-image: var(--paper-rust);
   border-color: var(--rust-border);
 }
@@ -38,7 +38,7 @@
   outline-offset: 2px;
 }
 
-.switch__label {
+.switchLabel {
   position: absolute;
   left: var(--pad);
   top: 50%;
@@ -52,7 +52,7 @@
   pointer-events: none;
 }
 
-.switch__thumb {
+.switchThumb {
   position: absolute;
   top: 50%;
   left: var(--pad);
@@ -67,9 +67,10 @@
 }
 
 /* slide distances tuned to the sizes above */
-.switch[data-state='unchecked'] .switch__thumb {
+.switch[data-state='unchecked'] .switchThumb {
   transform: translate(152px, -50%);
 }
-.switch[data-state='checked'] .switch__thumb {
+.switch[data-state='checked'] .switchThumb {
   transform: translate(184px, -50%);
 }
+

@@ -1,6 +1,6 @@
 /* GuaCard Component Styles */
 
-.gua-card {
+.guaCard {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 24px;
@@ -13,7 +13,7 @@
     0 8px 24px rgba(139, 92, 246, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-.gua-card::before {
+.guaCard::before {
   content: '';
   position: absolute;
   top: 0;
@@ -31,46 +31,47 @@
   transition: opacity 0.3s ease;
 }
 
-.gua-card:hover {
+.guaCard:hover {
   transform: translateY(-6px);
   box-shadow: 0 32px 80px rgba(139, 92, 246, 0.08),
     0 12px 32px rgba(139, 92, 246, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   border-color: rgba(139, 92, 246, 0.15);
 }
 
-.gua-card:hover::before {
+.guaCard:hover::before {
   opacity: 1;
 }
 
-.gua-results {
+.guaResults {
   display: grid;
   gap: 2.5rem;
   margin-bottom: 2.5rem;
 }
 
 @media (min-width: 768px) {
-  .gua-results {
+  .guaResults {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-.single-result {
+.singleResult {
   display: flex;
   justify-content: center;
 }
 
-.main-result {
+.mainResult {
   max-width: 500px;
   width: 100%;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .gua-card {
+  .guaCard {
     padding: 2rem;
   }
 
-  .main-result {
+  .mainResult {
     max-width: 100%;
   }
 }
+

@@ -42,12 +42,13 @@
 }
 
 /* variants */
-.btn--sage {
+.btnSage {
   background-image: var(--paper-sage);
   border-color: var(--sage-border);
 }
 
-.btn--rust {
+.btnRust {
   background-image: var(--paper-rust);
   border-color: var(--rust-border);
 }
+
