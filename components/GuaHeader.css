@@ -1,0 +1,65 @@
+/* GuaHeader Component Styles */
+
+.gua-header {
+  margin-bottom: 2rem;
+}
+
+.gua-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.gua-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gua-name-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gua-name {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+}
+
+.gua-number {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg-glass);
+  padding: 0.375rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(10px);
+  align-self: center;
+}
+
+.gua-visual {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: var(--bg-glass);
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .gua-name {
+    font-size: 1.5rem;
+  }
+}

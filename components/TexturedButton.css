@@ -1,0 +1,53 @@
+/* TexturedButton Component Styles */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--font-display), ui-serif, Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--btn-text);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.25), 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  background-blend-mode: multiply;
+  background-size: cover;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* grain overlay */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  background-size: cover;
+  opacity: 0.25;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* variants */
+.btn--sage {
+  background-image: var(--paper-sage);
+  border-color: var(--sage-border);
+}
+
+.btn--rust {
+  background-image: var(--paper-rust);
+  border-color: var(--rust-border);
+}

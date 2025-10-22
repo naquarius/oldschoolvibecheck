@@ -1,0 +1,76 @@
+/* GuaCard Component Styles */
+
+.gua-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  backdrop-filter: blur(20px) saturate(180%);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.04),
+    0 8px 24px rgba(139, 92, 246, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.gua-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3),
+    transparent 50%,
+    rgba(139, 92, 246, 0.02)
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gua-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 32px 80px rgba(139, 92, 246, 0.08),
+    0 12px 32px rgba(139, 92, 246, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+.gua-card:hover::before {
+  opacity: 1;
+}
+
+.gua-results {
+  display: grid;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .gua-results {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.single-result {
+  display: flex;
+  justify-content: center;
+}
+
+.main-result {
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .gua-card {
+    padding: 2rem;
+  }
+
+  .main-result {
+    max-width: 100%;
+  }
+}
