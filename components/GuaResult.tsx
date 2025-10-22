@@ -29,56 +29,39 @@ export const GuaResult = ({ result }: Props) => {
       validate: isValidMode,
     }
   );
-  const showVibe = mode === 'vibe';
   const [colorTheme, setColorTheme] = useState<'pink' | 'blue'>('pink');
-  // GuaCard component handles rendering and its own reference toggle state
+  const [copySuccess, setCopySuccess] = useState(false);
 
   const { language } = useLanguage();
   const { question } = useQuestion();
-  const [copySuccess, setCopySuccess] = useState(false);
   const strings = getUiStrings(language);
 
-  const originalGuaData = i18n.getGuaData(result.originalGua.id);
-  const originalModern = i18n.getModernJudgment(result.originalGua.id);
+  const showVibe = mode === 'vibe';
 
+  // Get data for original gua
+  const originalGuaData = i18n.getGuaData(result.originalGua.id);
+
+  // Get data for changed gua (if it exists)
   const changedGuaData = result.changedGua
     ? i18n.getGuaData(result.changedGua.id)
     : null;
-  const changedModern = result.changedGua
-    ? i18n.getModernJudgment(result.changedGua.id)
-    : null;
 
-  // In vibe mode, show only the final result (changed gua if exists, otherwise original)
-  const finalGua = result.changedGua || result.originalGua;
+  // For vibe mode: show the final result (changed gua if exists, otherwise original)
   const finalGuaData = changedGuaData || originalGuaData;
-  const finalModern = changedModern || originalModern;
   const finalBinary = result.changedBinary || result.originalBinary;
 
   const handleCopyResult = async () => {
-    const copyData = {
-      question: question || 'No question provided',
-      originalGua: {
-        id: result.originalGua.id,
-        name: result.originalGua.name,
-      },
-      changedGua: result.changedGua
-        ? {
-            id: result.changedGua.id,
-            name: result.changedGua.name,
-          }
-        : null,
-      changingPositions: result.changingPositions,
-    };
-
-    const formattedText = `我问了: ${copyData.question}\n\n原卦: ${
-      copyData.originalGua.name.en
-    } (${copyData.originalGua.name.zh}) - ID: ${copyData.originalGua.id}\n${
-      copyData.changedGua
-        ? `变卦: ${copyData.changedGua.name.en} (${copyData.changedGua.name.zh}) - ID: ${copyData.changedGua.id}\n`
+    const formattedText = `我问了: ${
+      question || 'No question provided'
+    }\n\n原卦: ${result.originalGua.name.en} (${
+      result.originalGua.name.zh
+    }) - ID: ${result.originalGua.id}\n${
+      result.changedGua
+        ? `变卦: ${result.changedGua.name.en} (${result.changedGua.name.zh}) - ID: ${result.changedGua.id}\n`
         : ''
     }变爻: ${
-      copyData.changingPositions.length > 0
-        ? copyData.changingPositions.join(', ')
+      result.changingPositions.length > 0
+        ? result.changingPositions.join(', ')
         : 'None'
     }`;
 
@@ -104,26 +87,27 @@ export const GuaResult = ({ result }: Props) => {
               ? strings.energyTransforming
               : `${strings.changingLinesAt} ${result.changingPositions.join(
                   ', '
-                )} - ${strings.focusFutureDirection}`}
-          </p>
-        </div>
-      );
-    } else {
-      return (
-        <div className={styles.stableInfo}>
-          <div className={styles.stableBadge}>
-            <span className={styles.stableIcon}>🎯</span>
-            <span>{strings.stableEnergy}</span>
-          </div>
-          <p className={styles.stableText}>
-            {showVibe ? strings.stableEnergyClear : strings.noChangingLines}
+                )} ${strings.focusFutureDirection}`}
           </p>
         </div>
       );
     }
+
+    return (
+      <div className={styles.stableInfo}>
+        <div className={styles.stableBadge}>
+          <span className={styles.stableIcon}>🎯</span>
+          <span>{strings.stableEnergy}</span>
+        </div>
+        <p className={styles.stableText}>
+          {showVibe ? strings.stableEnergyClear : strings.noChangingLines}
+        </p>
+      </div>
+    );
   };
 
-  return (    <div className={styles.resultContainer}>
+  return (
+    <div className={styles.resultContainer}>
       {/* Header with controls */}
       <div className={styles.resultControls}>
         <div className={styles.themeToggle}>
@@ -131,7 +115,9 @@ export const GuaResult = ({ result }: Props) => {
             onClick={() =>
               setColorTheme(colorTheme === 'pink' ? 'blue' : 'pink')
             }
-            className={styles.controlButton}>
+            className={styles.controlButton}
+            aria-label="Toggle color theme"
+          >
             {colorTheme === 'pink' ? '💙' : '💗'}
           </button>
         </div>
@@ -139,21 +125,24 @@ export const GuaResult = ({ result }: Props) => {
         <div className={styles.vibeToggle}>
           <button
             onClick={() => setMode('vibe')}
-            className={`${styles.toggleButton} ${showVibe ? 'active' : ''}`}
+            className={`${styles.toggleButton} ${
+              showVibe ? styles.active : ''
+            }`}
           >
             {strings.vibeMode}
           </button>
           <button
             onClick={() => setMode('standard')}
-            className={`${styles.toggleButton} ${!showVibe ? 'active' : ''}`}
+            className={`${styles.toggleButton} ${
+              !showVibe ? styles.active : ''
+            }`}
           >
             {strings.standardMode}
           </button>
         </div>
       </div>
 
-      {/* Main Results */}
-      {/* Main Results */}
+      {/* Copy button */}
       <div className={styles.copyResultContainer}>
         <button onClick={handleCopyResult} className={styles.copyResultButton}>
           <span className={styles.copyIcon}>{copySuccess ? '✓' : '📋'}</span>
@@ -163,41 +152,33 @@ export const GuaResult = ({ result }: Props) => {
         </button>
       </div>
 
+      {/* Main Results */}
       {showVibe ? (
         // VIBE MODE: Show only the final result
         <div className={`${styles.guaResults} ${styles.singleResult}`}>
           <GuaCard
             guaData={finalGuaData}
-            modernData={finalModern}
             binary={finalBinary}
             title={strings.yourVibeToday}
-            subtitle={strings.theVibe}
             showVibeText={true}
             colorTheme={colorTheme}
           />
         </div>
       ) : (
         // STANDARD MODE: Show the progression
-
         <div className={styles.guaResults}>
-          {/* Original Gua */}
           <GuaCard
             guaData={originalGuaData}
-            modernData={originalModern}
             binary={result.originalBinary}
             title={strings.currentSituation}
-            subtitle={strings.currentEnergy}
             colorTheme={colorTheme}
           />
 
-          {/* Changed Gua */}
           {changedGuaData && (
             <GuaCard
               guaData={changedGuaData}
-              modernData={changedModern!}
               binary={result.changedBinary!}
               title={strings.futureDirection}
-              subtitle={strings.whereYoureHeaded}
               colorTheme={colorTheme}
             />
           )}

@@ -12,8 +12,3 @@ export interface LocalizedGuaData extends BaseGuaData {
   full_name: string;
   judgment: string;
 }
-
-export interface ModernJudgment {
-  standard: string;
-  vibe: string;
-}

@@ -1,9 +1,6 @@
 import { guaData } from '@/lib/data/gua-data';
-import {
-  modernJudgmentsEn,
-  modernJudgmentsZh,
-} from '@/lib/data/modern-judgments';
-import { Language, LocalizedGuaData, ModernJudgment } from './types';
+
+import { Language, LocalizedGuaData } from './types';
 import { getUiStrings } from './ui';
 
 let currentLanguage: Language = 'zh';
@@ -44,20 +41,5 @@ export const i18n = {
       full_name: baseData.full_name.zh,
       judgment: baseData.judgment.zh,
     };
-  },
-
-  getModernJudgment: (id: number): ModernJudgment => {
-    const judgments =
-      currentLanguage === 'zh' ? modernJudgmentsZh : modernJudgmentsEn;
-    const judgment = judgments[id];
-
-    if (!judgment) {
-      return {
-        standard: `No modern judgment found for ID ${id}`,
-        vibe: `No vibe data found for ID ${id}`,
-      };
-    }
-
-    return judgment;
   },
 };

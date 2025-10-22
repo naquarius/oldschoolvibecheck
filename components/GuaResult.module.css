@@ -204,3 +204,31 @@
   }
 }
 
+.guaResults {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .guaResults {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.singleResult {
+  display: flex;
+  justify-content: center;
+}
+
+.singleResult > * {
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .singleResult > * {
+    max-width: 100%;
+  }
+}
