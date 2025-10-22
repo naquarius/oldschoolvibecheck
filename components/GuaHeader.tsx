@@ -2,14 +2,16 @@ import { generateCrystalGuaSVG } from '@/lib/utils/svg-generator';
 import styles from './GuaHeader.module.css';
 
 interface GuaHeaderProps {
-  guaData: any;
+  name: string;
+  id: string;
   title: string;
   binary: string;
   colorTheme: 'pink' | 'blue';
 }
 
 export const GuaHeader = ({
-  guaData,
+  name,
+  id,
   title,
   binary,
   colorTheme,
@@ -20,8 +22,8 @@ export const GuaHeader = ({
         <div className={styles.guaInfo}>
           <h3 className={styles.guaTitle}>{title}</h3>
           <div className={styles.guaNameContainer}>
-            <div className={styles.guaName}>{guaData.name}</div>
-            <span className={styles.guaNumber}>#{guaData.id}</span>
+            <div className={styles.guaName}>{name}</div>
+            <span className={styles.guaNumber}>#{id}</span>
           </div>
         </div>
       </div>

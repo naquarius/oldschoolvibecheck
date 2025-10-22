@@ -4,10 +4,6 @@
   margin-top: 2rem;
 }
 
-.vibeMode {
-  /* Additional styles for vibe mode if needed */
-}
-
 .vibeContent {
   display: flex;
   flex-direction: column;
@@ -132,4 +128,3 @@
     padding: 1.25rem;
   }
 }
-

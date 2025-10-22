@@ -1,8 +1,9 @@
+import { type LocalizedGuaData } from '@/lib/i18n/types';
 import { TraditionalCard } from './TraditionalCard';
 import { VibeCard } from './VibeCard';
 
 interface GuaCardProps {
-  guaData: any;
+  guaData: LocalizedGuaData;
   binary: string;
   title: string;
   showVibeText?: boolean;
@@ -16,9 +17,11 @@ export const GuaCard = ({
   showVibeText = false,
   colorTheme,
 }: GuaCardProps) => {
+  const { name, id } = guaData;
   return showVibeText ? (
     <VibeCard
-      guaData={guaData}
+      name={name}
+      id={id}
       binary={binary}
       title={title}
       colorTheme={colorTheme}

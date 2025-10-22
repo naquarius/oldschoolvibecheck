@@ -1,9 +1,13 @@
 import { guaData } from '@/lib/data/gua-data';
-
+import {
+  vibeJudgmentsEn,
+  vibeJudgmentsZh,
+  type VibeJudgment,
+} from '@/lib/data/vibes';
 import { Language, LocalizedGuaData } from './types';
 import { getUiStrings } from './ui';
 
-let currentLanguage: Language = 'zh';
+let currentLanguage: Language = 'en';
 
 export const i18n = {
   setLanguage: (lang: Language) => {
@@ -16,30 +20,23 @@ export const i18n = {
 
   getGuaData: (id: number): LocalizedGuaData => {
     const baseData = guaData.find((g) => g.id === id);
-    if (!baseData) {
-      throw new Error(`Missing gua id: ${id}`);
-    }
-
-    if (currentLanguage === 'en') {
-      return {
-        id: baseData.id,
-        symbol: baseData.symbol,
-        binary: baseData.binary,
-        pronunciation: baseData.pronunciation,
-        name: baseData.name.en,
-        full_name: baseData.full_name.en,
-        judgment: baseData.judgment.en,
-      };
-    }
 
     return {
       id: baseData.id,
       symbol: baseData.symbol,
       binary: baseData.binary,
       pronunciation: baseData.pronunciation,
-      name: baseData.name.zh,
-      full_name: baseData.full_name.zh,
-      judgment: baseData.judgment.zh,
+      name: baseData.name[currentLanguage],
+      full_name: baseData.full_name[currentLanguage],
+      judgment: baseData.judgment[currentLanguage],
     };
+  },
+
+  // to do fix this even more ugh
+  getVibes: (id: number): VibeJudgment => {
+    const vibeJudgments =
+      currentLanguage === 'zh' ? vibeJudgmentsZh : vibeJudgmentsEn;
+    const vibeInfo = vibeJudgments.find((v) => v.id === id);
+    return vibeInfo;
   },
 };

@@ -1,5 +1,3 @@
-/* GuaResult Component Styles */
-
 .resultContainer {
   max-width: 100%;
   animation: gentle-fade-in 1s ease-out;
@@ -17,10 +15,6 @@
   backdrop-filter: blur(20px) saturate(180%);
   box-shadow: 0 8px 32px rgba(139, 92, 246, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.themeToggle {
-  /* Additional styles for theme toggle if needed */
 }
 
 .controlButton {

@@ -1,34 +1,33 @@
-import { useLanguage } from '@/lib/context/LanguageContext';
-import { vibeJudgmentsEn, vibeJudgmentsZh } from '@/lib/data/vibes';
 import { i18n } from '@/lib/i18n';
 import cardStyles from './GuaCard.module.css';
 import { GuaHeader } from './GuaHeader';
 import styles from './VibeCard.module.css';
 
 interface VibeCardProps {
-  guaData: { id: number };
+  name: string;
+  id: number;
   binary: string;
   title: string;
   colorTheme: 'pink' | 'blue';
 }
 
 export const VibeCard = ({
-  guaData,
+  name,
+  id,
   binary,
   title,
   colorTheme,
 }: VibeCardProps) => {
-  const { language } = useLanguage();
-  const vibeJudgments = language === 'zh' ? vibeJudgmentsZh : vibeJudgmentsEn;
-  const vibeInfo = vibeJudgments.find((v) => v.id === guaData.id);
   const t = i18n.getUiStrings();
+  const vibeInfo = i18n.getVibes(id);
 
   if (!vibeInfo) return null;
 
   return (
     <div className={cardStyles.guaCard}>
       <GuaHeader
-        guaData={guaData}
+        name={name}
+        id={`${id}`}
         title={title}
         binary={binary}
         colorTheme={colorTheme}

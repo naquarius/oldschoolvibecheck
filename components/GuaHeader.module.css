@@ -1,9 +1,3 @@
-/* GuaHeader Component Styles */
-
-.guaHeaderSection {
-  /* Container for the header section */
-}
-
 .guaHeader {
   margin-bottom: 2rem;
 }
@@ -67,4 +61,3 @@
     font-size: 1.5rem;
   }
 }
-

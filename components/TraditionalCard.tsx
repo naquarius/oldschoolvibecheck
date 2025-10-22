@@ -1,10 +1,11 @@
 import { i18n } from '@/lib/i18n';
+import { type LocalizedGuaData } from '@/lib/i18n/types';
 import cardStyles from './GuaCard.module.css';
 import { GuaHeader } from './GuaHeader';
 import styles from './TraditionalCard.module.css';
 
 interface TraditionalCardProps {
-  guaData: any;
+  guaData: LocalizedGuaData;
   binary: string;
   title: string;
   colorTheme: 'pink' | 'blue';
@@ -17,11 +18,12 @@ export const TraditionalCard = ({
   colorTheme,
 }: TraditionalCardProps) => {
   const strings = i18n.getUiStrings();
-
+  const { name, id } = guaData;
   return (
     <div className={cardStyles.guaCard}>
       <GuaHeader
-        guaData={guaData}
+        name={name}
+        id={`${id}`}
         title={title}
         binary={binary}
         colorTheme={colorTheme}

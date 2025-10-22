@@ -1,11 +1,9 @@
-// lib/data/gua-data.ts
-export interface GuaData {
+interface GuaData {
   id: number;
   name: {
     zh: string;
     en: string;
   };
-  name_eng: string;
   full_name: {
     zh: string;
     en: string;
@@ -26,7 +24,6 @@ export const guaData: GuaData[] = [
       zh: '乾',
       en: 'The Creative',
     },
-    name_eng: 'qian',
     full_name: {
       zh: '乾为天 (qián wéi tiān)',
       en: 'Heaven over Heaven',
@@ -45,7 +42,6 @@ export const guaData: GuaData[] = [
       zh: '坤',
       en: 'The Receptive',
     },
-    name_eng: 'kun',
     full_name: {
       zh: '坤为地 (kūn wéi dì)',
       en: 'Earth over Earth',
@@ -64,7 +60,6 @@ export const guaData: GuaData[] = [
       zh: '屯',
       en: 'Difficulty at the Beginning',
     },
-    name_eng: 'zhun',
     full_name: {
       zh: '水雷屯 (shuǐ léi zhūn)',
       en: 'Water over Thunder',
@@ -83,7 +78,6 @@ export const guaData: GuaData[] = [
       zh: '蒙',
       en: 'Youthful Folly',
     },
-    name_eng: 'meng',
     full_name: {
       zh: '山水蒙 (shān shuǐ méng)',
       en: 'Mountain over Water',
@@ -102,7 +96,6 @@ export const guaData: GuaData[] = [
       zh: '需',
       en: 'Waiting',
     },
-    name_eng: 'xu',
     full_name: {
       zh: '水天需 (shuǐ tiān xū)',
       en: 'Water over Heaven',
@@ -121,7 +114,6 @@ export const guaData: GuaData[] = [
       zh: '讼',
       en: 'Conflict',
     },
-    name_eng: 'song',
     full_name: {
       zh: '天水讼 (tiān shuǐ sòng)',
       en: 'Heaven over Water',
@@ -140,7 +132,6 @@ export const guaData: GuaData[] = [
       zh: '师',
       en: 'The Army',
     },
-    name_eng: 'shi',
     full_name: {
       zh: '地水师 (dì shuǐ shī)',
       en: 'Earth over Water',
@@ -159,7 +150,6 @@ export const guaData: GuaData[] = [
       zh: '比',
       en: 'Holding Together',
     },
-    name_eng: 'bi',
     full_name: {
       zh: '水地比 (shuǐ dì bì)',
       en: 'Water over Earth',
@@ -178,7 +168,6 @@ export const guaData: GuaData[] = [
       zh: '小畜',
       en: 'The Taming Power of the Small',
     },
-    name_eng: 'xiaochu',
     full_name: {
       zh: '风天小畜 (fēng tiān xiǎo xù)',
       en: 'Wind over Heaven',
@@ -197,7 +186,6 @@ export const guaData: GuaData[] = [
       zh: '履',
       en: 'Treading',
     },
-    name_eng: 'lv',
     full_name: {
       zh: '天泽履 (tiān zé lǚ)',
       en: 'Heaven over Lake',
@@ -216,7 +204,6 @@ export const guaData: GuaData[] = [
       zh: '泰',
       en: 'Peace',
     },
-    name_eng: 'tai',
     full_name: {
       zh: '地天泰 (dì tiān tài)',
       en: 'Earth over Heaven',
@@ -235,7 +222,6 @@ export const guaData: GuaData[] = [
       zh: '否',
       en: 'Standstill',
     },
-    name_eng: 'pi',
     full_name: {
       zh: '天地否 (tiān dì pǐ)',
       en: 'Heaven over Earth',
@@ -254,7 +240,6 @@ export const guaData: GuaData[] = [
       zh: '同人',
       en: 'Fellowship with Men',
     },
-    name_eng: 'tongren',
     full_name: {
       zh: '天火同人 (tiān huǒ tóng rén)',
       en: 'Heaven over Fire',
@@ -273,7 +258,6 @@ export const guaData: GuaData[] = [
       zh: '大有',
       en: 'Possession in Great Measure',
     },
-    name_eng: 'dayou',
     full_name: {
       zh: '火天大有 (huǒ tiān dà yǒu)',
       en: 'Fire over Heaven',
@@ -292,7 +276,6 @@ export const guaData: GuaData[] = [
       zh: '谦',
       en: 'Modesty',
     },
-    name_eng: 'qian',
     full_name: {
       zh: '地山谦 (dì shān qiān)',
       en: 'Earth over Mountain',
@@ -311,7 +294,6 @@ export const guaData: GuaData[] = [
       zh: '豫',
       en: 'Enthusiasm',
     },
-    name_eng: 'yu',
     full_name: {
       zh: '雷地豫 (léi dì yù)',
       en: 'Thunder over Earth',
@@ -330,7 +312,6 @@ export const guaData: GuaData[] = [
       zh: '随',
       en: 'Following',
     },
-    name_eng: 'sui',
     full_name: {
       zh: '泽雷随 (zé léi suí)',
       en: 'Lake over Thunder',
@@ -349,7 +330,6 @@ export const guaData: GuaData[] = [
       zh: '蛊',
       en: 'Work on What Has Been Spoiled',
     },
-    name_eng: 'gu',
     full_name: {
       zh: '山风蛊 (shān fēng gǔ)',
       en: 'Mountain over Wind',
@@ -368,7 +348,6 @@ export const guaData: GuaData[] = [
       zh: '临',
       en: 'Approach',
     },
-    name_eng: 'lin',
     full_name: {
       zh: '地泽临 (dì zé lín)',
       en: 'Earth over Lake',
@@ -387,7 +366,6 @@ export const guaData: GuaData[] = [
       zh: '观',
       en: 'Contemplation',
     },
-    name_eng: 'guan',
     full_name: {
       zh: '风地观 (fēng dì guān)',
       en: 'Wind over Earth',
@@ -406,7 +384,6 @@ export const guaData: GuaData[] = [
       zh: '噬嗑',
       en: 'Biting Through',
     },
-    name_eng: 'shihe',
     full_name: {
       zh: '火雷噬嗑 (huǒ léi shì kè)',
       en: 'Fire over Thunder',
@@ -425,7 +402,6 @@ export const guaData: GuaData[] = [
       zh: '贲',
       en: 'Grace',
     },
-    name_eng: 'bi',
     full_name: {
       zh: '山火贲 (shān huǒ bì)',
       en: 'Mountain over Fire',
@@ -444,7 +420,6 @@ export const guaData: GuaData[] = [
       zh: '剥',
       en: 'Splitting Apart',
     },
-    name_eng: 'bo',
     full_name: {
       zh: '山地剥 (shān dì bō)',
       en: 'Mountain over Earth',
@@ -463,7 +438,6 @@ export const guaData: GuaData[] = [
       zh: '复',
       en: 'Return',
     },
-    name_eng: 'fu',
     full_name: {
       zh: '地雷复 (dì léi fù)',
       en: 'Earth over Thunder',
@@ -482,7 +456,6 @@ export const guaData: GuaData[] = [
       zh: '无妄',
       en: 'Innocence',
     },
-    name_eng: 'wuwang',
     full_name: {
       zh: '天雷无妄 (tiān léi wú wàng)',
       en: 'Heaven over Thunder',
@@ -501,7 +474,6 @@ export const guaData: GuaData[] = [
       zh: '大畜',
       en: 'The Taming Power of the Great',
     },
-    name_eng: 'dachu',
     full_name: {
       zh: '山天大畜 (shān tiān dà xù)',
       en: 'Mountain over Heaven',
@@ -520,7 +492,6 @@ export const guaData: GuaData[] = [
       zh: '颐',
       en: 'The Corners of the Mouth',
     },
-    name_eng: 'yi',
     full_name: {
       zh: '山雷颐 (shān léi yí)',
       en: 'Mountain over Thunder',
@@ -539,7 +510,6 @@ export const guaData: GuaData[] = [
       zh: '大过',
       en: 'Preponderance of the Great',
     },
-    name_eng: 'daguo',
     full_name: {
       zh: '泽风大过 (zé fēng dà guò)',
       en: 'Lake over Wind',
@@ -558,7 +528,6 @@ export const guaData: GuaData[] = [
       zh: '坎',
       en: 'The Abysmal',
     },
-    name_eng: 'kan',
     full_name: {
       zh: '坎为水 (kǎn wéi shuǐ)',
       en: 'Water over Water',
@@ -577,7 +546,6 @@ export const guaData: GuaData[] = [
       zh: '离',
       en: 'The Clinging',
     },
-    name_eng: 'li',
     full_name: {
       zh: '离为火 (lí wéi huǒ)',
       en: 'Fire over Fire',
@@ -596,7 +564,6 @@ export const guaData: GuaData[] = [
       zh: '咸',
       en: 'Influence',
     },
-    name_eng: 'xian',
     full_name: {
       zh: '泽山咸 (zé shān xián)',
       en: 'Lake over Mountain',
@@ -615,7 +582,6 @@ export const guaData: GuaData[] = [
       zh: '恒',
       en: 'Duration',
     },
-    name_eng: 'heng',
     full_name: {
       zh: '雷风恒 (léi fēng héng)',
       en: 'Thunder over Wind',
@@ -634,7 +600,6 @@ export const guaData: GuaData[] = [
       zh: '遁',
       en: 'Retreat',
     },
-    name_eng: 'dun',
     full_name: {
       zh: '天山遁 (tiān shān dùn)',
       en: 'Heaven over Mountain',
@@ -653,7 +618,6 @@ export const guaData: GuaData[] = [
       zh: '大壮',
       en: 'The Power of the Great',
     },
-    name_eng: 'dazhuang',
     full_name: {
       zh: '雷天大壮 (léi tiān dà zhuàng)',
       en: 'Thunder over Heaven',
@@ -672,7 +636,6 @@ export const guaData: GuaData[] = [
       zh: '晋',
       en: 'Progress',
     },
-    name_eng: 'jin',
     full_name: {
       zh: '火地晋 (huǒ dì jìn)',
       en: 'Fire over Earth',
@@ -691,7 +654,6 @@ export const guaData: GuaData[] = [
       zh: '明夷',
       en: 'Darkening of the Light',
     },
-    name_eng: 'mingyi',
     full_name: {
       zh: '地火明夷 (dì huǒ míng yí)',
       en: 'Earth over Fire',
@@ -710,7 +672,6 @@ export const guaData: GuaData[] = [
       zh: '家人',
       en: 'The Family',
     },
-    name_eng: 'jiaren',
     full_name: {
       zh: '风火家人 (fēng huǒ jiā rén)',
       en: 'Wind over Fire',
@@ -729,7 +690,6 @@ export const guaData: GuaData[] = [
       zh: '睽',
       en: 'Opposition',
     },
-    name_eng: 'kui',
     full_name: {
       zh: '火泽睽 (huǒ zé kuí)',
       en: 'Fire over Lake',
@@ -748,7 +708,6 @@ export const guaData: GuaData[] = [
       zh: '蹇',
       en: 'Obstruction',
     },
-    name_eng: 'jian',
     full_name: {
       zh: '水山蹇 (shuǐ shān jiǎn)',
       en: 'Water over Mountain',
@@ -767,7 +726,6 @@ export const guaData: GuaData[] = [
       zh: '解',
       en: 'Deliverance',
     },
-    name_eng: 'jie',
     full_name: {
       zh: '雷水解 (léi shuǐ jiě)',
       en: 'Thunder over Water',
@@ -786,7 +744,6 @@ export const guaData: GuaData[] = [
       zh: '损',
       en: 'Decrease',
     },
-    name_eng: 'sun',
     full_name: {
       zh: '山泽损 (shān zé sǔn)',
       en: 'Mountain over Lake',
@@ -805,7 +762,6 @@ export const guaData: GuaData[] = [
       zh: '益',
       en: 'Increase',
     },
-    name_eng: 'yi',
     full_name: {
       zh: '风雷益 (fēng léi yì)',
       en: 'Wind over Thunder',
@@ -824,7 +780,6 @@ export const guaData: GuaData[] = [
       zh: '夬',
       en: 'Break-through',
     },
-    name_eng: 'guai',
     full_name: {
       zh: '泽天夬 (zé tiān guài)',
       en: 'Lake over Heaven',
@@ -843,7 +798,6 @@ export const guaData: GuaData[] = [
       zh: '姤',
       en: 'Coming to Meet',
     },
-    name_eng: 'gou',
     full_name: {
       zh: '天风姤 (tiān fēng gòu)',
       en: 'Heaven over Wind',
@@ -862,7 +816,6 @@ export const guaData: GuaData[] = [
       zh: '萃',
       en: 'Gathering Together',
     },
-    name_eng: 'cui',
     full_name: {
       zh: '泽地萃 (zé dì cuì)',
       en: 'Lake over Earth',
@@ -881,7 +834,6 @@ export const guaData: GuaData[] = [
       zh: '升',
       en: 'Pushing Upward',
     },
-    name_eng: 'sheng',
     full_name: {
       zh: '地风升 (dì fēng shēng)',
       en: 'Earth over Wind',
@@ -900,7 +852,6 @@ export const guaData: GuaData[] = [
       zh: '困',
       en: 'Oppression',
     },
-    name_eng: 'kun',
     full_name: {
       zh: '泽水困 (zé shuǐ kùn)',
       en: 'Lake over Water',
@@ -919,7 +870,6 @@ export const guaData: GuaData[] = [
       zh: '井',
       en: 'The Well',
     },
-    name_eng: 'jing',
     full_name: {
       zh: '水风井 (shuǐ fēng jǐng)',
       en: 'Water over Wind',
@@ -938,7 +888,6 @@ export const guaData: GuaData[] = [
       zh: '革',
       en: 'Revolution',
     },
-    name_eng: 'ge',
     full_name: {
       zh: '泽火革 (zé huǒ gé)',
       en: 'Lake over Fire',
@@ -957,7 +906,6 @@ export const guaData: GuaData[] = [
       zh: '鼎',
       en: 'The Cauldron',
     },
-    name_eng: 'ding',
     full_name: {
       zh: '火风鼎 (huǒ fēng dǐng)',
       en: 'Fire over Wind',
@@ -976,7 +924,6 @@ export const guaData: GuaData[] = [
       zh: '震',
       en: 'The Arousing',
     },
-    name_eng: 'zhen',
     full_name: {
       zh: '震为雷 (zhèn wéi léi)',
       en: 'Thunder over Thunder',
@@ -995,7 +942,6 @@ export const guaData: GuaData[] = [
       zh: '艮',
       en: 'Keeping Still',
     },
-    name_eng: 'gen',
     full_name: {
       zh: '艮为山 (gèn wéi shān)',
       en: 'Mountain over Mountain',
@@ -1014,7 +960,6 @@ export const guaData: GuaData[] = [
       zh: '渐',
       en: 'Development',
     },
-    name_eng: 'jian',
     full_name: {
       zh: '风山渐 (fēng shān jiàn)',
       en: 'Wind over Mountain',
@@ -1033,7 +978,6 @@ export const guaData: GuaData[] = [
       zh: '归妹',
       en: 'The Marrying Maiden',
     },
-    name_eng: 'guimei',
     full_name: {
       zh: '雷泽归妹 (léi zé guī mèi)',
       en: 'Thunder over Lake',
@@ -1052,7 +996,6 @@ export const guaData: GuaData[] = [
       zh: '丰',
       en: 'Abundance',
     },
-    name_eng: 'feng',
     full_name: {
       zh: '雷火丰 (léi huǒ fēng)',
       en: 'Thunder over Fire',
@@ -1071,7 +1014,6 @@ export const guaData: GuaData[] = [
       zh: '旅',
       en: 'The Wanderer',
     },
-    name_eng: 'lv',
     full_name: {
       zh: '火山旅 (huǒ shān lǚ)',
       en: 'Fire over Mountain',
@@ -1090,7 +1032,6 @@ export const guaData: GuaData[] = [
       zh: '巽',
       en: 'The Gentle',
     },
-    name_eng: 'xun',
     full_name: {
       zh: '巽为风 (xùn wéi fēng)',
       en: 'Wind over Wind',
@@ -1109,7 +1050,6 @@ export const guaData: GuaData[] = [
       zh: '兑',
       en: 'The Joyous',
     },
-    name_eng: 'dui',
     full_name: {
       zh: '兑为泽 (duì wéi zé)',
       en: 'Lake over Lake',
@@ -1128,7 +1068,6 @@ export const guaData: GuaData[] = [
       zh: '涣',
       en: 'Dispersion',
     },
-    name_eng: 'huan',
     full_name: {
       zh: '风水涣 (fēng shuǐ huàn)',
       en: 'Wind over Water',
@@ -1147,7 +1086,6 @@ export const guaData: GuaData[] = [
       zh: '节',
       en: 'Limitation',
     },
-    name_eng: 'jie',
     full_name: {
       zh: '水泽节 (shuǐ zé jié)',
       en: 'Water over Lake',
@@ -1166,7 +1104,6 @@ export const guaData: GuaData[] = [
       zh: '中孚',
       en: 'Inner Truth',
     },
-    name_eng: 'zhongfu',
     full_name: {
       zh: '风泽中孚 (fēng zé zhōng fú)',
       en: 'Wind over Lake',
@@ -1185,7 +1122,6 @@ export const guaData: GuaData[] = [
       zh: '小过',
       en: 'Preponderance of the Small',
     },
-    name_eng: 'xiaoguo',
     full_name: {
       zh: '雷山小过 (léi shān xiǎo guò)',
       en: 'Thunder over Mountain',
@@ -1204,7 +1140,6 @@ export const guaData: GuaData[] = [
       zh: '既济',
       en: 'After Completion',
     },
-    name_eng: 'jiji',
     full_name: {
       zh: '水火既济 (shuǐ huǒ jì jì)',
       en: 'Water over Fire',
@@ -1223,7 +1158,6 @@ export const guaData: GuaData[] = [
       zh: '未济',
       en: 'Before Completion',
     },
-    name_eng: 'weiji',
     full_name: {
       zh: '火水未济 (huǒ shuǐ wèi jì)',
       en: 'Fire over Water',
@@ -1237,8 +1171,3 @@ export const guaData: GuaData[] = [
     },
   },
 ] as const;
-
-export const findGuaByBinary = (binary: string) =>
-  guaData.find((gua) => gua.binary === binary);
-
-export const getAllGuaData = () => guaData;

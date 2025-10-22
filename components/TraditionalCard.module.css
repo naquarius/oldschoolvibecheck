@@ -1,13 +1,3 @@
-/* TraditionalCard Component Styles */
-
-.traditionalSection {
-  /* Additional styles for traditional section if needed */
-}
-
-.modernStandard {
-  /* Additional styles for modern standard if needed */
-}
-
 .readingLabel {
   font-size: 0.875rem;
   font-weight: 600;
@@ -129,4 +119,3 @@
     padding: 0.875rem 1rem;
   }
 }
-
