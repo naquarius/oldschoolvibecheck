@@ -35,7 +35,6 @@ export const VibeCard = ({
         colorTheme={colorTheme}
       />
       <div className="gua-reading vibe-mode">
-        {/* <h4 className="reading-label">{subtitle}</h4> */}
         <div className="vibe-content">
 
           {/* VIBE */}
