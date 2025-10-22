@@ -132,7 +132,6 @@ export const GuaResult = ({ result }: Props) => {
               setColorTheme(colorTheme === 'pink' ? 'blue' : 'pink')
             }
             className={styles.controlButton}>
-          >
             {colorTheme === 'pink' ? '💙' : '💗'}
           </button>
         </div>
