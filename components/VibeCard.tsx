@@ -2,8 +2,7 @@ import { useLanguage } from '@/lib/context/LanguageContext';
 import {
   vibeJudgmentsEn,
   vibeJudgmentsZh,
-} from '@/lib/data/unchanged-judgments/vibe';
-import { i18n } from '@/lib/i18n';
+} from '@/lib/data/vibes';
 import { GuaHeader } from './GuaHeader';
 
 interface VibeCardProps {
@@ -25,6 +24,8 @@ export const VibeCard = ({
   const vibeJudgments = language === 'zh' ? vibeJudgmentsZh : vibeJudgmentsEn;
   const vibeInfo = vibeJudgments.find((v) => v.id === guaData.id);
 
+  if (!vibeInfo) return null;
+
   return (
     <div className="gua-card">
       <GuaHeader
@@ -34,28 +35,40 @@ export const VibeCard = ({
         colorTheme={colorTheme}
       />
       <div className="gua-reading vibe-mode">
-        <h4 className="reading-label">{subtitle}</h4>
+        {/* <h4 className="reading-label">{subtitle}</h4> */}
         <div className="vibe-content">
-          <div className="vibe-header">
-            <h3 className="vibe-title">{vibeInfo.vibe}</h3>
-            <span className={`energy-badge ${vibeInfo.energy.toLowerCase()}`}>
-              {vibeInfo.energy}
-            </span>
+
+          {/* VIBE */}
+          <div className="vibe-section">
+            <div className="section-header">
+              <span className="section-emoji">🎯</span>
+              <h5 className="section-title">
+                {language === 'zh' ? '这波什么情况' : 'THE VIBE'}
+              </h5>
+            </div>
+            <p className="reading-text vibe-text">{vibeInfo.vibe}</p>
           </div>
 
-          <p className="reading-text vibe-text">{vibeInfo.interpretation}</p>
-
-          <div className="vibe-keywords">
-            {vibeInfo.keywords.map((keyword, idx) => (
-              <span key={idx} className="keyword-tag">
-                {keyword}
-              </span>
-            ))}
+          {/* REAL TALK - The situation explained */}
+          <div className="vibe-section">
+            <div className="section-header">
+              <span className="section-emoji">💬</span>
+              <h5 className="section-title">
+                {language === 'zh' ? '真实情况' : 'REAL TALK'}
+              </h5>
+            </div>
+            <p className="reading-text vibe-text">{vibeInfo.realTalk}</p>
           </div>
 
-          <div className="vibe-suitable">
-            <h5>{i18n.getUiStrings().suitableFor}</h5>
-            <p>{vibeInfo.suitableFor}</p>
+          {/* THE MOVE - What to do */}
+          <div className="vibe-section">
+            <div className="section-header">
+              <span className="section-emoji">✨</span>
+              <h5 className="section-title">
+                {language === 'zh' ? '行动指南' : 'THE MOVE'}
+              </h5>
+            </div>
+            <p className="reading-text vibe-text">{vibeInfo.theMove}</p>
           </div>
         </div>
       </div>

@@ -1,3 +1,3 @@
 export { vibeJudgmentsEn } from './en';
-export type { VibeJudgment, VibeJudgments } from './types';
+export type { VibeJudgment } from './types';
 export { vibeJudgmentsZh } from './zh';
