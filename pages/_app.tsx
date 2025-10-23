@@ -1,4 +1,4 @@
-import { LanguageProvider } from '@/lib/context/LanguageContext';
+import { AppProvider } from '@/lib/context/AppContext';
 import { QuestionProvider } from '@/lib/context/QuestionContext';
 import type { AppProps } from 'next/app';
 import { Cormorant_Garamond } from 'next/font/google';
@@ -14,12 +14,12 @@ const display = Cormorant_Garamond({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <LanguageProvider>
+    <AppProvider>
       <QuestionProvider>
         <div className={display.variable}>
           <Component {...pageProps} />
         </div>
       </QuestionProvider>
-    </LanguageProvider>
+    </AppProvider>
   );
 }

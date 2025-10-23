@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/lib/context/LanguageContext';
+import { useApp } from '@/lib/context/AppContext';
 import { getUiStrings } from '@/lib/i18n/ui';
 import { useEffect, useState } from 'react';
 import styles from './CoinThrow.module.css';
@@ -11,7 +11,7 @@ export const CoinThrow = () => {
     'spinning',
     'spinning',
   ]);
-  const { language } = useLanguage();
+  const { language } = useApp();
   const strings = getUiStrings(language);
 
   useEffect(() => {
@@ -48,8 +48,12 @@ export const CoinThrow = () => {
               }`}
             >
               <div className={styles.coinInner}>
-                {face === 'heads' && <span className={styles.coinSymbol}>●</span>}
-                {face === 'tails' && <span className={styles.coinSymbol}>○</span>}
+                {face === 'heads' && (
+                  <span className={styles.coinSymbol}>●</span>
+                )}
+                {face === 'tails' && (
+                  <span className={styles.coinSymbol}>○</span>
+                )}
                 {face === 'spinning' && <div className={styles.spinner}></div>}
               </div>
             </div>

@@ -2,7 +2,7 @@
 
 import { CoinThrow } from '@/components/CoinThrow';
 import { GuaResult } from '@/components/GuaResult';
-import { useLanguage } from '@/lib/context/LanguageContext';
+import { useApp } from '@/lib/context/AppContext';
 import { useQuestion } from '@/lib/context/QuestionContext';
 import { qigua } from '@/lib/core/qigua';
 import { GuaResultType } from '@/lib/core/types';
@@ -13,7 +13,7 @@ import { useState } from 'react';
 export default function Home() {
   const [result, setResult] = useState<GuaResultType | null>(null);
   const [isThrowing, setIsThrowing] = useState(false);
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage } = useApp();
   const { question, setQuestion } = useQuestion();
   const strings = getUiStrings(language);
 
@@ -72,7 +72,9 @@ export default function Home() {
               onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
               className="language-button"
             >
-              {language === 'zh' ? strings.languageToggle : strings.languageToggleAlt}
+              {language === 'zh'
+                ? strings.languageToggle
+                : strings.languageToggleAlt}
             </button>
           </div>
         </header>

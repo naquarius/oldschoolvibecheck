@@ -20,25 +20,27 @@ export const TraditionalCard = ({
   const strings = i18n.getUiStrings();
   const { name, id } = guaData;
   return (
-    <div className={cardStyles.guaCard}>
-      <GuaHeader
-        name={name}
-        id={`${id}`}
-        title={title}
-        binary={binary}
-        colorTheme={colorTheme}
-      />
-      <div className={styles.traditionalSection}>
-        <div className={styles.referenceSection}>
-          <span>{strings.classicalReference}</span>
-          <div className={styles.referenceContent}>
-            <div className={styles.referenceItem}>
-              <h5>{strings.fullName}</h5>
-              <p>{guaData.full_name}</p>
-            </div>
-            <div className={styles.referenceItem}>
-              <h5>{strings.classicalJudgment}</h5>
-              <p className={styles.classicalText}>{guaData.judgment}</p>
+    <div>
+      <div className={cardStyles.guaCard}>
+        <GuaHeader
+          name={name}
+          id={`${id}`}
+          title={title}
+          binary={binary}
+          colorTheme={colorTheme}
+        />
+        <div className={styles.traditionalSection}>
+          <div className={styles.referenceSection}>
+            <span>{strings.classicalReference}</span>
+            <div className={styles.referenceContent}>
+              <div className={styles.referenceItem}>
+                <h5>{strings.fullName}</h5>
+                <p>{guaData.full_name}</p>
+              </div>
+              <div className={styles.referenceItem}>
+                <h5>{strings.classicalJudgment}</h5>
+                <p className={styles.classicalText}>{guaData.judgment}</p>
+              </div>
             </div>
           </div>
         </div>
