@@ -1,64 +1,76 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-type InitialValue<T> = T | (() => T);
-
 interface PersistentStateOptions<T> {
   serialize?: (value: T) => string;
   deserialize?: (value: string) => T;
   validate?: (value: T) => boolean;
 }
 
-const defaultSerialize = <T>(value: T) => JSON.stringify(value);
-const defaultDeserialize = <T>(value: string) => JSON.parse(value) as T;
-
-// CODEX wrote this ugly ass code and i can't be bothered to make it pretty but holy shit
+/**
+ * Like useState but saves to localStorage automatically
+ *
+ * @param key - localStorage key to store the value under
+ * @param initialValue - default value if nothing in storage
+ * @param options - optional serialize/deserialize/validate functions
+ */
 export function usePersistentState<T>(
   key: string,
-  initialValue: InitialValue<T>,
+  initialValue: T | (() => T),
   options?: PersistentStateOptions<T>
 ): [T, Dispatch<SetStateAction<T>>] {
-  const serialize = options?.serialize ?? defaultSerialize<T>;
-  const deserialize = options?.deserialize ?? defaultDeserialize<T>;
-  const validate = options?.validate;
-
-  const getInitial = () => {
-    const base =
-      typeof initialValue === 'function'
+  // Get the initial value (either from localStorage or the default)
+  const [value, setValue] = useState<T>(() => {
+    // Server-side rendering check
+    if (typeof window === 'undefined') {
+      return typeof initialValue === 'function'
         ? (initialValue as () => T)()
         : initialValue;
-
-    if (typeof window === 'undefined') {
-      return base;
     }
 
-    const stored = window.localStorage.getItem(key);
-    if (stored === null) {
-      return base;
+    // Try to load from localStorage
+    const stored = localStorage.getItem(key);
+    if (!stored) {
+      return typeof initialValue === 'function'
+        ? (initialValue as () => T)()
+        : initialValue;
     }
 
     try {
-      const parsed = deserialize(stored);
-      if (validate && !validate(parsed)) {
-        return base;
+      // Deserialize the stored value
+      const parsed = options?.deserialize
+        ? options.deserialize(stored)
+        : (JSON.parse(stored) as T);
+
+      // Validate if a validator was provided
+      if (options?.validate && !options.validate(parsed)) {
+        return typeof initialValue === 'function'
+          ? (initialValue as () => T)()
+          : initialValue;
       }
-      return parsed;
-    } catch {
-      return base;
-    }
-  };
 
-  const [value, setValue] = useState<T>(() => getInitial());
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
+      return parsed;
+    } catch (error) {
+      console.warn(`Failed to parse localStorage key "${key}":`, error);
+      return typeof initialValue === 'function'
+        ? (initialValue as () => T)()
+        : initialValue;
     }
+  });
+
+  // Save to localStorage whenever value changes
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
 
     try {
-      window.localStorage.setItem(key, serialize(value));
-    } catch {
-      // Ignore serialization errors.
+      const serialized = options?.serialize
+        ? options.serialize(value)
+        : JSON.stringify(value);
+
+      localStorage.setItem(key, serialized);
+    } catch (error) {
+      console.warn(`Failed to save to localStorage key "${key}":`, error);
     }
-  }, [key, serialize, value]);
+  }, [key, value, options?.serialize]);
 
   return [value, setValue];
 }

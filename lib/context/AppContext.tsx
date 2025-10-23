@@ -19,37 +19,17 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-// Serializers for language
-const serializeLanguage = (value: Language) => value;
-const deserializeLanguage = (value: string) => value as Language;
-const isValidLanguage = (value: Language) => value === 'en' || value === 'zh';
-
-// Serializers for mode
-const serializeMode = (value: Mode) => value;
-const deserializeMode = (value: string) => value as Mode;
-const isValidMode = (value: Mode) =>
-  value === 'vibe' || value === 'traditional';
-
 export const AppProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   // Language state
   const [language, setLanguage] = usePersistentState<Language>(
     'vibecheck.language',
-    () => i18n.getLanguage(),
-    {
-      serialize: serializeLanguage,
-      deserialize: deserializeLanguage,
-      validate: isValidLanguage,
-    }
+    () => i18n.getLanguage()
   );
 
   // Mode state
-  const [mode, setMode] = usePersistentState<Mode>('vibecheck.mode', 'vibe', {
-    serialize: serializeMode,
-    deserialize: deserializeMode,
-    validate: isValidMode,
-  });
+  const [mode, setMode] = usePersistentState<Mode>('vibecheck.mode', 'vibe');
 
   // Sync language with i18n
   if (i18n.getLanguage() !== language) {
