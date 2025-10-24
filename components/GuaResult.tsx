@@ -5,9 +5,9 @@ import { useQuestion } from '@/lib/context/QuestionContext';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
 import { useState } from 'react';
+import { ModeToggle } from './AppControls/ModeToggle';
 import GuaCard from './GuaCard';
 import styles from './GuaResult.module.css';
-import { ModeToggle } from './ModeToggle';
 import { YaoChangeInfo } from './YaoChangeInfo';
 
 interface Props {

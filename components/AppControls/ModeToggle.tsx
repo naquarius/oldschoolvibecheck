@@ -1,13 +1,11 @@
 import { useApp } from '@/lib/context/AppContext';
 import { i18n } from '@/lib/i18n';
-import styles from './GuaResult.module.css';
+import styles from './ModeToggle.module.css';
 
 export const ModeToggle = () => {
   const { mode, setTraditionalMode, setVibeMode } = useApp();
   const strings = i18n.getUiStrings();
   const showVibe = mode === 'vibe';
-
-  console.log('ModeToggle mode:', mode);
 
   return (
     <div className={styles.vibeToggle}>
