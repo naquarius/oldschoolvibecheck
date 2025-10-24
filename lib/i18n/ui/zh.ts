@@ -34,23 +34,18 @@ export const uiStringsZh = {
 
   // GuaResult
   vibeMode: 'Vibe模式',
-  standardMode: '玄机深解',
+  traditionalMode: '玄机深解',
   currentSituation: '本卦',
-  currentEnergy: '变卦:',
   yourVibeToday: '今日氛围',
   theVibe: '这波什么情况',
   realTalk: '真实情况',
   theMove: '行动指南',
   futureDirection: '之卦',
-  whereYoureHeaded: '接下来怎么走:',
 
   // Energy States
   energyShiftDetected: '变爻',
-  energyTransforming: '你的能量正在转化中。上面的解读显示最终氛围。',
   changingLinesAt: '变爻位置: 第',
-  focusFutureDirection: '爻',
   stableEnergy: '能量稳定',
-  stableEnergyClear: '你的能量很稳定。专注上面的指导就行。',
   noChangingLines: '无变爻',
 
   // Coin Throw

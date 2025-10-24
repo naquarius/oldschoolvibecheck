@@ -10,7 +10,8 @@ export const uiStringsEn = {
   // Header
   appTagline: 'ancient wisdom, modern vibes',
   whatIsYourVibe: "what's your vibe today?",
-  heroSubtitle: 'get instant wisdom from ancient i ching coins. no bs, just vibes ✨',
+  heroSubtitle:
+    'get instant wisdom from ancient i ching coins. no bs, just vibes ✨',
   throwCoins: 'throw coins',
   threeCoins: '3 coins',
   instantResults: 'instant results',
@@ -29,37 +30,28 @@ export const uiStringsEn = {
 
   // GuaCard
   fullName: 'full name',
-  classicalJudgment: 'classical judgment',
-  modernInterpretation: 'modern interpretation',
+  classicalJudgment: 'judgment',
   classicalReference: '📜 classical reference',
 
   // GuaResult
-  vibeMode: 'vibe mode',
-  standardMode: 'standard',
-  currentSituation: 'current situation',
-  currentEnergy: 'current energy:',
+  vibeMode: 'vibes',
+  traditionalMode: 'classic',
+  currentSituation: 'the core',
   yourVibeToday: 'your vibe today',
   theVibe: 'the vibe',
   realTalk: 'real talk',
   theMove: 'the move',
-  futureDirection: 'future direction',
-  whereYoureHeaded: "where you're headed:",
+  futureDirection: 'the shift',
 
   // Energy States
   energyShiftDetected: 'energy shift detected',
-  energyTransforming: 'your energy is transforming. the reading above shows your final vibe.',
   changingLinesAt: 'changing lines at positions:',
-  focusFutureDirection: 'focus on "future direction"',
   stableEnergy: 'stable energy',
-  stableEnergyClear: 'your energy is stable and clear. focus on the guidance above.',
   noChangingLines: 'no changing lines - focus on current situation guidance',
 
   // Coin Throw
   cosmicReadingReady: 'your cosmic reading is ready! 🌟',
   universeAligning: 'the universe is aligning your answer...',
-
-  // Vibe Mode
-  suitableFor: 'best suited for',
 
   // Copy Result
   copyResult: 'copy result',

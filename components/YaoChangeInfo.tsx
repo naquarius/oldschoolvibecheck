@@ -20,7 +20,6 @@ export const YaoChangeInfo = ({ result }: Props) => {
           </div>
           <p className={styles.changeText}>
             {strings.changingLinesAt} {result.changingPositions.join(', ')}
-            {strings.focusFutureDirection}
           </p>
         </div>
       ) : (

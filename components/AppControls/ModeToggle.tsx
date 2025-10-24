@@ -19,7 +19,7 @@ export const ModeToggle = () => {
         onClick={setTraditionalMode}
         className={`${styles.toggleButton} ${!showVibe ? styles.active : ''}`}
       >
-        {strings.standardMode}
+        {strings.traditionalMode}
       </button>
     </div>
   );
