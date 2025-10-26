@@ -1,13 +1,13 @@
-.coffeeButton {
+.bobaButton {
   padding: 0.5rem 1rem;
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  border-radius: 8px;
+  border: 1px solid rgba(52, 211, 153, 0.25);
   background: linear-gradient(
     135deg,
-    rgba(255, 221, 0, 0.1),
-    rgba(255, 183, 77, 0.1)
+    rgba(187, 247, 208, 0.25),
+    rgba(134, 239, 172, 0.2)
   );
-  color: var(--text-primary);
+  color: #064e3b;
+  border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
@@ -19,21 +19,21 @@
   gap: 0.5rem;
 }
 
-.coffeeButton:hover {
+.bobaButton:hover {
   background: linear-gradient(
     135deg,
-    rgba(255, 221, 0, 0.2),
-    rgba(255, 183, 77, 0.2)
+    rgba(187, 247, 208, 0.2),
+    rgba(134, 239, 172, 0.2)
   );
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.15);
-  border-color: rgba(255, 183, 77, 0.3);
 }
 
-.coffeeEmoji {
+.bobaEmoji {
   font-size: 0.875rem;
 }
 
-.coffeeText {
+.bobaText {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }

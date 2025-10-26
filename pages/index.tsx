@@ -1,6 +1,6 @@
 'use client';
 
-import { CoffeeButton } from '@/components/AppControls/CoffeeButton';
+import { BobaButton } from '@/components/AppControls/BobaButton';
 import { LanguageToggle } from '@/components/AppControls/LanguageToggle';
 import { CoinThrow } from '@/components/CoinThrow';
 import { GuaResult } from '@/components/GuaResult';
@@ -70,7 +70,7 @@ export default function Home() {
 
           {/* Controls group */}
           <div className="header-controls">
-            <CoffeeButton />
+            <BobaButton />
             <LanguageToggle />
           </div>
         </header>
