@@ -1,7 +1,6 @@
 'use client';
 
-import { useApp } from '@/lib/context/AppContext';
-import { getUiStrings } from '@/lib/i18n/ui';
+import { i18n } from '@/lib/i18n';
 import { useEffect, useState } from 'react';
 import styles from './CoinThrow.module.css';
 
@@ -11,8 +10,7 @@ export const CoinThrow = () => {
     'spinning',
     'spinning',
   ]);
-  const { language } = useApp();
-  const strings = getUiStrings(language);
+  const strings = i18n.getUiStrings();
 
   useEffect(() => {
     const timer = setTimeout(() => {

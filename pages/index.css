@@ -21,31 +21,6 @@
   background: rgba(254, 254, 254, 0.9);
 }
 
-.language-toggle {
-  display: flex;
-  margin-top: 1rem;
-  justify-content: flex-end;
-}
-
-.language-button {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg-glass);
-  color: var(--text-primary);
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(10px);
-}
-
-.language-button:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px var(--crystal-shadow);
-}
-
 .logo-container {
   display: flex;
   align-items: center;
@@ -95,6 +70,14 @@
   font-weight: 400;
   letter-spacing: 0.3px;
   font-style: italic;
+}
+
+.header-controls {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 1rem;
 }
 
 /* Main Content */

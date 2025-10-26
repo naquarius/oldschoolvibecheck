@@ -1,12 +1,14 @@
 'use client';
 
+import { CoffeeButton } from '@/components/AppControls/CoffeeButton';
+import { LanguageToggle } from '@/components/AppControls/LanguageToggle';
 import { CoinThrow } from '@/components/CoinThrow';
 import { GuaResult } from '@/components/GuaResult';
 import { useApp } from '@/lib/context/AppContext';
 import { useQuestion } from '@/lib/context/QuestionContext';
 import { qigua } from '@/lib/core/qigua';
 import { GuaResultType } from '@/lib/core/types';
-import { getUiStrings } from '@/lib/i18n/ui';
+import { i18n } from '@/lib/i18n';
 import Head from 'next/head';
 import { useState } from 'react';
 
@@ -15,7 +17,7 @@ export default function Home() {
   const [isThrowing, setIsThrowing] = useState(false);
   const { language, setLanguage } = useApp();
   const { question, setQuestion } = useQuestion();
-  const strings = getUiStrings(language);
+  const strings = i18n.getUiStrings();
 
   const handleQigua = async () => {
     setIsThrowing(true);
@@ -66,16 +68,10 @@ export default function Home() {
           </div>
           <div className="tagline">{strings.appTagline}</div>
 
-          {/* Language Toggle */}
-          <div className="language-toggle">
-            <button
-              onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
-              className="language-button"
-            >
-              {language === 'zh'
-                ? strings.languageToggle
-                : strings.languageToggleAlt}
-            </button>
+          {/* Controls group */}
+          <div className="header-controls">
+            <CoffeeButton />
+            <LanguageToggle />
           </div>
         </header>
 
