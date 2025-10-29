@@ -9,21 +9,17 @@
   position: relative;
 }
 
-/* Header - 移动端优化版 */
+/* Header - 按钮固定右上角 */
 .app-header {
-  padding: 1rem 1rem 0.75rem;
+  padding: 2rem 1rem 1.5rem;
   text-align: center;
   border-bottom: 1px solid var(--border-light);
   backdrop-filter: blur(20px) saturate(180%);
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(254, 254, 254, 0.95);
-  min-height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
+  background: rgba(254, 254, 254, 0.9);
+  position: relative; /* 为绝对定位子元素做准备 */
 }
 
 .logo-container {
@@ -32,8 +28,6 @@
   justify-content: center;
   gap: 0.75rem;
   margin-bottom: 0.75rem;
-  position: relative;
-  z-index: 1;
 }
 
 .logo-icon {
@@ -79,11 +73,11 @@
   font-style: italic;
 }
 
-/* 🔥 关键修改：控制按钮定位到右上角 */
+/* 🔥 按钮固定到右上角 - 桌面和移动端都适用 */
 .header-controls {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  top: 1rem;
+  right: 1rem;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -110,13 +104,13 @@
   box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
 }
 
-/* Main Content - 优化空间利用 */
+/* Main Content */
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 1.5rem 1rem 2rem;
+  justify-content: center;
+  padding: 3rem 1rem;
   max-width: 700px;
   margin: 0 auto;
   width: 100%;
@@ -126,7 +120,6 @@
 .welcome-section {
   text-align: center;
   animation: gentle-fade-in 1s ease-out;
-  margin-top: 0.5rem;
 }
 
 @keyframes gentle-fade-in {
@@ -141,7 +134,7 @@
 }
 
 .hero-text {
-  margin-bottom: 2rem;
+  margin-bottom: 3.5rem;
 }
 
 .hero-title {
@@ -175,7 +168,7 @@
   color: white;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 3.5rem;
   display: block;
   overflow: hidden;
   box-shadow: 0 8px 32px var(--crystal-shadow),
@@ -483,18 +476,38 @@
 
 /* 🔥 移动端响应式优化 */
 @media (max-width: 768px) {
+  /* Header - 移动端紧凑布局 */
   .app-header {
-    padding: 1rem 0.75rem 0.75rem; /* 增加移动端内边距 */
-    min-height: 80px;
+    padding: 1rem 1rem 0.75rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    min-height: 70px;
   }
 
+  .logo-container {
+    margin-bottom: 0;
+  }
+
+  .tagline {
+    display: none; /* 移动端隐藏tagline */
+  }
+
+  /* 🔥 移动端按钮位置调整 */
   .header-controls {
     top: 0.5rem;
     right: 0.5rem;
   }
 
+  .app-title {
+    font-size: 1.5rem;
+  }
+
+  /* Main Content - 移动端从顶部开始 */
   .main-content {
-    padding: 1rem 0.75rem 1.5rem;
+    justify-content: flex-start;
+    padding: 1.5rem 1rem 2rem;
   }
 
   .hero-title {
@@ -505,24 +518,35 @@
     font-size: 1rem;
   }
 
+  /* CTA Button - 移动端全宽 */
   .cta-button {
+    width: 100%;
+    max-width: none;
     padding: 1rem 2.5rem;
     font-size: 1rem;
     margin-bottom: 2rem;
   }
 
+  /* Quick Info - 移动端改成小圆胶囊 */
   .quick-info {
+    gap: 1rem;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
     margin-top: 0.5rem;
+  }
+
+  .info-item {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(139, 92, 246, 0.15);
   }
 
   .compact-header {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
-    padding: 1.25rem;
   }
 
   .compact-title {
@@ -533,23 +557,16 @@
     width: 100%;
     padding: 1rem 1.5rem;
   }
-
-  .app-title {
-    font-size: 1.5rem;
-  }
-
-  .tagline {
-    font-size: 0.85rem;
-  }
 }
 
 /* 超小屏幕优化 */
 @media (max-width: 480px) {
   .app-header {
+    padding: 0.75rem 0.75rem 0.5rem;
     min-height: 60px;
-    padding: 0.5rem 0.5rem 0.25rem;
   }
 
+  /* 🔥 超小屏幕按钮更紧凑 */
   .header-controls {
     top: 0.25rem;
     right: 0.25rem;
@@ -565,12 +582,8 @@
     font-size: 1.375rem;
   }
 
-  .tagline {
-    font-size: 0.75rem;
-  }
-
   .logo-icon {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .hero-title {
@@ -582,20 +595,9 @@
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
   }
-}
 
-/* 极致空间节省 - 超小屏幕隐藏tagline */
-@media (max-width: 360px) {
-  .tagline {
-    display: none;
-  }
-
-  .app-header {
-    min-height: 50px;
-    padding: 0.375rem 0.375rem 0.125rem;
-  }
-
-  .logo-container {
-    margin-bottom: 0.125rem;
+  .info-item {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
   }
 }
