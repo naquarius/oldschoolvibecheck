@@ -1,0 +1,43 @@
+.copyResultContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.02);
+}
+
+.copyButton:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--border);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.08);
+}
+
+.copyButton:active {
+  transform: translateY(0);
+}
+
+.copyIcon {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.copyText {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}

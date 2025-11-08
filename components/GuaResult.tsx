@@ -1,10 +1,10 @@
 'use client';
 
 import { useApp } from '@/lib/context/AppContext';
-import { useQuestion } from '@/lib/context/QuestionContext';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
 import { useState } from 'react';
+import { CopyButton } from './AppControls/CopyButton';
 import { ModeToggle } from './AppControls/ModeToggle';
 import GuaCard from './GuaCard';
 import styles from './GuaResult.module.css';
@@ -16,9 +16,6 @@ interface Props {
 
 export const GuaResult = ({ result }: Props) => {
   const [colorTheme, setColorTheme] = useState<'pink' | 'blue'>('pink');
-  const [copySuccess, setCopySuccess] = useState(false);
-
-  const { question } = useQuestion();
   const { mode } = useApp();
   const strings = i18n.getUiStrings();
   const showVibe = mode === 'vibe';
@@ -34,30 +31,6 @@ export const GuaResult = ({ result }: Props) => {
   // For vibe mode: show the final result (changed gua if exists, otherwise original)
   const finalGuaData = changedGuaData || originalGuaData;
   const finalBinary = result.changedBinary || result.originalBinary;
-
-  const handleCopyResult = async () => {
-    const formattedText = `我问了: ${
-      question || 'No question provided'
-    }\n\n原卦: ${result.originalGua.name.en} (${
-      result.originalGua.name.zh
-    }) - ID: ${result.originalGua.id}\n${
-      result.changedGua
-        ? `变卦: ${result.changedGua.name.en} (${result.changedGua.name.zh}) - ID: ${result.changedGua.id}\n`
-        : ''
-    }变爻: ${
-      result.changingPositions.length > 0
-        ? result.changingPositions.join(', ')
-        : 'None'
-    }`;
-
-    try {
-      await navigator.clipboard.writeText(formattedText);
-      setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy:', err);
-    }
-  };
 
   return (
     <div className={styles.resultContainer}>
@@ -78,14 +51,7 @@ export const GuaResult = ({ result }: Props) => {
       </div>
 
       {/* Copy button */}
-      <div className={styles.copyResultContainer}>
-        <button onClick={handleCopyResult} className={styles.copyResultButton}>
-          <span className={styles.copyIcon}>{copySuccess ? '✓' : '📋'}</span>
-          <span className={styles.copyText}>
-            {copySuccess ? strings.copied : strings.copyResult}
-          </span>
-        </button>
-      </div>
+      <CopyButton result={result} />
 
       {/* Main Results */}
       {showVibe ? (
