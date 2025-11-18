@@ -1,4 +1,6 @@
-export const uiStringsZh = {
+import { UiStrings } from '../types';
+
+export const uiStringsZh: UiStrings = {
   // Common
   readingComplete: '解读完成 ✨',
   channelingEnergy: '正在为你下载宇宙答案... ⬇️',
@@ -55,4 +57,9 @@ export const uiStringsZh = {
   // Copy Result
   copyResult: '复制结果',
   copied: '已复制！',
-} as const;
+  asked: '我问了',
+  ogResult: '原卦',
+  changedResult: '变卦',
+  changedLines: '变爻',
+  noChanges: '无',
+};

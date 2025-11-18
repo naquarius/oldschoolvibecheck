@@ -1,4 +1,6 @@
-export const uiStringsEn = {
+import { UiStrings } from '../types';
+
+export const uiStringsEn: UiStrings = {
   // Common
   readingComplete: 'reading complete ✨',
   channelingEnergy: 'channeling energy...',
@@ -56,4 +58,9 @@ export const uiStringsEn = {
   // Copy Result
   copyResult: 'copy result',
   copied: 'copied!',
-} as const;
+  asked: 'I asked',
+  ogResult: 'original hexagram',
+  changedResult: 'changed hexagram',
+  changedLines: 'changed lines',
+  noChanges: 'none',
+};

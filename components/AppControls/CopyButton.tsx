@@ -12,21 +12,28 @@ export const CopyButton = ({ result }: CopyButtonProps) => {
   const [copySuccess, setCopySuccess] = useState(false);
   const { question } = useQuestion();
   const strings = i18n.getUiStrings();
+  const language = i18n.getLanguage();
 
   const handleCopyResult = async () => {
-    const formattedText = `我问了: ${
-      question || 'No question provided'
-    }\n\n原卦: ${result.originalGua.name.en} (${
-      result.originalGua.name.zh
-    }) - ID: ${result.originalGua.id}\n${
+    const formattedQuestion = question
+      ? `${strings.asked}: ${question}\n\n`
+      : '';
+
+    const formattedHexagrams = `${strings.ogResult}: ${
+      result.originalGua.name[language]
+    } - ID: ${result.originalGua.id}\n${
       result.changedGua
-        ? `变卦: ${result.changedGua.name.en} (${result.changedGua.name.zh}) - ID: ${result.changedGua.id}\n`
+        ? `${strings.changedResult}: ${result.changedGua.name[language]} - ID: ${result.changedGua.id}\n`
         : ''
-    }变爻: ${
+    }`;
+
+    const formattedChanges = `${strings.changedLines}: ${
       result.changingPositions.length > 0
         ? result.changingPositions.join(', ')
-        : 'None'
+        : strings.noChanges
     }`;
+
+    const formattedText = `${formattedQuestion}${formattedHexagrams}${formattedChanges}`;
 
     try {
       await navigator.clipboard.writeText(formattedText);
