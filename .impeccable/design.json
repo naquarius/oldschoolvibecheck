@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T00:00:00Z",
+  "title": "Design System: Vibe Check",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "oklch(96.8% 0.005 118)",
+        "tonalRamp": [
+          "oklch(15% 0.005 118)",
+          "oklch(26% 0.005 118)",
+          "oklch(37% 0.005 118)",
+          "oklch(48% 0.005 118)",
+          "oklch(59% 0.005 118)",
+          "oklch(70% 0.005 118)",
+          "oklch(82% 0.005 118)",
+          "oklch(95% 0.005 118)"
+        ]
+      },
+      "stone": {
+        "role": "primary",
+        "displayName": "Sage Soapstone",
+        "canonical": "oklch(76.4% 0.037 134)",
+        "tonalRamp": [
+          "oklch(15% 0.037 134)",
+          "oklch(26% 0.037 134)",
+          "oklch(37% 0.037 134)",
+          "oklch(48% 0.037 134)",
+          "oklch(59% 0.037 134)",
+          "oklch(70% 0.037 134)",
+          "oklch(82% 0.037 134)",
+          "oklch(95% 0.037 134)"
+        ]
+      },
+      "stone-deep": {
+        "role": "primary",
+        "displayName": "Deep Soapstone",
+        "canonical": "oklch(53.1% 0.049 137)",
+        "tonalRamp": [
+          "oklch(15% 0.049 137)",
+          "oklch(26% 0.049 137)",
+          "oklch(37% 0.049 137)",
+          "oklch(48% 0.049 137)",
+          "oklch(59% 0.049 137)",
+          "oklch(70% 0.049 137)",
+          "oklch(82% 0.049 137)",
+          "oklch(95% 0.049 137)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(24.3% 0.007 145)",
+        "tonalRamp": [
+          "oklch(15% 0.007 145)",
+          "oklch(26% 0.007 145)",
+          "oklch(37% 0.007 145)",
+          "oklch(48% 0.007 145)",
+          "oklch(59% 0.007 145)",
+          "oklch(70% 0.007 145)",
+          "oklch(82% 0.007 145)",
+          "oklch(95% 0.007 145)"
+        ]
+      },
+      "ink-lifted": {
+        "role": "neutral",
+        "displayName": "Lifted Ink",
+        "canonical": "oklch(33.3% 0.013 145)",
+        "tonalRamp": [
+          "oklch(15% 0.013 145)",
+          "oklch(26% 0.013 145)",
+          "oklch(37% 0.013 145)",
+          "oklch(48% 0.013 145)",
+          "oklch(59% 0.013 145)",
+          "oklch(70% 0.013 145)",
+          "oklch(82% 0.013 145)",
+          "oklch(95% 0.013 145)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "oklch(42.6% 0.014 145)",
+        "tonalRamp": [
+          "oklch(15% 0.014 145)",
+          "oklch(26% 0.014 145)",
+          "oklch(37% 0.014 145)",
+          "oklch(48% 0.014 145)",
+          "oklch(59% 0.014 145)",
+          "oklch(70% 0.014 145)",
+          "oklch(82% 0.014 145)",
+          "oklch(95% 0.014 145)"
+        ]
+      },
+      "gold": {
+        "role": "tertiary",
+        "displayName": "Soft Gold",
+        "canonical": "oklch(72.9% 0.127 88)",
+        "tonalRamp": [
+          "oklch(15% 0.127 88)",
+          "oklch(26% 0.127 88)",
+          "oklch(37% 0.127 88)",
+          "oklch(48% 0.127 88)",
+          "oklch(59% 0.127 88)",
+          "oklch(70% 0.127 88)",
+          "oklch(82% 0.127 88)",
+          "oklch(95% 0.127 88)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(30, 33, 30, 0.14)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The one lowercase question headline per screen; 6rem at 769px and up."
+      },
+      "title": {
+        "displayName": "Wordmark / Title",
+        "purpose": "Lowercase wordmark; compact and throwing titles reuse it at 1.125rem / 1.75rem."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "Hero subtitle (ink-soft, max 38ch) and question field text."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Fact strip on the stone block (500); desktop tagline (400, ink-soft)."
+      },
+      "label": {
+        "displayName": "Quoted Label",
+        "purpose": "Field labels wrapped in curly quotes."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Footer text and header chip labels."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing; all transitions and sparkle animations."
+      },
+      {
+        "name": "duration-state",
+        "value": "0.2s",
+        "purpose": "Color/border/transform state changes on buttons, chips, field focus."
+      },
+      {
+        "name": "duration-sparkle-turn",
+        "value": "0.5s",
+        "purpose": "Throw-button sparkle rotate(90deg) scale(1.15) on hover/focus."
+      },
+      {
+        "name": "sparkle-in",
+        "value": "0.9s; from scale(0.2) rotate(-60deg) opacity 0; delays 0.15s / 0.35s",
+        "purpose": "Stone-block sparkles twinkle in once on load."
+      },
+      {
+        "name": "sparkle-flare",
+        "value": "0.45s; 50% scale(1.5) rotate(45deg), to scale(0.6) rotate(90deg) opacity 0",
+        "purpose": "Stone-block sparkles flare as the coins are thrown."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "All sparkle motion and state-entry animations removed."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "desktop",
+        "value": "769px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Throw Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary ink pill with one gold sparkle; full width on mobile.",
+      "html": "<button class=\"ds-btn-primary\">throw coins <span class=\"ds-btn-spark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0C12.7 6.4 17.6 11.3 24 12C17.6 12.7 12.7 17.6 12 24C11.3 17.6 6.4 12.7 0 12C6.4 11.3 11.3 6.4 12 0Z\" fill=\"currentColor\"/></svg></span></button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:0.75rem; min-height:60px; min-width:280px; padding:0 2rem; background:var(--ink); color:var(--paper); border:0; border-radius:999px; font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:-0.01em; cursor:pointer; transition:background-color 0.2s var(--ease-out), transform 0.2s var(--ease-out); } .ds-btn-spark { display:inline-flex; color:var(--gold); transition:transform 0.5s var(--ease-out); } .ds-btn-primary:hover { background:#323832; } .ds-btn-primary:hover .ds-btn-spark, .ds-btn-primary:focus-visible .ds-btn-spark { transform:rotate(90deg) scale(1.15); } .ds-btn-primary:focus-visible { outline:2px solid var(--ink); outline-offset:3px; } .ds-btn-primary:active { transform:scale(0.98); }"
+    },
+    {
+      "name": "Compact Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Smaller ink pill without sparkle (new reading).",
+      "html": "<button class=\"ds-btn-compact\">new reading</button>",
+      "css": ".ds-btn-compact { min-height:44px; padding:0 1.25rem; background:var(--ink); color:var(--paper); border:0; border-radius:999px; font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:0.9375rem; font-weight:700; cursor:pointer; transition:background-color 0.2s var(--ease-out); } .ds-btn-compact:hover { background:#323832; } .ds-btn-compact:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }"
+    },
+    {
+      "name": "Header Chip",
+      "kind": "chip",
+      "refersTo": "button-chip",
+      "description": "Hairline pill for language toggle and boba support link.",
+      "html": "<button class=\"ds-chip\">中文</button>",
+      "css": ".ds-chip { min-height:40px; min-width:44px; padding:0 0.875rem; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink); font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:0.875rem; font-weight:700; cursor:pointer; transition:background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out); } .ds-chip:hover { background:#fbfbf8; border-color:var(--ink); } .ds-chip:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }"
+    },
+    {
+      "name": "Question Field",
+      "kind": "input",
+      "refersTo": "input-question",
+      "description": "Quoted label over an underline-only textarea.",
+      "html": "<label class=\"ds-q-label\" for=\"ds-q\">ask the universe</label><textarea id=\"ds-q\" class=\"ds-q-input\" placeholder=\"type your question or intention here...\"></textarea>",
+      "css": ".ds-q-label { display:block; font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:1rem; font-weight:700; color:var(--ink); } .ds-q-label::before { content:'\\201C'; } .ds-q-label::after { content:'\\201D'; } .ds-q-input { display:block; width:100%; min-height:88px; margin-top:4px; padding:10px 0; background:transparent; border:0; border-bottom:2px solid var(--ink); border-radius:0; font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:1.0625rem; line-height:1.5; color:var(--ink); resize:none; transition:box-shadow 0.2s var(--ease-out); } .ds-q-input::placeholder { color:#646a64; } .ds-q-input:focus { outline:none; box-shadow:0 2px 0 var(--ink); }"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "description": "Lowercase wordmark left (no sparkle), chips right, on the shared left edge.",
+      "html": "<header class=\"ds-header\"><span class=\"ds-wordmark\">vibe check</span><div class=\"ds-header-ctl\"><span class=\"ds-chip-mini\">中文</span></div></header>",
+      "css": ".ds-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:18px clamp(16px,5vw,40px); max-width:640px; background:var(--paper); font-family:'Schibsted Grotesk', system-ui, sans-serif; } .ds-wordmark { font-size:1.25rem; font-weight:800; letter-spacing:-0.02em; line-height:1; color:var(--ink); } .ds-header-ctl { display:flex; gap:0.5rem; } .ds-chip-mini { display:inline-flex; align-items:center; min-height:40px; padding:0 0.875rem; border:1px solid var(--line); border-radius:999px; font-size:0.875rem; font-weight:700; color:var(--ink); }"
+    },
+    {
+      "name": "Stone Block",
+      "kind": "card",
+      "refersTo": "stone-block",
+      "description": "The one sage slab per screen, fact strip bottom-left, two gold sparkles top-right that twinkle in.",
+      "html": "<div class=\"ds-stone\"><ul class=\"ds-stone-facts\"><li>3 coins</li><li>instant results</li><li>ancient wisdom</li></ul><svg class=\"ds-stone-spark ds-lg\" width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0C12.7 6.4 17.6 11.3 24 12C17.6 12.7 12.7 17.6 12 24C11.3 17.6 6.4 12.7 0 12C6.4 11.3 11.3 6.4 12 0Z\" fill=\"currentColor\"/></svg><svg class=\"ds-stone-spark ds-sm\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0C12.7 6.4 17.6 11.3 24 12C17.6 12.7 12.7 17.6 12 24C11.3 17.6 6.4 12.7 0 12C6.4 11.3 11.3 6.4 12 0Z\" fill=\"currentColor\"/></svg></div>",
+      "css": ".ds-stone { position:relative; height:132px; margin-top:24px; background:var(--stone); border-radius:4px; display:flex; align-items:flex-end; padding:14px 16px; font-family:'Schibsted Grotesk', system-ui, sans-serif; } .ds-stone-facts { display:flex; flex-wrap:wrap; gap:0.25rem 0.5rem; margin:0; padding:0; list-style:none; font-size:0.9375rem; font-weight:500; color:var(--ink); } .ds-stone-facts li + li::before { content:'\\00B7'; margin-right:0.5rem; } .ds-stone-spark { position:absolute; color:var(--gold); animation:ds-sparkle-in 0.9s cubic-bezier(0.16,1,0.3,1) both; } .ds-lg { top:-18px; right:22px; animation-delay:0.15s; } .ds-sm { top:34px; right:80px; animation-delay:0.35s; } @keyframes ds-sparkle-in { from { opacity:0; transform:scale(0.2) rotate(-60deg); } to { opacity:1; transform:scale(1) rotate(0deg); } } @media (prefers-reduced-motion: reduce) { .ds-stone-spark { animation:none; } }"
+    },
+    {
+      "name": "Inline Sparkle Text",
+      "kind": "custom",
+      "description": "Every ✨ in copy rendered as the drawn gold sparkle at text size.",
+      "html": "<p class=\"ds-sub\">get instant wisdom from ancient i ching coins. no bs, just vibes<svg class=\"ds-inline-spark\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0C12.7 6.4 17.6 11.3 24 12C17.6 12.7 12.7 17.6 12 24C11.3 17.6 6.4 12.7 0 12C6.4 11.3 11.3 6.4 12 0Z\" fill=\"currentColor\"/></svg></p>",
+      "css": ".ds-sub { font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:1.0625rem; line-height:1.5; color:var(--ink-soft); max-width:38ch; margin:0; } .ds-inline-spark { display:inline-block; width:0.85em; height:0.85em; margin-inline:0.15em; vertical-align:-0.05em; color:var(--gold); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Soapstone and the Spark",
+    "overview": "A calm, modern-zen page where nothing competes with the question. Cool paper ground, near-black ink, one solid block of sage soapstone, and a handful of soft-gold four-point sparkles: the system's single playful move. Everything else is quiet, flat, and typographic. The world deliberately sidesteps the category's mystic purple and starfields, and equally the beige spa-zen opposite.\n\nDensity is low and single-column. One grotesk family carries the whole voice, set lowercase and heavy at display sizes, matching the product's playful lowercase copy. Depth comes from solid color and weight, never from shadows, gradients, glass, or glow. The header, content, and footer share one left edge inside a narrow column, so the page reads as one straight stack on a phone and a centered stack on desktop.",
+    "keyCharacteristics": [
+      "Cool paper white ground, ink text, one sage stone block per screen.",
+      "Soft-gold drawn sparkles as the only ornament, and every ✨ in copy rendered as that same drawn mark.",
+      "One grotesk family (Schibsted Grotesk), lowercase, 800 weight for display.",
+      "Quoted labels in place of form chrome; underline-only fields; ink pill buttons.",
+      "Flat surfaces with no shadows, gradients, or glass.",
+      "One shared left edge for header, content, and footer."
+    ],
+    "rules": [
+      {
+        "name": "The Gold Is Ornament Rule",
+        "body": "Gold appears only as the drawn four-point sparkle and the coins. It is never text, or a fill, border, or background on UI chrome.",
+        "section": "colors"
+      },
+      {
+        "name": "The Bronze Coin Rule",
+        "body": "The coins are always cast gold/bronze (gold face shading to #8a6420, #7a5a1e rim, #3d2a0b symbol), never a palette color (user-pinned).",
+        "section": "colors"
+      },
+      {
+        "name": "The One Stone Rule",
+        "body": "A screen gets at most one sage stone block. The stone is a slab of material, not a card style to repeat.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lowercase Voice Rule",
+        "body": "Display, wordmark, labels, and buttons stay lowercase, as the copy is written. Don't apply text-transform and don't use uppercase tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Quoted Label Rule",
+        "body": "Form labels are set in bold and wrapped in curly quotes, as though the visitor is saying them. This is a native device of the world, not decoration to strip out.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Slab Rule",
+        "body": "Surfaces are solid fills on paper. When something needs emphasis, it gets ink or stone, not a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the header, content, and footer on one left edge inside the 640px column with the shared gutter.",
+      "Do use gold only for the drawn four-point sparkle, with at most three decorative sparkles per screen, two on the stone block and one on the primary button.",
+      "Do render every ✨ in copy as the inline drawn sparkle, and keep the playful lowercase copy and its emoji voice intact.",
+      "Do set the display at 800 weight, lowercase, with tight leading (0.95) and tight tracking (-0.035em).",
+      "Do wrap field labels in curly quotes and use underline-only fields.",
+      "Do put primary actions in an ink pill (999px) with paper text.",
+      "Do honor reduced motion by making sparkles static."
+    ],
+    "donts": [
+      "Don't use gradients, glass, backdrop blur, or glow, and don't use box-shadows for elevation.",
+      "Don't reintroduce mystic purple, cyan, pink, or starfield imagery, and don't drift into beige spa-zen.",
+      "Don't use red or terracotta in the interface palette.",
+      "Don't set any text in gold.",
+      "Don't use emoji or icon-font glyphs as UI icons. Icons are inline SVG in currentColor.",
+      "Don't put a sparkle on the wordmark.",
+      "Don't use more than one stone block per screen."
+    ]
+  }
+}
