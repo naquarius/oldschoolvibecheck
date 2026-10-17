@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 
 interface PersistentStateOptions<T> {
   serialize?: (value: T) => string;
@@ -9,6 +9,10 @@ interface PersistentStateOptions<T> {
 /**
  * Like useState but saves to localStorage automatically
  *
+ * The first render always uses the default value so it matches the
+ * server-rendered HTML (no hydration mismatch); the stored value is
+ * loaded right after mount.
+ *
  * @param key - localStorage key to store the value under
  * @param initialValue - default value if nothing in storage
  * @param options - optional serialize/deserialize/validate functions
@@ -18,48 +22,33 @@ export function usePersistentState<T>(
   initialValue: T | (() => T),
   options?: PersistentStateOptions<T>
 ): [T, Dispatch<SetStateAction<T>>] {
-  // Get the initial value (either from localStorage or the default)
-  const [value, setValue] = useState<T>(() => {
-    // Server-side rendering check
-    if (typeof window === 'undefined') {
-      return typeof initialValue === 'function'
-        ? (initialValue as () => T)()
-        : initialValue;
-    }
+  const [value, setValue] = useState<T>(initialValue);
+  const hasLoaded = useRef(false);
 
-    // Try to load from localStorage
-    const stored = localStorage.getItem(key);
-    if (!stored) {
-      return typeof initialValue === 'function'
-        ? (initialValue as () => T)()
-        : initialValue;
-    }
-
-    try {
-      // Deserialize the stored value
-      const parsed = options?.deserialize
-        ? options.deserialize(stored)
-        : (JSON.parse(stored) as T);
-
-      // Validate if a validator was provided
-      if (options?.validate && !options.validate(parsed)) {
-        return typeof initialValue === 'function'
-          ? (initialValue as () => T)()
-          : initialValue;
-      }
-
-      return parsed;
-    } catch (error) {
-      console.warn(`Failed to parse localStorage key "${key}":`, error);
-      return typeof initialValue === 'function'
-        ? (initialValue as () => T)()
-        : initialValue;
-    }
-  });
-
-  // Save to localStorage whenever value changes
+  // Load the stored value once, after hydration
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    try {
+      const stored = localStorage.getItem(key);
+      if (stored) {
+        const parsed = options?.deserialize
+          ? options.deserialize(stored)
+          : (JSON.parse(stored) as T);
+
+        if (!options?.validate || options.validate(parsed)) {
+          setValue(parsed);
+        }
+      }
+    } catch (error) {
+      console.warn(`Failed to read localStorage key "${key}":`, error);
+    }
+    hasLoaded.current = true;
+    // Load only once per key
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+
+  // Save to localStorage whenever value changes (after the initial load)
+  useEffect(() => {
+    if (!hasLoaded.current) return;
 
     try {
       const serialized = options?.serialize

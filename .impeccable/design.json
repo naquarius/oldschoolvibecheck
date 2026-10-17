@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T00:00:00Z",
+  "generatedAt": "2026-10-16T12:00:00Z",
   "title": "Design System: Vibe Check",
   "extensions": {
     "colorMeta": {
@@ -17,6 +17,21 @@
           "oklch(70% 0.005 118)",
           "oklch(82% 0.005 118)",
           "oklch(95% 0.005 118)"
+        ]
+      },
+      "paper-bright": {
+        "role": "neutral",
+        "displayName": "Bright Paper",
+        "canonical": "oklch(98.7% 0.004 106)",
+        "tonalRamp": [
+          "oklch(15% 0.004 106)",
+          "oklch(26% 0.004 106)",
+          "oklch(37% 0.004 106)",
+          "oklch(48% 0.004 106)",
+          "oklch(59% 0.004 106)",
+          "oklch(70% 0.004 106)",
+          "oklch(82% 0.004 106)",
+          "oklch(95% 0.004 106)"
         ]
       },
       "stone": {
@@ -47,6 +62,51 @@
           "oklch(70% 0.049 137)",
           "oklch(82% 0.049 137)",
           "oklch(95% 0.049 137)"
+        ]
+      },
+      "stone-deeper": {
+        "role": "primary",
+        "displayName": "Deeper Soapstone",
+        "canonical": "oklch(47.4% 0.044 138)",
+        "tonalRamp": [
+          "oklch(15% 0.044 138)",
+          "oklch(26% 0.044 138)",
+          "oklch(37% 0.044 138)",
+          "oklch(48% 0.044 138)",
+          "oklch(59% 0.044 138)",
+          "oklch(70% 0.044 138)",
+          "oklch(82% 0.044 138)",
+          "oklch(95% 0.044 138)"
+        ]
+      },
+      "moss": {
+        "role": "primary",
+        "displayName": "Moss",
+        "canonical": "oklch(39% 0.04 137)",
+        "tonalRamp": [
+          "oklch(15% 0.04 137)",
+          "oklch(26% 0.04 137)",
+          "oklch(37% 0.04 137)",
+          "oklch(48% 0.04 137)",
+          "oklch(59% 0.04 137)",
+          "oklch(70% 0.04 137)",
+          "oklch(82% 0.04 137)",
+          "oklch(95% 0.04 137)"
+        ]
+      },
+      "terra": {
+        "role": "secondary",
+        "displayName": "Deep Terracotta",
+        "canonical": "oklch(50.5% 0.113 37)",
+        "tonalRamp": [
+          "oklch(15% 0.113 37)",
+          "oklch(26% 0.113 37)",
+          "oklch(37% 0.113 37)",
+          "oklch(48% 0.113 37)",
+          "oklch(59% 0.113 37)",
+          "oklch(70% 0.113 37)",
+          "oklch(82% 0.113 37)",
+          "oklch(95% 0.113 37)"
         ]
       },
       "ink": {
@@ -109,6 +169,36 @@
           "oklch(95% 0.127 88)"
         ]
       },
+      "bronze": {
+        "role": "tertiary",
+        "displayName": "Bronze",
+        "canonical": "oklch(53% 0.096 78)",
+        "tonalRamp": [
+          "oklch(15% 0.096 78)",
+          "oklch(26% 0.096 78)",
+          "oklch(37% 0.096 78)",
+          "oklch(48% 0.096 78)",
+          "oklch(59% 0.096 78)",
+          "oklch(70% 0.096 78)",
+          "oklch(82% 0.096 78)",
+          "oklch(95% 0.096 78)"
+        ]
+      },
+      "bronze-rim": {
+        "role": "tertiary",
+        "displayName": "Bronze Rim",
+        "canonical": "oklch(48.9% 0.086 80)",
+        "tonalRamp": [
+          "oklch(15% 0.086 80)",
+          "oklch(26% 0.086 80)",
+          "oklch(37% 0.086 80)",
+          "oklch(48% 0.086 80)",
+          "oklch(59% 0.086 80)",
+          "oklch(70% 0.086 80)",
+          "oklch(82% 0.086 80)",
+          "oklch(95% 0.086 80)"
+        ]
+      },
       "line": {
         "role": "neutral",
         "displayName": "Hairline",
@@ -118,30 +208,57 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The one lowercase question headline per screen; 6rem at 769px and up."
+        "purpose": "The one lowercase question headline per screen; 6rem at 769px and up; 中文 clamp(2.25rem, 10vw, 4.75rem) / 5rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The vibe line on the results screen."
+      },
+      "headline-classic": {
+        "displayName": "Headline Classic",
+        "purpose": "Classic reading gua names, in terra."
       },
       "title": {
         "displayName": "Wordmark / Title",
-        "purpose": "Lowercase wordmark; compact and throwing titles reuse it at 1.125rem / 1.75rem."
+        "purpose": "Lowercase wordmark; the throwing title reuses it at 1.75rem."
+      },
+      "plate-name": {
+        "displayName": "Plate Name",
+        "purpose": "Hexagram names on the stone plate in moss; 1.125rem in the desktop pair."
       },
       "body-lead": {
         "displayName": "Body Lead",
-        "purpose": "Hero subtitle (ink-soft, max 38ch) and question field text."
+        "purpose": "Hero subtitle, question field, and the asked question on results."
+      },
+      "reading": {
+        "displayName": "Reading",
+        "purpose": "Vibe and classic reading text, max 62ch (1.7 line height for judgments)."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Fact strip on the stone block (500); desktop tagline (400, ink-soft)."
+        "purpose": "Fact strip, mode/copy buttons and coin labels (700), shift notice."
       },
       "label": {
-        "displayName": "Quoted Label",
-        "purpose": "Field labels wrapped in curly quotes."
+        "displayName": "Label",
+        "purpose": "Plain section labels on results; the landing's one quoted label."
       },
       "small": {
         "displayName": "Small",
-        "purpose": "Footer text and header chip labels."
+        "purpose": "Footer, header chips, and the I asked label."
       }
     },
-    "shadows": [],
+    "shadows": [
+      {
+        "name": "coin-cast",
+        "value": "0 10px 22px rgba(154, 74, 50, 0.28), 0 3px 6px rgba(122, 90, 30, 0.22)",
+        "purpose": "Warm bronze-terracotta cast shadow under each thrown coin. Coins only."
+      },
+      {
+        "name": "spark-halo",
+        "value": "drop-shadow(0 0 5px rgba(201, 162, 58, 0.8))",
+        "purpose": "Filter on the throw-coins sparkle; the one sanctioned halo."
+      }
+    ],
     "motion": [
       {
         "name": "ease-out",
@@ -169,12 +286,26 @@
         "purpose": "Stone-block sparkles flare as the coins are thrown."
       },
       {
+        "name": "screen-enter",
+        "value": "0.8s var(--ease-out); slide-in-from-bottom (toss), fade-in-scale (results)",
+        "purpose": "Throwing and result sections enter."
+      },
+      {
+        "name": "coin-flip",
+        "value": "0.7s ease-in-out infinite; 50% scaleX(0.08) translateY(-6px)",
+        "purpose": "Flat squash-and-stretch flip while coins are thrown; they land after 2600ms."
+      },
+      {
         "name": "reduced-motion",
         "value": "prefers-reduced-motion: reduce",
-        "purpose": "All sparkle motion and state-entry animations removed."
+        "purpose": "Sparkle entrance, flare, and turn, and the state-entry animations removed."
       }
     ],
     "breakpoints": [
+      {
+        "name": "tiny",
+        "value": "359px (max)"
+      },
       {
         "name": "desktop",
         "value": "769px"
@@ -186,40 +317,56 @@
       "name": "Throw Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Primary ink pill with one gold sparkle; full width on mobile.",
+      "description": "Landing-only ink pill with one haloed gold sparkle; full width on mobile.",
       "html": "<button class=\"ds-btn-primary\">throw coins <span class=\"ds-btn-spark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0C12.7 6.4 17.6 11.3 24 12C17.6 12.7 12.7 17.6 12 24C11.3 17.6 6.4 12.7 0 12C6.4 11.3 11.3 6.4 12 0Z\" fill=\"currentColor\"/></svg></span></button>",
-      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:0.75rem; min-height:60px; min-width:280px; padding:0 2rem; background:var(--ink); color:var(--paper); border:0; border-radius:999px; font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:-0.01em; cursor:pointer; transition:background-color 0.2s var(--ease-out), transform 0.2s var(--ease-out); } .ds-btn-spark { display:inline-flex; color:var(--gold); transition:transform 0.5s var(--ease-out); } .ds-btn-primary:hover { background:#323832; } .ds-btn-primary:hover .ds-btn-spark, .ds-btn-primary:focus-visible .ds-btn-spark { transform:rotate(90deg) scale(1.15); } .ds-btn-primary:focus-visible { outline:2px solid var(--ink); outline-offset:3px; } .ds-btn-primary:active { transform:scale(0.98); }"
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:0.75rem; min-height:60px; min-width:280px; padding:0 2rem; background:var(--ink); color:var(--paper); border:0; border-radius:999px; font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:-0.01em; cursor:pointer; transition:background-color 0.2s var(--ease-out), transform 0.2s var(--ease-out); } .ds-btn-spark { display:inline-flex; color:var(--gold); filter:drop-shadow(0 0 5px rgba(201,162,58,0.8)); transition:transform 0.5s var(--ease-out); } .ds-btn-primary:hover { background:#323832; } .ds-btn-primary:hover .ds-btn-spark, .ds-btn-primary:focus-visible .ds-btn-spark { transform:rotate(90deg) scale(1.15); } .ds-btn-primary:focus-visible { outline:2px solid var(--ink); outline-offset:3px; } .ds-btn-primary:active { transform:scale(0.98); }"
     },
     {
-      "name": "Compact Primary Button",
+      "name": "New Reading Pill",
       "kind": "button",
-      "refersTo": "button-primary",
-      "description": "Smaller ink pill without sparkle (new reading).",
-      "html": "<button class=\"ds-btn-compact\">new reading</button>",
-      "css": ".ds-btn-compact { min-height:44px; padding:0 1.25rem; background:var(--ink); color:var(--paper); border:0; border-radius:999px; font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:0.9375rem; font-weight:700; cursor:pointer; transition:background-color 0.2s var(--ease-out); } .ds-btn-compact:hover { background:#323832; } .ds-btn-compact:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }"
+      "refersTo": "button-stone",
+      "description": "Stone-deep pill that closes the results screen; full width on phones.",
+      "html": "<button class=\"ds-btn-stone\">new reading</button>",
+      "css": ".ds-btn-stone { min-height:60px; min-width:240px; padding:0 2rem; background:var(--stone-deep); color:var(--paper); border:0; border-radius:999px; font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:-0.01em; cursor:pointer; transition:background-color 0.2s var(--ease-out), transform 0.2s var(--ease-out); } .ds-btn-stone:hover { background:#50624a; } .ds-btn-stone:active { transform:scale(0.98); } .ds-btn-stone:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }"
+    },
+    {
+      "name": "Mode Toggle",
+      "kind": "chip",
+      "refersTo": "toggle-segment",
+      "description": "Hairline pill track with fixed-width vibes/classic segments; active segment in stone-deep.",
+      "html": "<div class=\"ds-toggle\" role=\"group\"><button class=\"ds-seg ds-seg-on\" aria-pressed=\"true\">vibes</button><button class=\"ds-seg\" aria-pressed=\"false\">classic</button></div>",
+      "css": ".ds-toggle { display:inline-flex; padding:3px; gap:2px; border:1px solid var(--line); border-radius:999px; } .ds-seg { width:5.75rem; min-height:38px; padding:0; border:0; border-radius:999px; background:transparent; color:var(--ink); font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; font-size:0.9375rem; font-weight:700; cursor:pointer; transition:background-color 0.2s var(--ease-out), color 0.2s var(--ease-out); } .ds-seg-on { background:var(--stone-deep); color:var(--paper); } .ds-seg:not(.ds-seg-on):hover { background:#fbfbf8; } .ds-seg:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }"
+    },
+    {
+      "name": "Copy Button",
+      "kind": "button",
+      "refersTo": "button-copy",
+      "description": "Fixed-width hairline pill with an inline SVG icon; icon-only below 360px.",
+      "html": "<button class=\"ds-copy\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM5 7h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v10h10V9z\" fill=\"currentColor\"/></svg><span class=\"ds-copy-text\">copy result</span></button>",
+      "css": ".ds-copy { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; width:9rem; min-height:44px; padding:0; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink); font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; font-size:0.9375rem; font-weight:700; cursor:pointer; transition:background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out); } .ds-copy:hover { background:#fbfbf8; border-color:var(--ink); } .ds-copy:focus-visible { outline:2px solid var(--ink); outline-offset:3px; } @media (max-width:359px) { .ds-copy { width:44px; } .ds-copy-text { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; } }"
     },
     {
       "name": "Header Chip",
       "kind": "chip",
       "refersTo": "button-chip",
-      "description": "Hairline pill for language toggle and boba support link.",
+      "description": "Hairline pill; the language button is fixed at 3.5rem so EN / 中文 never shift the header.",
       "html": "<button class=\"ds-chip\">中文</button>",
-      "css": ".ds-chip { min-height:40px; min-width:44px; padding:0 0.875rem; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink); font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:0.875rem; font-weight:700; cursor:pointer; transition:background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out); } .ds-chip:hover { background:#fbfbf8; border-color:var(--ink); } .ds-chip:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }"
+      "css": ".ds-chip { min-height:40px; width:3.5rem; padding:0; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink); font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; font-size:0.875rem; font-weight:700; cursor:pointer; transition:background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out); } .ds-chip:hover { background:#fbfbf8; border-color:var(--ink); } .ds-chip:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }"
     },
     {
       "name": "Question Field",
       "kind": "input",
       "refersTo": "input-question",
-      "description": "Quoted label over an underline-only textarea.",
+      "description": "The landing's one quoted label over an underline-only textarea.",
       "html": "<label class=\"ds-q-label\" for=\"ds-q\">ask the universe</label><textarea id=\"ds-q\" class=\"ds-q-input\" placeholder=\"type your question or intention here...\"></textarea>",
-      "css": ".ds-q-label { display:block; font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:1rem; font-weight:700; color:var(--ink); } .ds-q-label::before { content:'\\201C'; } .ds-q-label::after { content:'\\201D'; } .ds-q-input { display:block; width:100%; min-height:88px; margin-top:4px; padding:10px 0; background:transparent; border:0; border-bottom:2px solid var(--ink); border-radius:0; font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:1.0625rem; line-height:1.5; color:var(--ink); resize:none; transition:box-shadow 0.2s var(--ease-out); } .ds-q-input::placeholder { color:#646a64; } .ds-q-input:focus { outline:none; box-shadow:0 2px 0 var(--ink); }"
+      "css": ".ds-q-label { display:block; font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; font-size:1rem; font-weight:700; color:var(--ink); } .ds-q-label::before { content:'\\201C'; } .ds-q-label::after { content:'\\201D'; } .ds-q-input { display:block; width:100%; min-height:88px; margin-top:4px; padding:10px 0; background:transparent; border:0; border-bottom:2px solid var(--ink); border-radius:0; font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; font-size:1.0625rem; line-height:1.5; color:var(--ink); resize:none; transition:box-shadow 0.2s var(--ease-out); } .ds-q-input::placeholder { color:#646a64; } .ds-q-input:focus { outline:none; box-shadow:0 2px 0 var(--ink); }"
     },
     {
       "name": "Header",
       "kind": "nav",
       "description": "Lowercase wordmark left (no sparkle), chips right, on the shared left edge.",
       "html": "<header class=\"ds-header\"><span class=\"ds-wordmark\">vibe check</span><div class=\"ds-header-ctl\"><span class=\"ds-chip-mini\">中文</span></div></header>",
-      "css": ".ds-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:18px clamp(16px,5vw,40px); max-width:640px; background:var(--paper); font-family:'Schibsted Grotesk', system-ui, sans-serif; } .ds-wordmark { font-size:1.25rem; font-weight:800; letter-spacing:-0.02em; line-height:1; color:var(--ink); } .ds-header-ctl { display:flex; gap:0.5rem; } .ds-chip-mini { display:inline-flex; align-items:center; min-height:40px; padding:0 0.875rem; border:1px solid var(--line); border-radius:999px; font-size:0.875rem; font-weight:700; color:var(--ink); }"
+      "css": ".ds-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:18px clamp(16px,5vw,40px); max-width:640px; background:var(--paper); font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; } .ds-wordmark { font-size:1.25rem; font-weight:800; letter-spacing:-0.02em; line-height:1; color:var(--ink); } .ds-header-ctl { display:flex; gap:0.5rem; } .ds-chip-mini { display:inline-flex; align-items:center; min-height:40px; padding:0 0.875rem; border:1px solid var(--line); border-radius:999px; font-size:0.875rem; font-weight:700; color:var(--ink); }"
     },
     {
       "name": "Stone Block",
@@ -227,73 +374,127 @@
       "refersTo": "stone-block",
       "description": "The one sage slab per screen, fact strip bottom-left, two gold sparkles top-right that twinkle in.",
       "html": "<div class=\"ds-stone\"><ul class=\"ds-stone-facts\"><li>3 coins</li><li>instant results</li><li>ancient wisdom</li></ul><svg class=\"ds-stone-spark ds-lg\" width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0C12.7 6.4 17.6 11.3 24 12C17.6 12.7 12.7 17.6 12 24C11.3 17.6 6.4 12.7 0 12C6.4 11.3 11.3 6.4 12 0Z\" fill=\"currentColor\"/></svg><svg class=\"ds-stone-spark ds-sm\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0C12.7 6.4 17.6 11.3 24 12C17.6 12.7 12.7 17.6 12 24C11.3 17.6 6.4 12.7 0 12C6.4 11.3 11.3 6.4 12 0Z\" fill=\"currentColor\"/></svg></div>",
-      "css": ".ds-stone { position:relative; height:132px; margin-top:24px; background:var(--stone); border-radius:4px; display:flex; align-items:flex-end; padding:14px 16px; font-family:'Schibsted Grotesk', system-ui, sans-serif; } .ds-stone-facts { display:flex; flex-wrap:wrap; gap:0.25rem 0.5rem; margin:0; padding:0; list-style:none; font-size:0.9375rem; font-weight:500; color:var(--ink); } .ds-stone-facts li + li::before { content:'\\00B7'; margin-right:0.5rem; } .ds-stone-spark { position:absolute; color:var(--gold); animation:ds-sparkle-in 0.9s cubic-bezier(0.16,1,0.3,1) both; } .ds-lg { top:-18px; right:22px; animation-delay:0.15s; } .ds-sm { top:34px; right:80px; animation-delay:0.35s; } @keyframes ds-sparkle-in { from { opacity:0; transform:scale(0.2) rotate(-60deg); } to { opacity:1; transform:scale(1) rotate(0deg); } } @media (prefers-reduced-motion: reduce) { .ds-stone-spark { animation:none; } }"
+      "css": ".ds-stone { position:relative; height:132px; margin-top:24px; background:var(--stone); border-radius:4px; display:flex; align-items:flex-end; padding:14px 16px; font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; } .ds-stone-facts { display:flex; flex-wrap:wrap; gap:0.25rem 0.5rem; margin:0; padding:0; list-style:none; font-size:0.9375rem; font-weight:500; color:var(--ink); } .ds-stone-facts li + li::before { content:'\\00B7'; margin-right:0.5rem; } .ds-stone-spark { position:absolute; color:var(--gold); animation:ds-sparkle-in 0.9s cubic-bezier(0.16,1,0.3,1) both; } .ds-lg { top:-18px; right:22px; animation-delay:0.15s; } .ds-sm { top:34px; right:80px; animation-delay:0.35s; } @keyframes ds-sparkle-in { from { opacity:0; transform:scale(0.2) rotate(-60deg); } to { opacity:1; transform:scale(1) rotate(0deg); } } @media (prefers-reduced-motion: reduce) { .ds-stone-spark { animation:none; } }"
+    },
+    {
+      "name": "Hexagram Plate (classic pair)",
+      "kind": "card",
+      "refersTo": "hexagram-plate",
+      "description": "One sage plate, soft moss lines; changing lines gold with a bronze edge on the changed hexagram only. Stacks with a down arrow below 769px.",
+      "html": "<div class=\"ds-plate\"><figure class=\"ds-fig\"><svg class=\"ds-hex\" width=\"120\" viewBox=\"-1 -1 102 88\" aria-hidden=\"true\"><rect x=\"0\" y=\"80\" width=\"100\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"0\" y=\"64\" width=\"42\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"58\" y=\"64\" width=\"42\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"0\" y=\"48\" width=\"100\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"0\" y=\"32\" width=\"100\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"0\" y=\"16\" width=\"42\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"58\" y=\"16\" width=\"42\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"0\" y=\"0\" width=\"100\" height=\"6\" rx=\"3\" fill=\"currentColor\"/></svg><figcaption><span class=\"ds-pname\">the well</span><span class=\"ds-pnum\">#48 · <b>current situation</b></span></figcaption></figure><svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M3 11h14.2l-5.1-5.1L13.5 4.5 21 12l-7.5 7.5-1.4-1.4 5.1-5.1H3z\" fill=\"currentColor\"/></svg><figure class=\"ds-fig\"><svg class=\"ds-hex\" width=\"120\" viewBox=\"-1 -1 102 88\" aria-hidden=\"true\"><rect x=\"0\" y=\"80\" width=\"100\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"0\" y=\"64\" width=\"42\" height=\"6\" rx=\"3\" fill=\"var(--gold)\" stroke=\"#8a6420\" stroke-width=\"1.5\"/><rect x=\"58\" y=\"64\" width=\"42\" height=\"6\" rx=\"3\" fill=\"var(--gold)\" stroke=\"#8a6420\" stroke-width=\"1.5\"/><rect x=\"0\" y=\"48\" width=\"42\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"58\" y=\"48\" width=\"42\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"0\" y=\"32\" width=\"100\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"0\" y=\"16\" width=\"42\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"58\" y=\"16\" width=\"42\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"0\" y=\"0\" width=\"100\" height=\"6\" rx=\"3\" fill=\"currentColor\"/></svg><figcaption><span class=\"ds-pname\">the cauldron</span><span class=\"ds-pnum\">#50 · <b>future direction</b></span></figcaption></figure></div>",
+      "css": ".ds-plate { display:grid; grid-template-columns:120px 1fr 120px; align-items:start; gap:1.25rem; padding:24px 20px 20px; background:var(--stone); border-radius:4px; color:var(--moss); font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; } .ds-fig { display:flex; flex-direction:column; gap:14px; margin:0; width:120px; } .ds-hex { display:block; height:auto; } .ds-fig figcaption { display:flex; flex-direction:column; gap:2px; } .ds-pname { min-height:3.3em; font-size:1.125rem; font-weight:800; letter-spacing:-0.02em; line-height:1.1; } .ds-pnum { font-size:0.8125rem; font-weight:500; font-variant-numeric:tabular-nums; } .ds-arrow { width:24px; height:24px; justify-self:center; margin-top:calc(120px * 0.4314 - 12px); }"
+    },
+    {
+      "name": "Cash Coin",
+      "kind": "custom",
+      "description": "Drawn cast coin (heads 乾隆通寶), gold to bronze face, bronze-rim edge, paper square hole, warm cast shadow.",
+      "html": "<div class=\"ds-coin\"><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><defs><radialGradient id=\"ds-cg\" cx=\"35%\" cy=\"30%\" r=\"75%\"><stop offset=\"0%\" stop-color=\"#f0d27a\"/><stop offset=\"45%\" stop-color=\"#c9a23a\"/><stop offset=\"100%\" stop-color=\"#8a6420\"/></radialGradient></defs><circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"url(#ds-cg)\" stroke=\"#7a5a1e\" stroke-width=\"3\"/><circle cx=\"50\" cy=\"50\" r=\"41\" fill=\"none\" stroke=\"#7a5a1e\" stroke-opacity=\"0.5\" stroke-width=\"1.5\"/><rect x=\"35\" y=\"35\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#7a5a1e\" stroke-opacity=\"0.4\" stroke-width=\"3\"/><rect x=\"38.5\" y=\"38.5\" width=\"23\" height=\"23\" fill=\"var(--paper)\" stroke=\"#7a5a1e\" stroke-width=\"2\"/><text x=\"50\" y=\"25\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"15\" font-weight=\"700\" fill=\"#5e4313\" font-family=\"Songti SC, Noto Serif SC, serif\">乾</text><text x=\"50\" y=\"83\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"15\" font-weight=\"700\" fill=\"#5e4313\" font-family=\"Songti SC, Noto Serif SC, serif\">隆</text><text x=\"79\" y=\"54\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"15\" font-weight=\"700\" fill=\"#5e4313\" font-family=\"Songti SC, Noto Serif SC, serif\">通</text><text x=\"21\" y=\"54\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"15\" font-weight=\"700\" fill=\"#5e4313\" font-family=\"Songti SC, Noto Serif SC, serif\">寶</text></svg></div><p class=\"ds-coin-label\">heads</p>",
+      "css": ".ds-coin { width:100px; height:100px; border-radius:50%; box-shadow:0 10px 22px rgba(154,74,50,0.28), 0 3px 6px rgba(122,90,30,0.22); } .ds-coin svg { display:block; width:100%; height:100%; } .ds-coin-label { margin:1.25rem 0 0; width:100px; text-align:center; font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; font-size:0.9375rem; font-weight:700; color:var(--ink); }"
+    },
+    {
+      "name": "Toss Bar",
+      "kind": "custom",
+      "description": "Progress under the coins: stone-deep to gold to terra.",
+      "html": "<div class=\"ds-bar\"><div class=\"ds-bar-fill\"></div></div>",
+      "css": ".ds-bar { width:260px; height:8px; border-radius:4px; overflow:hidden; background:#fbfbf8; border:1px solid rgba(30,33,30,0.08); } .ds-bar-fill { height:100%; width:100%; border-radius:4px; background:linear-gradient(90deg, var(--stone-deep), var(--gold) 55%, var(--terra)); }"
     },
     {
       "name": "Inline Sparkle Text",
       "kind": "custom",
       "description": "Every ✨ in copy rendered as the drawn gold sparkle at text size.",
       "html": "<p class=\"ds-sub\">get instant wisdom from ancient i ching coins. no bs, just vibes<svg class=\"ds-inline-spark\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0C12.7 6.4 17.6 11.3 24 12C17.6 12.7 12.7 17.6 12 24C11.3 17.6 6.4 12.7 0 12C6.4 11.3 11.3 6.4 12 0Z\" fill=\"currentColor\"/></svg></p>",
-      "css": ".ds-sub { font-family:'Schibsted Grotesk', system-ui, sans-serif; font-size:1.0625rem; line-height:1.5; color:var(--ink-soft); max-width:38ch; margin:0; } .ds-inline-spark { display:inline-block; width:0.85em; height:0.85em; margin-inline:0.15em; vertical-align:-0.05em; color:var(--gold); }"
+      "css": ".ds-sub { font-family:'Schibsted Grotesk','Noto Sans SC',system-ui,sans-serif; font-size:1.0625rem; line-height:1.5; color:var(--ink-soft); max-width:38ch; margin:0; } .ds-inline-spark { display:inline-block; width:0.85em; height:0.85em; margin-inline:0.15em; vertical-align:-0.05em; color:var(--gold); }"
     }
   ],
   "narrative": {
     "northStar": "The Soapstone and the Spark",
-    "overview": "A calm, modern-zen page where nothing competes with the question. Cool paper ground, near-black ink, one solid block of sage soapstone, and a handful of soft-gold four-point sparkles: the system's single playful move. Everything else is quiet, flat, and typographic. The world deliberately sidesteps the category's mystic purple and starfields, and equally the beige spa-zen opposite.\n\nDensity is low and single-column. One grotesk family carries the whole voice, set lowercase and heavy at display sizes, matching the product's playful lowercase copy. Depth comes from solid color and weight, never from shadows, gradients, glass, or glow. The header, content, and footer share one left edge inside a narrow column, so the page reads as one straight stack on a phone and a centered stack on desktop.",
+    "overview": "A calm, modern-zen product where nothing competes with the question, and then with the answer. Cool paper ground, near-black ink, one solid block of sage soapstone per screen, and a handful of soft-gold four-point sparkles: the system's single playful move. On the reading screens the soapstone becomes a plate carrying the hexagram in soft moss lines, and the thrown coins are drawn as real cast cash coins. Everything else is quiet, flat, and typographic. The world deliberately sidesteps the category's mystic purple and starfields, and equally the beige spa-zen opposite.\n\nDensity is low and single-column. One grotesk family carries the whole voice, set lowercase and heavy at display sizes, matching the product's playful lowercase copy in English and 中文 alike. Depth comes from solid color and weight; the only shadows are the warm cast shadow under the coins and one gold halo on the landing's throw sparkle. The landing's ink pill is the one black fill; after the throw, filled controls soften to deep stone. The header, content, and footer share one left edge inside a narrow column, so the page reads as one straight stack on a phone and a centered stack on desktop.",
     "keyCharacteristics": [
       "Cool paper white ground, ink text, one sage stone block per screen.",
       "Soft-gold drawn sparkles as the only ornament, and every ✨ in copy rendered as that same drawn mark.",
-      "One grotesk family (Schibsted Grotesk), lowercase, 800 weight for display.",
-      "Quoted labels in place of form chrome; underline-only fields; ink pill buttons.",
-      "Flat surfaces with no shadows, gradients, or glass.",
-      "One shared left edge for header, content, and footer."
+      "One grotesk family (Schibsted Grotesk, with Noto Sans SC for 中文), lowercase, 800 weight for display.",
+      "One ink pill on the landing; stone-deep fills on the toss and results screens.",
+      "Hexagrams in soft rounded moss lines on the sage plate; changing lines in coin gold.",
+      "Deep terracotta as a rare accent for classic gua names and the shift notice.",
+      "Flat surfaces; the coins' warm cast shadow and the throw sparkle's halo are the only shadows.",
+      "One shared left edge for header, content, and footer, and controls that never shift when the language changes."
     ],
     "rules": [
       {
         "name": "The Gold Is Ornament Rule",
-        "body": "Gold appears only as the drawn four-point sparkle and the coins. It is never text, or a fill, border, or background on UI chrome.",
+        "body": "Gold appears on sparkles, coins, and changing lines only (plus its stop inside the toss bar gradient). It is never text, and never a fill, border, or background on UI chrome.",
         "section": "colors"
       },
       {
         "name": "The Bronze Coin Rule",
-        "body": "The coins are always cast gold/bronze (gold face shading to #8a6420, #7a5a1e rim, #3d2a0b symbol), never a palette color (user-pinned).",
+        "body": "The coins are always cast gold and bronze (a radial face from #f0d27a through gold to bronze, a bronze-rim edge, a paper square hole, and a #5e4313 inscription), never a palette color (user-pinned).",
+        "section": "colors"
+      },
+      {
+        "name": "The Terracotta Accent Rule",
+        "body": "Terracotta is a text and gradient accent on paper only: classic gua names, the shift notice, the end of the toss bar. It is never a fill, and never text on sage.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Ink Pill Rule",
+        "body": "The landing's \"throw coins\" pill is the product's only black fill. On the toss and results screens, filled controls use stone-deep.",
         "section": "colors"
       },
       {
         "name": "The One Stone Rule",
-        "body": "A screen gets at most one sage stone block. The stone is a slab of material, not a card style to repeat.",
+        "body": "A screen gets at most one sage stone block. The stone is a slab of material, not a card style to repeat; a classic reading's two hexagrams share one plate.",
         "section": "colors"
       },
       {
         "name": "The Lowercase Voice Rule",
-        "body": "Display, wordmark, labels, and buttons stay lowercase, as the copy is written. Don't apply text-transform and don't use uppercase tracking.",
+        "body": "Display, wordmark, labels, and buttons stay lowercase in both languages. English copy is written lowercase; under `:lang(zh)` the app container applies `text-transform: lowercase` so Latin words inside 中文 strings follow. No uppercase and no uppercase tracking.",
         "section": "typography"
       },
       {
-        "name": "The Quoted Label Rule",
-        "body": "Form labels are set in bold and wrapped in curly quotes, as though the visitor is saying them. This is a native device of the world, not decoration to strip out.",
+        "name": "The One Quote Rule",
+        "body": "The landing's \"ask the universe\" label is the system's one quoted label: bold and wrapped in curly quotes, as though the visitor is saying it. Labels on the results screen are plain.",
         "section": "typography"
+      },
+      {
+        "name": "The Language Truth Rule",
+        "body": "`html lang` follows the selected language (`en` or `zh-CN`) so the browser picks CJK glyphs and line breaking correctly.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Shift Rule",
+        "body": "Switching EN and 中文, or vibes and classic, never moves the layout. The language button, mode segments, and copy button are fixed width; the headline, plate names, and shift notice reserve their tallest version's height.",
+        "section": "layout"
       },
       {
         "name": "The Flat Slab Rule",
-        "body": "Surfaces are solid fills on paper. When something needs emphasis, it gets ink or stone, not a shadow.",
+        "body": "Surfaces are solid fills on paper. When something needs emphasis, it gets ink, stone, or weight, not a shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Halo Rule",
+        "body": "The throw-coins sparkle is the only glowing thing in the product. No other sparkle, button, or surface glows.",
         "section": "elevation"
       }
     ],
     "dos": [
       "Do keep the header, content, and footer on one left edge inside the 640px column with the shared gutter.",
-      "Do use gold only for the drawn four-point sparkle, with at most three decorative sparkles per screen, two on the stone block and one on the primary button.",
+      "Do keep gold to sparkles, coins, and changing lines, with at most three decorative sparkles per screen.",
       "Do render every ✨ in copy as the inline drawn sparkle, and keep the playful lowercase copy and its emoji voice intact.",
       "Do set the display at 800 weight, lowercase, with tight leading (0.95) and tight tracking (-0.035em).",
-      "Do wrap field labels in curly quotes and use underline-only fields.",
-      "Do put primary actions in an ink pill (999px) with paper text.",
+      "Do keep the voice lowercase in both languages, with `text-transform: lowercase` under `:lang(zh)` and `html lang` set from the selected language.",
+      "Do use the ink pill (999px, paper text) for the landing's throw button only, and stone-deep for filled controls on the toss and results screens.",
+      "Do draw hexagram lines as soft rounded moss bars on the sage plate, with gold, bronze-edged changing lines only on the changed hexagram in classic mode.",
+      "Do keep toggles and the copy button fixed width, and reserve text height, so switching EN and 中文 never shifts the layout.",
       "Do honor reduced motion by making sparkles static."
     ],
     "donts": [
-      "Don't use gradients, glass, backdrop blur, or glow, and don't use box-shadows for elevation.",
+      "Don't use glass, backdrop blur, or glow beyond the one spark halo, and don't use box-shadows for elevation; the coin cast shadow is the only box-shadow.",
+      "Don't use gradients outside the coin face and the toss bar.",
       "Don't reintroduce mystic purple, cyan, pink, or starfield imagery, and don't drift into beige spa-zen.",
-      "Don't use red or terracotta in the interface palette.",
+      "Don't use terracotta as a fill or as text on sage (2.9:1).",
+      "Don't put black fills on the toss or results screens.",
       "Don't set any text in gold.",
+      "Don't wrap results-screen labels in quotes; the landing's \"ask the universe\" is the one quoted label.",
       "Don't use emoji or icon-font glyphs as UI icons. Icons are inline SVG in currentColor.",
       "Don't put a sparkle on the wordmark.",
       "Don't use more than one stone block per screen."

@@ -83,17 +83,6 @@
 }
 
 .name {
-  /* Reserve three lines: long English names wrap, 中文 names don't */
-  min-height: 3.3em;
-  font-size: clamp(1rem, 4.6vw, 1.125rem);
-}
-
-.pair .number {
-  font-size: 0.8125rem;
-  white-space: nowrap;
-}
-
-.name {
   font-size: 1.375rem;
   font-weight: 800;
   letter-spacing: -0.02em;
