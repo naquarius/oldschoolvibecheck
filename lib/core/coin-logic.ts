@@ -5,11 +5,11 @@ const COIN_VALUES = {
   tails: 2 as const,
 } as const;
 
-export const createCoin = (id: number): Coin => ({
-  id,
-  face: Math.random() > 0.5 ? 'heads' : 'tails',
-  value: Math.random() > 0.5 ? COIN_VALUES.heads : COIN_VALUES.tails,
-});
+export const createCoin = (id: number): Coin => {
+  // One toss decides the face; the value always follows from it
+  const face = Math.random() > 0.5 ? 'heads' : 'tails';
+  return { id, face, value: COIN_VALUES[face] };
+};
 
 export const throwThreeCoins = (): CoinThrow => [
   createCoin(1),

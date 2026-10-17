@@ -1,24 +1,24 @@
 .languageToggle {
   display: flex;
-  justify-content: flex-end;
-  /* margin: 3px; */
 }
 
 .languageButton {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg-glass);
-  color: var(--text-primary);
+  /* Fixed width so EN / 中文 swap without nudging the header */
+  min-height: 40px;
+  width: 3.5rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(10px);
+  transition: background-color 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
 }
 
 .languageButton:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px var(--crystal-shadow);
+  background: var(--bg-card);
+  border-color: var(--ink);
 }

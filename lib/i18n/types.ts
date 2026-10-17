@@ -18,6 +18,8 @@ export type UiStrings = {
   readingComplete: string;
   channelingEnergy: string;
   coin: string;
+  heads: string;
+  tails: string;
   reading: string;
   newReading: string;
   readingYourEnergy: string;

@@ -11,26 +11,20 @@ export const YaoChangeInfo = ({ result }: Props) => {
   const strings = i18n.getUiStrings();
 
   return (
-    <div className={styles.resultFooter}>
+    <p className={styles.shiftInfo}>
       {changingPositions.length > 0 ? (
-        <div className={styles.changeInfo}>
-          <div className={styles.changeBadge}>
-            <span className={styles.changeIcon}>⚡</span>
-            <span>{strings.energyShiftDetected}</span>
-          </div>
-          <p className={styles.changeText}>
-            {strings.changingLinesAt} {result.changingPositions.join(', ')}
-          </p>
-        </div>
+        <>
+          <strong className={styles.shiftDetected}>
+            {strings.energyShiftDetected}
+          </strong>
+          {strings.changingLinesAt} {changingPositions.join(', ')}
+        </>
       ) : (
-        <div className={styles.stableInfo}>
-          <div className={styles.stableBadge}>
-            <span className={styles.stableIcon}>🎯</span>
-            <span>{strings.stableEnergy}</span>
-          </div>
-          <p className={styles.stableText}>{strings.noChangingLines}</p>
-        </div>
+        <>
+          <strong>{strings.stableEnergy}</strong>
+          {strings.noChangingLines}
+        </>
       )}
-    </div>
+    </p>
   );
 };

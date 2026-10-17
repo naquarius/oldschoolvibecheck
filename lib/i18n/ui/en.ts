@@ -5,6 +5,8 @@ export const uiStringsEn: UiStrings = {
   readingComplete: 'reading complete ✨',
   channelingEnergy: 'channeling energy...',
   coin: 'coin',
+  heads: 'heads',
+  tails: 'tails',
   reading: 'reading...',
   newReading: 'new reading',
   readingYourEnergy: 'reading your energy...',

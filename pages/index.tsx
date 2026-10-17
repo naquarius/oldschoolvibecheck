@@ -4,6 +4,8 @@ import { BobaButton } from '@/components/AppControls/BobaButton';
 import { LanguageToggle } from '@/components/AppControls/LanguageToggle';
 import { CoinThrow } from '@/components/CoinThrow';
 import { GuaResult } from '@/components/GuaResult';
+import { Sparkle } from '@/components/Sparkle';
+import { SparkleText } from '@/components/SparkleText';
 import { useApp } from '@/lib/context/AppContext';
 import { useQuestion } from '@/lib/context/QuestionContext';
 import { qigua } from '@/lib/core/qigua';
@@ -15,17 +17,28 @@ import { useState } from 'react';
 export default function Home() {
   const [result, setResult] = useState<GuaResultType | null>(null);
   const [isThrowing, setIsThrowing] = useState(false);
+  const [isLaunching, setIsLaunching] = useState(false);
+  const [pendingResult, setPendingResult] = useState<GuaResultType | null>(
+    null
+  );
   const { language, setLanguage } = useApp();
   const { question, setQuestion } = useQuestion();
   const strings = i18n.getUiStrings();
 
   const handleQigua = async () => {
+    // Let the sparkles flare before the landing gives way to the throw
+    setIsLaunching(true);
+    await new Promise((resolve) => setTimeout(resolve, 450));
+    setIsLaunching(false);
+    // Cast up front so the toss can land on the real final throw
+    const guaResult = qigua();
+    setPendingResult(guaResult);
     setIsThrowing(true);
     setTimeout(() => {
-      const guaResult = qigua();
       setResult(guaResult);
+      setPendingResult(null);
       setIsThrowing(false);
-    }, 3000);
+    }, 3800);
   };
 
   const handleNewReading = () => {
@@ -63,11 +76,9 @@ export default function Home() {
         {/* Header */}
         <header className="app-header">
           <div className="logo-container">
-            <div className="logo-icon">✨</div>
-            <h1 className="app-title">Vibe Check</h1>
+            <span className="app-title">vibe check</span>
+            <span className="tagline">· {strings.appTagline}</span>
           </div>
-          <div className="tagline">{strings.appTagline}</div>
-
           {/* Controls group */}
           <div className="header-controls">
             <BobaButton />
@@ -81,13 +92,25 @@ export default function Home() {
           <div
             className={`welcome-section ${
               result || isThrowing ? 'welcome-compact' : ''
-            }`}
+            } ${isLaunching ? 'welcome-launching' : ''}`}
           >
             {!result && !isThrowing && (
               <>
+                <div className="stone-block">
+                  <ul className="stone-facts">
+                    <li>{strings.threeCoins}</li>
+                    <li>{strings.instantResults}</li>
+                    <li>{strings.ancientWisdom}</li>
+                  </ul>
+                  <Sparkle className="stone-sparkle stone-sparkle-large" size={36} />
+                  <Sparkle className="stone-sparkle stone-sparkle-small" size={16} />
+                </div>
+
                 <div className="hero-text">
-                  <h2 className="hero-title">{strings.whatIsYourVibe}</h2>
-                  <p className="hero-subtitle">{strings.heroSubtitle}</p>
+                  <h1 className="hero-title">{strings.whatIsYourVibe}</h1>
+                  <p className="hero-subtitle">
+                    <SparkleText text={strings.heroSubtitle} />
+                  </p>
                 </div>
 
                 <div className="question-input-wrapper">
@@ -104,43 +127,17 @@ export default function Home() {
                   />
                 </div>
 
-                <button onClick={handleQigua} className="cta-button">
-                  <span className="button-text">{strings.throwCoins}</span>
-                  <div className="button-glow"></div>
+                <button
+                  onClick={handleQigua}
+                  className="cta-button"
+                  disabled={isLaunching}
+                >
+                  <span>{strings.throwCoins}</span>
+                  <Sparkle className="cta-sparkle" size={18} />
                 </button>
-
-                <div className="quick-info">
-                  <div className="info-item">
-                    <span className="info-icon">🪙</span>
-                    <span>{strings.threeCoins}</span>
-                  </div>
-                  <div className="info-item">
-                    <span className="info-icon">⚡</span>
-                    <span>{strings.instantResults}</span>
-                  </div>
-                  <div className="info-item">
-                    <span className="info-icon">🔮</span>
-                    <span>{strings.ancientWisdom}</span>
-                  </div>
-                </div>
               </>
             )}
 
-            {(result || isThrowing) && (
-              <div className="compact-header">
-                <div className="compact-title">
-                  <div className="logo-icon-small">✨</div>
-                  <span>Vibe Check</span>
-                </div>
-                <button
-                  onClick={handleNewReading}
-                  className="new-reading-button"
-                  disabled={isThrowing}
-                >
-                  {isThrowing ? strings.reading : strings.newReading}
-                </button>
-              </div>
-            )}
           </div>
 
           {/* Throwing Section */}
@@ -148,25 +145,28 @@ export default function Home() {
             <div className="throwing-section">
               <div className="throwing-header">
                 <h3 className="throwing-title">{strings.readingYourEnergy}</h3>
-                <div className="progress-bar">
-                  <div className="progress-fill"></div>
-                </div>
               </div>
-              <CoinThrow />
+              {pendingResult && (
+                <CoinThrow
+                  finalCoins={pendingResult.yaos[5].throwResult.coins}
+                />
+              )}
             </div>
           )}
 
           {/* Result Section */}
           {result && !isThrowing && (
             <div className="result-section">
-              <GuaResult result={result} />
+              <GuaResult result={result} onNewReading={handleNewReading} />
             </div>
           )}
         </main>
 
         {/* Footer */}
         <footer className="app-footer">
-          <div className="footer-text">{strings.footerText}</div>
+          <div className="footer-text">
+            <SparkleText text={strings.footerText} />
+          </div>
         </footer>
       </div>
     </>

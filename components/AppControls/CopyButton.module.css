@@ -1,43 +1,48 @@
 .copyResultContainer {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1.5rem;
 }
 
 .copyButton {
-  display: flex;
+  /* Fixed width so copy result / copied! / 复制结果 never resize the row */
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  background: var(--bg-glass);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.75rem 1.25rem;
-  color: var(--text-primary);
-  font-size: 0.875rem;
-  font-weight: 500;
+  width: 9rem;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.02);
+  transition: background-color 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
 }
 
 .copyButton:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: var(--border);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.08);
-}
-
-.copyButton:active {
-  transform: translateY(0);
+  background: var(--bg-card);
+  border-color: var(--ink);
 }
 
 .copyIcon {
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
+  flex-shrink: 0;
 }
 
-.copyText {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+/* Very small phones: icon only, label stays for screen readers */
+@media (max-width: 359px) {
+  .copyButton {
+    width: 44px;
+  }
+
+  .copyText {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 }

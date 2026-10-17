@@ -1,93 +1,100 @@
 'use client';
 
 import { useApp } from '@/lib/context/AppContext';
+import { useQuestion } from '@/lib/context/QuestionContext';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
-import { useState } from 'react';
 import { CopyButton } from './AppControls/CopyButton';
 import { ModeToggle } from './AppControls/ModeToggle';
-import GuaCard from './GuaCard';
 import styles from './GuaResult.module.css';
+import { HexagramPlate } from './HexagramPlate';
+import { TraditionalCard } from './TraditionalCard';
+import { VibeCard } from './VibeCard';
 import { YaoChangeInfo } from './YaoChangeInfo';
 
 interface Props {
   result: GuaResultType;
+  onNewReading: () => void;
 }
 
-export const GuaResult = ({ result }: Props) => {
-  const [colorTheme, setColorTheme] = useState<'pink' | 'blue'>('pink');
+export const GuaResult = ({ result, onNewReading }: Props) => {
   const { mode } = useApp();
+  const { question } = useQuestion();
   const strings = i18n.getUiStrings();
   const showVibe = mode === 'vibe';
 
-  // Get data for original gua
   const originalGuaData = i18n.getGuaData(result.originalGua.id);
-
-  // Get data for changed gua (if it exists)
   const changedGuaData = result.changedGua
     ? i18n.getGuaData(result.changedGua.id)
     : null;
 
-  // For vibe mode: show the final result (changed gua if exists, otherwise original)
+  // Vibe mode reads the final hexagram: the changed one if lines moved
   const finalGuaData = changedGuaData || originalGuaData;
   const finalBinary = result.changedBinary || result.originalBinary;
 
   return (
     <div className={styles.resultContainer}>
-      {/* Header with controls */}
-      <div className={styles.resultControls}>
-        <div className={styles.themeToggle}>
-          <button
-            onClick={() =>
-              setColorTheme(colorTheme === 'pink' ? 'blue' : 'pink')
-            }
-            className={styles.controlButton}
-            aria-label="Toggle color theme"
-          >
-            {colorTheme === 'pink' ? '💙' : '💗'}
-          </button>
-        </div>
+      <div className={styles.controls}>
         <ModeToggle />
+        <CopyButton result={result} />
       </div>
 
-      {/* Copy button */}
-      <CopyButton result={result} />
+      {question.trim() && (
+        <figure className={styles.asked}>
+          <figcaption className={styles.askedLabel}>{strings.asked}</figcaption>
+          <blockquote className={styles.askedText}>{question}</blockquote>
+        </figure>
+      )}
 
-      {/* Main Results */}
       {showVibe ? (
-        // VIBE MODE: Show only the final result
-        <div className={`${styles.guaResults} ${styles.singleResult}`}>
-          <GuaCard
-            guaData={finalGuaData}
-            binary={finalBinary}
-            title={strings.yourVibeToday}
-            showVibeText={true}
-            colorTheme={colorTheme}
-          />
-        </div>
+        <VibeCard
+          name={finalGuaData.name}
+          id={finalGuaData.id}
+          binary={finalBinary}
+          title={strings.yourVibeToday}
+        />
       ) : (
-        // STANDARD MODE: Show the progression
-        <div>
-          <div className={styles.guaResults}>
-            <GuaCard
+        <div className={styles.classic}>
+          <HexagramPlate
+            figures={[
+              {
+                binary: result.originalBinary,
+                name: originalGuaData.name,
+                id: originalGuaData.id,
+                label: strings.currentSituation,
+              },
+              ...(changedGuaData && result.changedBinary
+                ? [
+                    {
+                      binary: result.changedBinary,
+                      name: changedGuaData.name,
+                      id: changedGuaData.id,
+                      label: strings.futureDirection,
+                      changing: result.changingPositions,
+                    },
+                  ]
+                : []),
+            ]}
+          />
+          <YaoChangeInfo result={result} />
+          <div className={styles.readings}>
+            <TraditionalCard
               guaData={originalGuaData}
-              binary={result.originalBinary}
               title={strings.currentSituation}
-              colorTheme={colorTheme}
             />
-
             {changedGuaData && (
-              <GuaCard
+              <TraditionalCard
                 guaData={changedGuaData}
-                binary={result.changedBinary}
                 title={strings.futureDirection}
-                colorTheme={colorTheme}
               />
             )}
           </div>
-          <YaoChangeInfo result={result} />
         </div>
       )}
+
+      <button onClick={onNewReading} className={styles.newReading}>
+        {strings.newReading}
+      </button>
     </div>
   );
 };

@@ -11,12 +11,14 @@ export const ModeToggle = () => {
     <div className={styles.vibeToggle}>
       <button
         onClick={setVibeMode}
+        aria-pressed={showVibe}
         className={`${styles.toggleButton} ${showVibe ? styles.active : ''}`}
       >
         {strings.vibeMode}
       </button>
       <button
         onClick={setTraditionalMode}
+        aria-pressed={!showVibe}
         className={`${styles.toggleButton} ${!showVibe ? styles.active : ''}`}
       >
         {strings.traditionalMode}

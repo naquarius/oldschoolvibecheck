@@ -3,7 +3,12 @@
 import { usePersistentState } from '@/lib/hooks/usePersistentState';
 import { i18n } from '@/lib/i18n';
 import { Language } from '@/lib/i18n/types';
-import React, { createContext, ReactNode, useContext } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+} from 'react';
 
 type Mode = 'vibe' | 'traditional';
 
@@ -35,6 +40,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   if (i18n.getLanguage() !== language) {
     i18n.setLanguage(language);
   }
+
+  // Tell the browser which language is on screen (line breaking, CJK glyph choice)
+  useEffect(() => {
+    document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+  }, [language]);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);

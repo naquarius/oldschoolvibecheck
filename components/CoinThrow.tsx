@@ -1,75 +1,57 @@
 'use client';
 
+import { Coin } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
 import { useEffect, useState } from 'react';
+import { CashCoin } from './CashCoin';
 import styles from './CoinThrow.module.css';
 
-export const CoinThrow = () => {
-  const [coins, setCoins] = useState<Array<'heads' | 'tails' | 'spinning'>>([
-    'spinning',
-    'spinning',
-    'spinning',
-  ]);
+interface CoinThrowProps {
+  /** The real coins of the reading's final (top line) throw. */
+  finalCoins: Coin[];
+}
+
+const LAND_AFTER_MS = 2600;
+
+export const CoinThrow = ({ finalCoins }: CoinThrowProps) => {
+  const [landed, setLanded] = useState(false);
   const strings = i18n.getUiStrings();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const results: Array<'heads' | 'tails'> = [];
-      for (let i = 0; i < 3; i++) {
-        results.push(Math.random() > 0.5 ? 'heads' : 'tails');
-      }
-      setCoins(results);
-    }, 3000);
-
+    const timer = setTimeout(() => setLanded(true), LAND_AFTER_MS);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className={styles.coinThrowContainer}>
-      <div className={styles.throwStatus}>
-        <div className={styles.statusIndicator}>
-          <div className={styles.pulseDot}></div>
-          <span className={styles.statusText}>
-            {coins.every((coin) => coin !== 'spinning')
-              ? strings.readingComplete
-              : strings.channelingEnergy}
-          </span>
-        </div>
-      </div>
-
       <div className={styles.coinsGrid}>
-        {coins.map((face, index) => (
+        {finalCoins.map((coin, index) => (
           <div key={index} className={styles.coinItem}>
             <div
-              className={`${styles.modernCoin} ${face} ${
-                face === 'spinning' ? styles.coinSpinning : styles.coinSettled
+              className={`${styles.modernCoin} ${
+                landed ? styles.coinSettled : styles.coinSpinning
               }`}
             >
-              <div className={styles.coinInner}>
-                {face === 'heads' && (
-                  <span className={styles.coinSymbol}>●</span>
-                )}
-                {face === 'tails' && (
-                  <span className={styles.coinSymbol}>○</span>
-                )}
-                {face === 'spinning' && <div className={styles.spinner}></div>}
-              </div>
+              <CashCoin
+                className={styles.coinArt}
+                face={landed ? coin.face : 'heads'}
+              />
             </div>
-            <div className={styles.coinLabelModern}>
-              {strings.coin} {index + 1}
-            </div>
+            <p className={styles.coinValue} aria-live="polite">
+              {landed && strings[coin.face]}
+            </p>
           </div>
         ))}
       </div>
 
       <div className={styles.throwFooter}>
         <div className={styles.energyBar}>
-          <div className={styles.energyFill}></div>
+          <div
+            className={`${styles.energyFill} ${landed ? styles.energyFull : ''}`}
+          ></div>
         </div>
         <p className={styles.throwMessage}>
-          {coins.every((coin) => coin !== 'spinning')
-            ? strings.cosmicReadingReady
-            : strings.universeAligning}
+          {landed ? strings.cosmicReadingReady : strings.universeAligning}
         </p>
       </div>
     </div>

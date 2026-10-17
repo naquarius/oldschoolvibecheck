@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/shadow-options.html"
+        ],
+        "createdAt": "2026-10-17T00:19:18.022Z",
+        "reason": "Claude: comparison mock; the white frames are presentation panels around app elements, not product UI"
+      }
+    ]
+  }
+}

@@ -6,51 +6,6 @@
   animation: gentle-fade-in 0.8s ease-out;
 }
 
-.throwStatus {
-  margin-bottom: 3.5rem;
-}
-
-.statusIndicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.25rem 2rem;
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.pulseDot {
-  width: 10px;
-  height: 10px;
-  background: var(--primary);
-  border-radius: 50%;
-  animation: gentle-pulse 2.5s ease-in-out infinite;
-}
-
-@keyframes gentle-pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.1);
-    box-shadow: 0 0 0 8px rgba(139, 92, 246, 0);
-  }
-}
-
-.statusText {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
 /* Coins Grid */
 .coinsGrid {
   display: flex;
@@ -71,89 +26,30 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 16px 48px var(--crystal-shadow),
-    0 6px 20px rgba(139, 92, 246, 0.1), inset 0 2px 0 rgba(255, 255, 255, 0.3);
+  /* Warm bronze-terracotta cast shadow, like gold under warm light */
+  box-shadow: 0 10px 22px rgba(154, 74, 50, 0.28),
+    0 3px 6px rgba(122, 90, 30, 0.22);
 }
 
-.modernCoin::before {
-  content: '';
-  position: absolute;
-  top: 15%;
-  left: 15%;
-  width: 70%;
-  height: 70%;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent);
-  pointer-events: none;
-}
-
-.coinInner {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.coinArt {
+  display: block;
   width: 100%;
   height: 100%;
 }
 
-.coinSymbol {
-  font-size: 2.5rem;
-  color: white;
-  font-weight: bold;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.spinner {
-  width: 32px;
-  height: 32px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-top: 3px solid white;
-  border-radius: 50%;
-  animation: gentle-spin 1.2s linear infinite;
-}
-
-@keyframes gentle-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /* Coin Animations */
 .coinSpinning {
-  animation: crystal-coin-flip 2.5s ease-in-out infinite;
+  /* Flat squash-and-stretch flip: avoids 3D-layer seams across the coin */
+  animation: coin-flip 0.7s ease-in-out infinite;
 }
 
-@keyframes crystal-coin-flip {
-  0% {
-    transform: rotateY(0deg) scale(1);
-    box-shadow: 0 16px 48px var(--crystal-shadow);
-  }
-  25% {
-    transform: rotateY(90deg) scale(1.05);
-    box-shadow: 0 20px 60px rgba(6, 182, 212, 0.15);
+@keyframes coin-flip {
+  0%,
+  100% {
+    transform: scaleX(1) translateY(0);
   }
   50% {
-    transform: rotateY(180deg) scale(1.1);
-    box-shadow: 0 24px 72px rgba(244, 114, 182, 0.15);
-  }
-  75% {
-    transform: rotateY(270deg) scale(1.05);
-    box-shadow: 0 20px 60px rgba(6, 182, 212, 0.15);
-  }
-  100% {
-    transform: rotateY(360deg) scale(1);
-    box-shadow: 0 16px 48px var(--crystal-shadow);
+    transform: scaleX(0.08) translateY(-6px);
   }
 }
 
@@ -176,12 +72,11 @@
   }
 }
 
-.coinLabelModern {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.coinValue {
+  min-height: 1.5em;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ink);
 }
 
 /* Throw Footer */
@@ -202,14 +97,20 @@
 
 .energyFill {
   height: 100%;
+  /* Three earth tones: sage, gold, terracotta */
   background: linear-gradient(
     90deg,
-    var(--primary),
-    var(--secondary),
-    var(--accent)
+    var(--stone-deep),
+    var(--gold) 55%,
+    var(--terra)
   );
   border-radius: 4px;
   animation: crystal-energy-flow 3.5s ease-in-out infinite;
+}
+
+.energyFull {
+  width: 100%;
+  animation: none;
 }
 
 @keyframes crystal-energy-flow {
@@ -235,29 +136,16 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .coinsGrid {
-    gap: 2rem;
+    gap: 1.25rem;
+    flex-wrap: nowrap;
   }
 
   .modernCoin {
-    width: 85px;
-    height: 85px;
-  }
-
-  .coinSymbol {
-    font-size: 2.25rem;
-  }
-
-  .spinner {
-    width: 28px;
-    height: 28px;
+    width: clamp(72px, 23vw, 88px);
+    height: clamp(72px, 23vw, 88px);
   }
 
   .coinThrowContainer {
-    padding: 2rem;
-  }
-
-  .statusIndicator {
-    padding: 1rem 1.5rem;
+    padding: 2rem 0;
   }
 }
-

@@ -60,8 +60,8 @@ export default function Document() {
         <meta name="twitter:image" content="/og-image.png" />
 
         {/* Theme color */}
-        <meta name="theme-color" content="#8b5cf6" />
-        <meta name="msapplication-TileColor" content="#8b5cf6" />
+        <meta name="theme-color" content="#f4f5f1" />
+        <meta name="msapplication-TileColor" content="#f4f5f1" />
       </Head>
       <body>
         <Main />
