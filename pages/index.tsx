@@ -18,6 +18,9 @@ export default function Home() {
   const [result, setResult] = useState<GuaResultType | null>(null);
   const [isThrowing, setIsThrowing] = useState(false);
   const [isLaunching, setIsLaunching] = useState(false);
+  const [pendingResult, setPendingResult] = useState<GuaResultType | null>(
+    null
+  );
   const { language, setLanguage } = useApp();
   const { question, setQuestion } = useQuestion();
   const strings = i18n.getUiStrings();
@@ -27,12 +30,15 @@ export default function Home() {
     setIsLaunching(true);
     await new Promise((resolve) => setTimeout(resolve, 450));
     setIsLaunching(false);
+    // Cast up front so the toss can land on the real final throw
+    const guaResult = qigua();
+    setPendingResult(guaResult);
     setIsThrowing(true);
     setTimeout(() => {
-      const guaResult = qigua();
       setResult(guaResult);
+      setPendingResult(null);
       setIsThrowing(false);
-    }, 3000);
+    }, 3800);
   };
 
   const handleNewReading = () => {
@@ -132,21 +138,6 @@ export default function Home() {
               </>
             )}
 
-            {(result || isThrowing) && (
-              <div className="compact-header">
-                <div className="compact-title">
-                  <Sparkle className="logo-icon-small" size={14} />
-                  <span>vibe check</span>
-                </div>
-                <button
-                  onClick={handleNewReading}
-                  className="new-reading-button"
-                  disabled={isThrowing}
-                >
-                  {isThrowing ? strings.reading : strings.newReading}
-                </button>
-              </div>
-            )}
           </div>
 
           {/* Throwing Section */}
@@ -154,18 +145,19 @@ export default function Home() {
             <div className="throwing-section">
               <div className="throwing-header">
                 <h3 className="throwing-title">{strings.readingYourEnergy}</h3>
-                <div className="progress-bar">
-                  <div className="progress-fill"></div>
-                </div>
               </div>
-              <CoinThrow />
+              {pendingResult && (
+                <CoinThrow
+                  finalCoins={pendingResult.yaos[5].throwResult.coins}
+                />
+              )}
             </div>
           )}
 
           {/* Result Section */}
           {result && !isThrowing && (
             <div className="result-section">
-              <GuaResult result={result} />
+              <GuaResult result={result} onNewReading={handleNewReading} />
             </div>
           )}
         </main>

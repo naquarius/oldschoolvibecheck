@@ -6,10 +6,15 @@
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  font-family: var(--font-sans), 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', system-ui, sans-serif;
+  font-family: var(--font-sans), var(--font-cjk), 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', system-ui, sans-serif;
   background: var(--paper);
   color: var(--ink);
+}
+
+/* Lowercase voice in both languages (Latin letters inside 中文 strings too) */
+:lang(zh) .app-container {
+  text-transform: lowercase;
 }
 
 :where(.app-container) button,
@@ -104,9 +109,10 @@
   list-style: none;
 }
 
-.stone-facts li + li::before {
+.stone-facts li:not(:last-child)::after {
+  /* Separator trails its item, so a wrapped line never starts with a dot */
   content: '·';
-  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .stone-sparkle {
@@ -120,6 +126,11 @@
   top: -18px;
   right: 22px;
   --delay: 0.15s;
+}
+
+.plate-sparkle {
+  right: auto;
+  left: 22px;
 }
 
 .stone-sparkle-small {
@@ -164,6 +175,14 @@
   line-height: 0.95;
   letter-spacing: -0.035em;
   text-wrap: balance;
+  /* Reserve two lines so EN (2 lines) and 中文 (1 line) don't shift the page */
+  min-height: 1.9em;
+}
+
+/* 中文 headline: sized so 今天什么vibe？ stays on one line on small phones */
+:lang(zh) .hero-title {
+  font-size: clamp(2.25rem, 10vw, 4.75rem);
+  min-height: calc(2 * 0.95 * clamp(2.75rem, 12vw, 4.75rem));
 }
 
 .hero-subtitle {
@@ -243,6 +262,8 @@
 
 .cta-sparkle {
   color: var(--gold);
+  /* The one warm halo in the system, on the primary action only */
+  filter: drop-shadow(0 0 5px rgba(201, 162, 58, 0.8));
   transition: transform 0.5s var(--ease-out);
 }
 
@@ -263,57 +284,9 @@
   cursor: progress;
 }
 
-/* Compact header for throwing / result states */
+/* Throwing / result states */
 .welcome-compact {
-  margin-bottom: 2rem;
-}
-
-.compact-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 16px;
-  padding: 14px 16px;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  animation: slide-in-from-top 0.6s var(--ease-out);
-}
-
-.compact-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.125rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.logo-icon-small {
-  color: var(--gold);
-}
-
-.new-reading-button {
-  min-height: 44px;
-  padding: 0 1.25rem;
-  background: var(--ink);
-  color: var(--paper);
-  border: 0;
-  border-radius: 999px;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s var(--ease-out);
-}
-
-.new-reading-button:hover:not(:disabled) {
-  background: #323832;
-}
-
-.new-reading-button:disabled {
-  opacity: 0.55;
-  cursor: progress;
+  margin-bottom: 1.5rem;
 }
 
 /* Throwing Section */
@@ -331,22 +304,6 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 1.25rem;
-}
-
-.progress-bar {
-  width: 240px;
-  height: 4px;
-  margin: 0 auto;
-  background: var(--line);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: var(--stone-deep);
-  border-radius: 2px;
-  animation: gentle-progress 3s ease-in-out infinite;
 }
 
 /* Result Section */
@@ -385,6 +342,11 @@
     font-size: 6rem;
   }
 
+  :lang(zh) .hero-title {
+    font-size: 5rem;
+    min-height: calc(2 * 0.95 * 6rem);
+  }
+
   .cta-button {
     width: auto;
     min-width: 280px;
@@ -394,7 +356,6 @@
 @media (prefers-reduced-motion: reduce) {
   .stone-sparkle,
   .welcome-launching .stone-sparkle,
-  .compact-header,
   .throwing-section,
   .result-section {
     animation: none;

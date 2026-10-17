@@ -1,0 +1,154 @@
+.plate {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+  padding: 24px 20px 20px;
+  background: var(--stone);
+  border-radius: 4px;
+  color: var(--moss);
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+/* One hexagram: drawing fills the slab on the right, caption bottom-left */
+.single .figure {
+  flex: 1;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.single .drawing {
+  width: clamp(120px, 38vw, 176px);
+}
+
+.drawing {
+  display: block;
+  height: auto;
+}
+
+/* Two hexagrams on phones: stacked, original on top, a down arrow between */
+.pair {
+  --drawing-width: 120px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pair .figure {
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  /* Drawing height (88/102 of its width) so names never change the plate */
+  min-height: calc(var(--drawing-width) * 0.8627);
+}
+
+.pair .drawing {
+  flex-shrink: 0;
+  width: var(--drawing-width);
+}
+
+.arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.pair .arrow {
+  /* Centred under the drawings, pointing down */
+  align-self: flex-end;
+  margin-right: calc((var(--drawing-width) - 24px) / 2);
+  transform: rotate(90deg);
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pair .caption {
+  flex: 1;
+  min-width: 0;
+}
+
+.pair .number {
+  white-space: nowrap;
+}
+
+.name {
+  /* Reserve three lines: long English names wrap, 中文 names don't */
+  min-height: 3.3em;
+  font-size: clamp(1rem, 4.6vw, 1.125rem);
+}
+
+.pair .number {
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.name {
+  font-size: 1.375rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.number {
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-weight: 700;
+}
+
+/* Wider screens: side by side, each figure as wide as its drawing */
+@media (min-width: 769px) {
+  .pair {
+    --figure-width: 120px;
+    display: grid;
+    grid-template-columns: var(--figure-width) 1fr var(--figure-width);
+    align-items: start;
+    gap: 1.25rem;
+  }
+
+  .pair .figure {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 14px;
+    width: var(--figure-width);
+    min-height: 0;
+  }
+
+  .pair .drawing {
+    width: 100%;
+  }
+
+  .pair .arrow {
+    align-self: start;
+    justify-self: center;
+    margin-right: 0;
+    /* Centred on the drawing: hexagram height is 88/102 of its width */
+    margin-top: calc(var(--figure-width) * 0.4314 - 12px);
+    transform: none;
+  }
+
+  .pair .name {
+    /* Reserve three lines: long English names wrap, 中文 names don't */
+    min-height: 3.3em;
+    font-size: 1.125rem;
+  }
+
+  .pair .number {
+    font-size: 0.8125rem;
+  }
+}

@@ -3,9 +3,10 @@
 }
 
 .languageButton {
+  /* Fixed width so EN / 中文 swap without nudging the header */
   min-height: 40px;
-  min-width: 44px;
-  padding: 0 0.875rem;
+  width: 3.5rem;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: transparent;

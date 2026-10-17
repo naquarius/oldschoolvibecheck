@@ -47,8 +47,27 @@ export const CopyButton = ({ result }: CopyButtonProps) => {
   return (
     <div className={styles.copyResultContainer}>
       <button onClick={handleCopyResult} className={styles.copyButton}>
-        <span className={styles.copyIcon}>{copySuccess ? '✓' : '📋'}</span>
-        <span className={styles.copyText}>
+        <svg
+          className={styles.copyIcon}
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          aria-hidden="true"
+          focusable="false"
+        >
+          {copySuccess ? (
+            <path
+              d="M9.5 16.2 4.8 11.5l-1.6 1.6 6.3 6.3L21 7.9l-1.6-1.6z"
+              fill="currentColor"
+            />
+          ) : (
+            <path
+              d="M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM5 7h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v10h10V9z"
+              fill="currentColor"
+            />
+          )}
+        </svg>
+        <span className={styles.copyText} role="status" aria-live="polite">
           {copySuccess ? strings.copied : strings.copyResult}
         </span>
       </button>

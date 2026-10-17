@@ -5,6 +5,8 @@ export const uiStringsZh: UiStrings = {
   readingComplete: '解读完成 ✨',
   channelingEnergy: '正在为你下载宇宙答案... ⬇️',
   coin: '铜钱',
+  heads: '正面',
+  tails: '反面',
   reading: '解卦ing',
   newReading: '再来一卦',
   readingYourEnergy: '嘘，别动，正在感应你的磁场... 🔮',

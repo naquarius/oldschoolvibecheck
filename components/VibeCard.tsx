@@ -1,6 +1,5 @@
 import { i18n } from '@/lib/i18n';
-import cardStyles from './GuaCard.module.css';
-import { GuaHeader } from './GuaHeader';
+import { HexagramPlate } from './HexagramPlate';
 import styles from './VibeCard.module.css';
 
 interface VibeCardProps {
@@ -8,7 +7,6 @@ interface VibeCardProps {
   id: number;
   binary: string;
   title: string;
-  colorTheme: 'pink' | 'blue';
 }
 
 export const VibeCard = ({
@@ -16,7 +14,6 @@ export const VibeCard = ({
   id,
   binary,
   title,
-  colorTheme,
 }: VibeCardProps) => {
   const t = i18n.getUiStrings();
   const vibeInfo = i18n.getVibes(id);
@@ -24,52 +21,24 @@ export const VibeCard = ({
   if (!vibeInfo) return null;
 
   return (
-    <div className={cardStyles.guaCard}>
-      <GuaHeader
-        name={name}
-        id={`${id}`}
-        title={title}
-        binary={binary}
-        colorTheme={colorTheme}
-      />
-      <div className={`${styles.guaReading} ${styles.vibeMode}`}>
-        <div className={styles.vibeContent}>
-          {/* VIBE */}
-          <div className={styles.vibeSection}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionEmoji}>🎯</span>
-              <h5 className={styles.sectionTitle}>{t.theVibe.toUpperCase()}</h5>
-            </div>
-            <p className={`${styles.readingText} ${styles.vibeText}`}>
-              {vibeInfo.vibe}
-            </p>
-          </div>
+    <article className={styles.vibeCard}>
+      <h2 className={styles.vibeLine}>
+        <span className="visually-hidden">{title}: </span>
+        {vibeInfo.vibe}
+      </h2>
 
-          {/* REAL TALK - The situation explained */}
-          <div className={styles.vibeSection}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionEmoji}>💬</span>
-              <h5 className={styles.sectionTitle}>
-                {t.realTalk.toUpperCase()}
-              </h5>
-            </div>
-            <p className={`${styles.readingText} ${styles.vibeText}`}>
-              {vibeInfo.realTalk}
-            </p>
-          </div>
+      <HexagramPlate figures={[{ binary, name, id }]} sparkle />
 
-          {/* THE MOVE - What to do */}
-          <div className={styles.vibeSection}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionEmoji}>✨</span>
-              <h5 className={styles.sectionTitle}>{t.theMove.toUpperCase()}</h5>
-            </div>
-            <p className={`${styles.readingText} ${styles.vibeText}`}>
-              {vibeInfo.theMove}
-            </p>
-          </div>
-        </div>
+      <div className={styles.sections}>
+        <section>
+          <h3 className={styles.label}>{t.realTalk}</h3>
+          <p className={styles.text}>{vibeInfo.realTalk}</p>
+        </section>
+        <section>
+          <h3 className={styles.label}>{t.theMove}</h3>
+          <p className={styles.text}>{vibeInfo.theMove}</p>
+        </section>
       </div>
-    </div>
+    </article>
   );
 };
