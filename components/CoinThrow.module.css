@@ -87,12 +87,11 @@
 .energyBar {
   width: 260px;
   height: 8px;
-  background: var(--bg-glass);
+  background: #fbfbf8;
   border-radius: 4px;
   margin: 0 auto 2rem;
   overflow: hidden;
-  border: 1px solid var(--border-light);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(30, 33, 30, 0.08);
 }
 
 .energyFill {
@@ -126,8 +125,8 @@
 }
 
 .throwMessage {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
+  font-size: 1.0625rem;
+  color: var(--ink-soft);
   margin: 0;
   font-weight: 500;
   line-height: 1.5;

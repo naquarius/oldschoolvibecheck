@@ -30,7 +30,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   // Language state
   const [language, setLanguage] = usePersistentState<Language>(
     'vibecheck.language',
-    () => i18n.getLanguage()
+    'en'
   );
 
   // Mode state
