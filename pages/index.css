@@ -118,7 +118,10 @@
 .stone-sparkle {
   position: absolute;
   color: var(--gold);
-  animation: sparkle-in 0.9s var(--ease-out) both;
+  /* backwards, not both: once the twinkle ends the sparkle drops its
+     transform, so the browser stops compositing it as its own layer
+     (a held layer showed a faint white seam on the stone block) */
+  animation: sparkle-in 0.9s var(--ease-out) backwards;
   animation-delay: var(--delay, 0s);
 }
 
@@ -289,21 +292,39 @@
   margin-bottom: 1.5rem;
 }
 
-/* Throwing Section */
-.throwing-section {
-  text-align: center;
-  animation: slide-in-from-bottom 0.8s var(--ease-out);
+/* Casting: a fresh reading draws its hexagram, then the reading arrives */
+.is-casting .cast-line {
+  transform-box: fill-box;
+  animation: cast-line 0.5s var(--ease-out) both;
 }
 
-.throwing-header {
-  margin-bottom: 2.5rem;
+@keyframes cast-line {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.throwing-title {
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.25rem;
+.is-casting .cast-reveal {
+  animation: cast-reveal 0.6s var(--ease-out) 2.5s both;
+}
+
+@keyframes cast-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-casting .cast-line,
+  .is-casting .cast-reveal {
+    animation: none;
+  }
 }
 
 /* Result Section */
@@ -356,7 +377,6 @@
 @media (prefers-reduced-motion: reduce) {
   .stone-sparkle,
   .welcome-launching .stone-sparkle,
-  .throwing-section,
   .result-section {
     animation: none;
   }

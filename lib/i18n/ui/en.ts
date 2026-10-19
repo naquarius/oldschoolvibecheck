@@ -60,6 +60,16 @@ export const uiStringsEn: UiStrings = {
   // Copy Result
   copyResult: 'copy result',
   copied: 'copied!',
+
+  // Cast record
+  howItWasCast: 'how it was cast',
+  sixThrows: '6 throws',
+  lineN: 'line {n}',
+  oldYin: 'old yin',
+  youngYang: 'young yang',
+  youngYin: 'young yin',
+  oldYang: 'old yang',
+  changes: 'changes',
   asked: 'I asked',
   ogResult: 'original hexagram',
   changedResult: 'changed hexagram',

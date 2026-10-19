@@ -16,9 +16,15 @@ interface HexagramPlateProps {
   figures: PlateFigure[];
   /** Adds the stone block's edge-breaking sparkle. */
   sparkle?: boolean;
+  /** The reading was just thrown: draw the first hexagram line by line. */
+  casting?: boolean;
 }
 
-export const HexagramPlate = ({ figures, sparkle }: HexagramPlateProps) => (
+export const HexagramPlate = ({
+  figures,
+  sparkle,
+  casting = false,
+}: HexagramPlateProps) => (
   <div
     className={`${styles.plate} ${
       figures.length > 1 ? styles.pair : styles.single
@@ -31,7 +37,7 @@ export const HexagramPlate = ({ figures, sparkle }: HexagramPlateProps) => (
       <Fragment key={`${figure.id}-${index}`}>
         {index > 0 && (
           <svg
-            className={styles.arrow}
+            className={`${styles.arrow} cast-reveal`}
             viewBox="0 0 24 24"
             aria-hidden="true"
             focusable="false"
@@ -42,13 +48,16 @@ export const HexagramPlate = ({ figures, sparkle }: HexagramPlateProps) => (
             />
           </svg>
         )}
-        <figure className={styles.figure}>
+        <figure
+          className={`${styles.figure} ${index > 0 ? 'cast-reveal' : ''}`}
+        >
           <Hexagram
             className={styles.drawing}
             binary={figure.binary}
             changing={figure.changing}
+            animate={casting && index === 0}
           />
-          <figcaption className={styles.caption}>
+          <figcaption className={`${styles.caption} cast-reveal`}>
             <span className={styles.name}>{figure.name}</span>
             <span className={styles.number}>
               #{figure.id}
@@ -63,5 +72,6 @@ export const HexagramPlate = ({ figures, sparkle }: HexagramPlateProps) => (
         </figure>
       </Fragment>
     ))}
+    {casting && <span className={styles.castBar} aria-hidden="true" />}
   </div>
 );

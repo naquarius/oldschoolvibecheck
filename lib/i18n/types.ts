@@ -72,6 +72,16 @@ export type UiStrings = {
   // Copy Result
   copyResult: string;
   copied: string;
+
+  // Cast record
+  howItWasCast: string;
+  sixThrows: string;
+  lineN: string;
+  oldYin: string;
+  youngYang: string;
+  youngYin: string;
+  oldYang: string;
+  changes: string;
   asked: string;
   ogResult: string;
   changedResult: string;

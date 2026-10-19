@@ -3,8 +3,13 @@ interface HexagramProps {
   binary: string;
   /** 1-based positions (bottom = 1) of changing lines, drawn in gold with a bronze edge. */
   changing?: number[];
+  /** Draw the lines one by one, bottom up, as they are cast. */
+  animate?: boolean;
   className?: string;
 }
+
+/** Seconds between lines when casting; the last line lands at 5 × this + 0.5s. */
+export const CAST_LINE_STEP = 0.38;
 
 const LINE_HEIGHT = 6;
 const LINE_GAP = 10;
@@ -13,7 +18,12 @@ const BREAK = 16;
 const PAD = 1;
 
 // Six soft lines drawn bottom-up; changing lines take the coins' gold and bronze.
-export const Hexagram = ({ binary, changing = [], className }: HexagramProps) => {
+export const Hexagram = ({
+  binary,
+  changing = [],
+  animate = false,
+  className,
+}: HexagramProps) => {
   const lines = binary.split('');
   const height = lines.length * LINE_HEIGHT + (lines.length - 1) * LINE_GAP;
 
@@ -43,7 +53,15 @@ export const Hexagram = ({ binary, changing = [], className }: HexagramProps) =>
         const half = (LINE_WIDTH - BREAK) / 2;
 
         return (
-          <g key={index}>
+          <g
+            key={index}
+            className={animate ? 'cast-line' : undefined}
+            style={
+              animate
+                ? { animationDelay: `${index * CAST_LINE_STEP}s` }
+                : undefined
+            }
+          >
             {bit === '1' ? (
               segment(0, LINE_WIDTH)
             ) : (

@@ -4,13 +4,18 @@ import { useApp } from '@/lib/context/AppContext';
 import { useQuestion } from '@/lib/context/QuestionContext';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
+import { useEffect, useState } from 'react';
 import { CopyButton } from './AppControls/CopyButton';
+import { CastRecord } from './CastRecord';
 import { ModeToggle } from './AppControls/ModeToggle';
 import styles from './GuaResult.module.css';
 import { HexagramPlate } from './HexagramPlate';
 import { TraditionalCard } from './TraditionalCard';
 import { VibeCard } from './VibeCard';
 import { YaoChangeInfo } from './YaoChangeInfo';
+
+// Lines finish drawing at ~2.4s and the reading fades in at 2.5s
+const CAST_DURATION_MS = 3300;
 
 interface Props {
   result: GuaResultType;
@@ -22,6 +27,13 @@ export const GuaResult = ({ result, onNewReading }: Props) => {
   const { question } = useQuestion();
   const strings = i18n.getUiStrings();
   const showVibe = mode === 'vibe';
+  // A fresh reading casts itself once; switching modes afterwards doesn't replay it
+  const [casting, setCasting] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setCasting(false), CAST_DURATION_MS);
+    return () => clearTimeout(timer);
+  }, []);
 
   const originalGuaData = i18n.getGuaData(result.originalGua.id);
   const changedGuaData = result.changedGua
@@ -33,7 +45,9 @@ export const GuaResult = ({ result, onNewReading }: Props) => {
   const finalBinary = result.changedBinary || result.originalBinary;
 
   return (
-    <div className={styles.resultContainer}>
+    <div
+      className={`${styles.resultContainer} ${casting ? 'is-casting' : ''}`}
+    >
       <div className={styles.controls}>
         <ModeToggle />
         <CopyButton result={result} />
@@ -52,7 +66,10 @@ export const GuaResult = ({ result, onNewReading }: Props) => {
           id={finalGuaData.id}
           binary={finalBinary}
           title={strings.yourVibeToday}
-        />
+          casting={casting}
+        >
+          <CastRecord yaos={result.yaos} />
+        </VibeCard>
       ) : (
         <div className={styles.classic}>
           <HexagramPlate
@@ -75,9 +92,13 @@ export const GuaResult = ({ result, onNewReading }: Props) => {
                   ]
                 : []),
             ]}
+            casting={casting}
           />
-          <YaoChangeInfo result={result} />
-          <div className={styles.readings}>
+          <div className="cast-reveal">
+            <CastRecord yaos={result.yaos} />
+            <YaoChangeInfo result={result} />
+          </div>
+          <div className={`${styles.readings} cast-reveal`}>
             <TraditionalCard
               guaData={originalGuaData}
               title={strings.currentSituation}
@@ -92,7 +113,10 @@ export const GuaResult = ({ result, onNewReading }: Props) => {
         </div>
       )}
 
-      <button onClick={onNewReading} className={styles.newReading}>
+      <button
+        onClick={onNewReading}
+        className={`${styles.newReading} cast-reveal`}
+      >
         {strings.newReading}
       </button>
     </div>
