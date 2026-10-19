@@ -1,5 +1,6 @@
 .plate {
   position: relative;
+  overflow: visible;
   display: flex;
   gap: 1.25rem;
   padding: 24px 20px 20px;
@@ -139,5 +140,37 @@
 
   .pair .number {
     font-size: 0.8125rem;
+  }
+}
+
+/* While casting: the sage → gold → terracotta bar fills along the bottom edge */
+.castBar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  border-radius: 0 0 0 4px;
+  background: linear-gradient(90deg, var(--stone-deep), var(--gold) 55%, var(--terra));
+  animation: cast-bar 2.5s var(--ease-out) both;
+}
+
+@keyframes cast-bar {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  85% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .castBar {
+    display: none;
   }
 }

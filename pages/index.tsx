@@ -2,7 +2,6 @@
 
 import { BobaButton } from '@/components/AppControls/BobaButton';
 import { LanguageToggle } from '@/components/AppControls/LanguageToggle';
-import { CoinThrow } from '@/components/CoinThrow';
 import { GuaResult } from '@/components/GuaResult';
 import { Sparkle } from '@/components/Sparkle';
 import { SparkleText } from '@/components/SparkleText';
@@ -16,11 +15,7 @@ import { useState } from 'react';
 
 export default function Home() {
   const [result, setResult] = useState<GuaResultType | null>(null);
-  const [isThrowing, setIsThrowing] = useState(false);
   const [isLaunching, setIsLaunching] = useState(false);
-  const [pendingResult, setPendingResult] = useState<GuaResultType | null>(
-    null
-  );
   const { language, setLanguage } = useApp();
   const { question, setQuestion } = useQuestion();
   const strings = i18n.getUiStrings();
@@ -30,20 +25,12 @@ export default function Home() {
     setIsLaunching(true);
     await new Promise((resolve) => setTimeout(resolve, 450));
     setIsLaunching(false);
-    // Cast up front so the toss can land on the real final throw
-    const guaResult = qigua();
-    setPendingResult(guaResult);
-    setIsThrowing(true);
-    setTimeout(() => {
-      setResult(guaResult);
-      setPendingResult(null);
-      setIsThrowing(false);
-    }, 3800);
+    // Straight to the reading: the hexagram casts itself there
+    setResult(qigua());
   };
 
   const handleNewReading = () => {
     setResult(null);
-    setIsThrowing(false);
     setQuestion('');
   };
 
@@ -55,11 +42,6 @@ export default function Home() {
           ? result.originalGua.name.zh
           : result.originalGua.name.en;
       return `${guaName} - Vibe Check`;
-    }
-    if (isThrowing) {
-      return language === 'zh'
-        ? '正在解读... - Vibe Check'
-        : 'Reading your energy... - Vibe Check';
     }
     return language === 'zh'
       ? 'Vibe Check - 古老智慧，现代氛围'
@@ -91,10 +73,10 @@ export default function Home() {
           {/* Welcome Section - Always visible but conditionally styled */}
           <div
             className={`welcome-section ${
-              result || isThrowing ? 'welcome-compact' : ''
+              result ? 'welcome-compact' : ''
             } ${isLaunching ? 'welcome-launching' : ''}`}
           >
-            {!result && !isThrowing && (
+            {!result && (
               <>
                 <div className="stone-block">
                   <ul className="stone-facts">
@@ -140,22 +122,8 @@ export default function Home() {
 
           </div>
 
-          {/* Throwing Section */}
-          {isThrowing && (
-            <div className="throwing-section">
-              <div className="throwing-header">
-                <h3 className="throwing-title">{strings.readingYourEnergy}</h3>
-              </div>
-              {pendingResult && (
-                <CoinThrow
-                  finalCoins={pendingResult.yaos[5].throwResult.coins}
-                />
-              )}
-            </div>
-          )}
-
           {/* Result Section */}
-          {result && !isThrowing && (
+          {result && (
             <div className="result-section">
               <GuaResult result={result} onNewReading={handleNewReading} />
             </div>

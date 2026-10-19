@@ -59,6 +59,16 @@ export const uiStringsZh: UiStrings = {
   // Copy Result
   copyResult: '复制结果',
   copied: '已复制！',
+
+  // Cast record
+  howItWasCast: '起卦过程',
+  sixThrows: '六次投掷',
+  lineN: '第{n}爻',
+  oldYin: '老阴',
+  youngYang: '少阳',
+  youngYin: '少阴',
+  oldYang: '老阳',
+  changes: '变',
   asked: '我问了',
   ogResult: '原卦',
   changedResult: '变卦',

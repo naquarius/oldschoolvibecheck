@@ -11,6 +11,33 @@
         ],
         "createdAt": "2026-10-17T00:19:18.022Z",
         "reason": "Claude: comparison mock; the white frames are presentation panels around app elements, not product UI"
+      },
+      {
+        "rule": "tiny-text",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/two-screen-options.html"
+        ],
+        "createdAt": "2026-10-19T02:32:48.216Z",
+        "reason": "Claude: flow mock with phones drawn at 280px (scaled down); real app sizes unchanged"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/two-screen-options.html"
+        ],
+        "createdAt": "2026-10-19T02:32:48.245Z",
+        "reason": "Claude: flow mock; the dimmed headline intentionally shows a locked state while coins toss"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/two-screen-options.html"
+        ],
+        "createdAt": "2026-10-19T02:32:57.682Z",
+        "reason": "Claude: flow mock with phones scaled to 280px, so paddings shrink with them; real app paddings unchanged"
       }
     ]
   }

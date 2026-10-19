@@ -1,0 +1,82 @@
+.record {
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 44px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.chevron {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.record[open] .chevron {
+  transform: rotate(180deg);
+}
+
+.rows {
+  list-style: none;
+  padding-bottom: 6px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 4.5rem auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  border-top: 1px solid rgba(30, 33, 30, 0.06);
+  font-size: 0.9375rem;
+}
+
+.line {
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.coins {
+  display: flex;
+  gap: 4px;
+}
+
+.coin {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(154, 74, 50, 0.22);
+}
+
+.meaning {
+  font-variant-numeric: tabular-nums;
+}
+
+.changing {
+  color: var(--terra);
+  font-weight: 700;
+}
