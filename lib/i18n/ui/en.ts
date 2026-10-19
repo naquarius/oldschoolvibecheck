@@ -50,6 +50,13 @@ export const uiStringsEn: UiStrings = {
   copyResult: 'copy result',
   copied: 'copied!',
 
+  // Share
+  share: 'share',
+  myVibe: 'my vibe',
+  seeMyReading: 'see my reading',
+  sharedReading: 'a friend shared their reading',
+  askYourOwn: 'ask your own',
+
   // Cast record
   howItWasCast: 'how it was cast',
   sixThrows: '6 throws',

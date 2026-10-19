@@ -1,6 +1,6 @@
 import { Coin, CoinThrow, ThrowResult, YAO_CONFIGURATIONS } from './types';
 
-const COIN_VALUES = {
+export const COIN_VALUES = {
   heads: 3 as const,
   tails: 2 as const,
 } as const;

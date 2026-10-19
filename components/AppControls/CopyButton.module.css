@@ -1,5 +1,6 @@
 .copyResultContainer {
   display: flex;
+  flex-shrink: 0;
 }
 
 .copyButton {
@@ -9,7 +10,7 @@
   justify-content: center;
   gap: 0.5rem;
   width: 9rem;
-  min-height: 44px;
+  min-height: 52px;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: 999px;

@@ -49,6 +49,13 @@ export const uiStringsZh: UiStrings = {
   copyResult: '复制结果',
   copied: '已复制！',
 
+  // Share
+  share: '分享',
+  myVibe: '我的vibe',
+  seeMyReading: '看看我的结果',
+  sharedReading: '朋友分享了这一卦',
+  askYourOwn: '我也来一卦',
+
   // Cast record
   howItWasCast: '起卦过程',
   sixThrows: '六次投掷',

@@ -62,34 +62,68 @@
   gap: 40px;
 }
 
+.sharedNote {
+  margin-bottom: 20px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--terra);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 44px;
+}
+
+/* Secondary once share is the main action */
 .newReading {
-  align-self: flex-start;
-  min-height: 60px;
-  min-width: 240px;
-  margin-top: 48px;
+  align-self: stretch;
+  min-height: 52px;
+  margin-top: 12px;
   padding: 0 2rem;
-  background: var(--stone-deep);
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
+}
+
+.newReading:hover {
+  background: var(--bg-card);
+  border-color: var(--ink);
+}
+
+/* Shared links end on the landing's own call to action */
+.askYourOwn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 60px;
+  margin-top: 12px;
+  padding: 0 2rem;
+  background: var(--ink);
   color: var(--paper);
   border: 0;
   border-radius: 999px;
   font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
   cursor: pointer;
-  transition: background-color 0.2s var(--ease-out),
-    transform 0.2s var(--ease-out);
+  transition: background-color 0.2s var(--ease-out);
 }
 
-.newReading:hover {
-  background: #50624a;
+.askYourOwn:hover {
+  background: #323832;
 }
 
-.newReading:active {
-  transform: scale(0.98);
-}
-
-@media (max-width: 768px) {
-  .newReading {
-    align-self: stretch;
+@media (min-width: 769px) {
+  .actions,
+  .newReading,
+  .askYourOwn {
+    max-width: 420px;
   }
 }

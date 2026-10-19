@@ -1,14 +1,17 @@
 import { useQuestion } from '@/lib/context/QuestionContext';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
+import { vibesShareText } from '@/lib/share';
 import { useState } from 'react';
 import styles from './CopyButton.module.css';
 
 interface CopyButtonProps {
   result: GuaResultType;
+  /** Vibes copies the same short message as share; classic copies the detailed reading. */
+  mode: 'vibe' | 'traditional';
 }
 
-export const CopyButton = ({ result }: CopyButtonProps) => {
+export const CopyButton = ({ result, mode }: CopyButtonProps) => {
   const [copySuccess, setCopySuccess] = useState(false);
   const { question } = useQuestion();
   const strings = i18n.getUiStrings();
@@ -33,7 +36,10 @@ export const CopyButton = ({ result }: CopyButtonProps) => {
         : strings.noChanges
     }`;
 
-    const formattedText = `${formattedQuestion}${formattedHexagrams}${formattedChanges}`;
+    const formattedText =
+      mode === 'vibe'
+        ? vibesShareText(result).full
+        : `${formattedQuestion}${formattedHexagrams}${formattedChanges}`;
 
     try {
       await navigator.clipboard.writeText(formattedText);
