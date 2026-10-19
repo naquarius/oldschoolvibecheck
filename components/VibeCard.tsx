@@ -32,16 +32,13 @@ export const VibeCard = ({
         <span className="visually-hidden">{title}: </span>
         {vibeInfo.vibe}
       </h2>
+      <p className={`${styles.lead} cast-reveal`}>{vibeInfo.realTalk}</p>
 
       <HexagramPlate figures={[{ binary, name, id }]} sparkle casting={casting} />
 
       <div className="cast-reveal">{children}</div>
 
       <div className={`${styles.sections} cast-reveal`}>
-        <section>
-          <h3 className={styles.label}>{t.realTalk}</h3>
-          <p className={styles.text}>{vibeInfo.realTalk}</p>
-        </section>
         <section>
           <h3 className={styles.label}>{t.theMove}</h3>
           <p className={styles.text}>{vibeInfo.theMove}</p>

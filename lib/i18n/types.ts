@@ -15,14 +15,7 @@ export interface LocalizedGuaData extends BaseGuaData {
 
 export type UiStrings = {
   // Common
-  readingComplete: string;
-  channelingEnergy: string;
-  coin: string;
-  heads: string;
-  tails: string;
-  reading: string;
   newReading: string;
-  readingYourEnergy: string;
 
   // Header
   appTagline: string;
@@ -54,8 +47,6 @@ export type UiStrings = {
   traditionalMode: string;
   currentSituation: string;
   yourVibeToday: string;
-  theVibe: string;
-  realTalk: string;
   theMove: string;
   futureDirection: string;
 
@@ -66,8 +57,6 @@ export type UiStrings = {
   noChangingLines: string;
 
   // Coin Throw
-  cosmicReadingReady: string;
-  universeAligning: string;
 
   // Copy Result
   copyResult: string;
