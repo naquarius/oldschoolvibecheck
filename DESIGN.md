@@ -217,7 +217,7 @@ A restrained cool-neutral palette with one mineral green family, a warm gold tha
 
 ### Primary
 - **Sage Soapstone** (stone): the one solid block per screen: the landing's fact block, or the hexagram plate on results. Also the text-selection and scrollbar color. Ink on stone is 7.8:1.
-- **Deep Soapstone** (stone-deep): the filled control color after the throw: the active mode segment and the "new reading" pill, both with paper text (4.7:1). It also opens the cast bar gradient. It stands in for the legacy `--primary` / `--secondary` bridge tokens.
+- **Deep Soapstone** (stone-deep): the filled control color after the throw: the active mode segment and the "share" pill, both with paper text (4.7:1). It also opens the cast bar gradient. It stands in for the legacy `--primary` / `--secondary` bridge tokens.
 - **Deeper Soapstone** (stone-deeper): hover fill for the stone-deep pill.
 - **Moss** (moss): the hexagram's line color and the plate caption text, on stone only (4.5:1). It is the ink of the plate, not a general text color.
 
@@ -280,9 +280,9 @@ A restrained cool-neutral palette with one mineral green family, a warm gold tha
 
 The layout is a single centered column with a 640px max width and a fluid gutter of clamp(16px, 5vw, 40px), shared by the header, main content, and footer so all three align on one left edge. All content is left-aligned. The page is a full-height flex column, and the footer sits at the bottom.
 
-The vertical rhythm is loose and runs in steps of about 14, 28, 36, and 48px. On the landing, the stone block sits 28px below the header (40px on desktop), the hero 32px below the block, the question 36px below the hero, and the throw button 28px below the question. The stone block's height is clamp(116px, 19vh, 176px) on mobile and a fixed 132px on desktop. On the reading, the toggle-and-copy row sits 32px above the question, the question 28px above the reading, the cast record 16px below the plate, the shift notice 14px below the cast record and 36px above the readings, classic readings sit 40px apart, and "new reading" closes the page 48px below.
+The vertical rhythm is loose and runs in steps of about 14, 28, 36, and 48px. On the landing, the stone block sits 28px below the header (40px on desktop), the hero 32px below the block, the question 36px below the hero, and the throw button 28px below the question. The stone block's height is clamp(116px, 19vh, 176px) on mobile and a fixed 132px on desktop. On the reading, the mode toggle sits alone at the top, 32px above the question, the question 28px above the reading, the cast record 16px below the plate, the shift notice 14px below the cast record and 36px above the readings, classic readings sit 40px apart, the share-and-copy row follows 44px below, and "new reading" (or "ask your own" on a shared link) closes the page 12px under it. A shared link shows a terracotta "a friend shared their reading" line instead of the question.
 
-There is one breakpoint, at 769px. Above it, the tagline appears beside the wordmark, the display steps up, the throw button shrinks from full width to its content width (280px minimum), and "new reading" shrinks from full width to left-aligned (240px minimum). The classic pair stacks on phones and sits side by side above it (see Hexagram Plate). The phone layout is primary: the headline, field, and throw button all fit in the first 390x844 viewport.
+There is one breakpoint, at 769px. Above it, the tagline appears beside the wordmark, the display steps up, the throw button shrinks from full width to its content width (280px minimum), and the share row and closing button cap at 420px wide. The classic pair stacks on phones and sits side by side above it (see Hexagram Plate). The phone layout is primary: the headline, field, and throw button all fit in the first 390x844 viewport.
 
 **The No-Shift Rule.** Switching EN and 中文, or vibes and classic, never moves the layout. The language button, mode segments, and copy button are fixed width; the headline, plate names, and shift notice reserve their tallest version's height.
 
@@ -312,9 +312,11 @@ Confident and soft-edged: pills only.
 - **Shape:** full pill (999px).
 - **Primary (throw coins, landing only):** ink fill, paper text, 1.25rem at weight 700, -0.01em tracking, minimum 60px tall, 2rem side padding. Full width on mobile, auto width (280px minimum) on desktop. An 18px gold sparkle with the spark halo follows the label, with a 0.75rem gap.
 - **Hover / Focus:** the fill lifts to ink-lifted, and the sparkle turns 90deg and scales to 1.15 over 0.5s on the ease-out curve. Pressed, the button scales to 0.98. Focus uses the global 2px ink outline at 3px offset.
-- **Stone pill (new reading):** the same pill size and type in stone-deep with paper text, no sparkle; hover stone-deeper, pressed 0.98. Full width on phones, left-aligned at 240px minimum on desktop.
+- **Stone pill (share):** 52px tall, 1.0625rem 700, stone-deep with paper text and an 18px share icon; it fills the row beside the copy button. Opens the native share sheet with the vibes message and link (never the question); where sharing isn't available it copies them and says "copied!". Hover stone-deeper, pressed 0.98.
+- **Hairline pill (new reading):** 52px, full width, transparent with a hairline border and ink text; hover paper-bright with an ink border.
+- **Ink pill (ask your own):** closes a shared reading. The throw button's pill (60px, ink, paper text) with its haloed gold sparkle.
 - **Header chips (language, boba):** transparent fill, 1px hairline border, ink text at 0.875rem, 40px tall. The language button is fixed at 3.5rem wide (700 label); the boba chip carries an 18px drawn cup icon whose pearls are cut out in paper. Hover washes to paper-bright with an ink border.
-- **Copy button:** a hairline pill, fixed 9rem wide and 44px tall, with a 16px inline SVG copy icon (a check once copied) and a 0.9375rem 700 label. Below 360px it goes icon-only at 44px square; the label stays for screen readers.
+- **Copy button:** a hairline pill beside share, fixed 9rem wide and 52px tall. In vibes mode it copies the same message as share; in classic it copies the detailed reading (question, both hexagrams, changing lines). It has a 16px inline SVG copy icon (a check once copied) and a 0.9375rem 700 label. Below 360px it goes icon-only at 44px square beside share; the label stays for screen readers. Where the browser has no share sheet (desktop, or a page that isn't https), the share pill is hidden and copy fills the row, always labelled, so two buttons never do the same thing.
 
 ### Chips (mode toggle)
 - **Style:** a hairline pill track with 3px padding holding two pill segments, each fixed at 5.75rem wide and 38px tall, 0.9375rem at 700.
@@ -357,7 +359,7 @@ A four-point star in gold, drawn with `currentColor`. A screen gets at most thre
 ### Motion
 Interface transitions use the ease-out curve cubic-bezier(0.16, 1, 0.3, 1), with 0.2s for color changes and 0.5s for the sparkle turn. The reading screen enters on the same curve over 0.8s.
 
-A fresh reading casts itself once, about 3.3s in all: the lines draw bottom-up (0.38s apart, the last landing near 2.4s), the cast bar fills over 2.5s, and at 2.5s everything else on the reading (vibe line, captions, changed hexagram, cast record, shift notice, readings, "new reading") fades up 8px over 0.6s. Switching vibes and classic afterwards does not replay it. Under `prefers-reduced-motion`, the sparkle entrance, flare, and turn, the screen entry, and the whole cast sequence are removed, and the cast bar is not shown.
+A fresh reading casts itself once, about 3.3s in all: the lines draw bottom-up (0.38s apart, the last landing near 2.4s), the cast bar fills over 2.5s, and at 2.5s everything else on the reading (vibe line, captions, changed hexagram, cast record, shift notice, readings, share row, closing button) fades up 8px over 0.6s. Switching vibes and classic afterwards does not replay it. Under `prefers-reduced-motion`, the sparkle entrance, flare, and turn, the screen entry, and the whole cast sequence are removed, and the cast bar is not shown.
 
 ## Do's and Don'ts
 

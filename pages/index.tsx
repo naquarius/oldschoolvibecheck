@@ -8,14 +8,16 @@ import { SparkleText } from '@/components/SparkleText';
 import { useApp } from '@/lib/context/AppContext';
 import { useQuestion } from '@/lib/context/QuestionContext';
 import { qigua } from '@/lib/core/qigua';
+import { decodeCast } from '@/lib/core/share-code';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [result, setResult] = useState<GuaResultType | null>(null);
   const [isLaunching, setIsLaunching] = useState(false);
+  const [isShared, setIsShared] = useState(false);
   const { language, setLanguage } = useApp();
   const { question, setQuestion } = useQuestion();
   const strings = i18n.getUiStrings();
@@ -29,9 +31,24 @@ export default function Home() {
     setResult(qigua());
   };
 
+  // A shared link (?c=…) opens straight into that reading
+  useEffect(() => {
+    const code = new URLSearchParams(window.location.search).get('c');
+    const shared = code ? decodeCast(code) : null;
+    if (shared) {
+      setResult(shared);
+      setIsShared(true);
+    }
+  }, []);
+
   const handleNewReading = () => {
     setResult(null);
+    setIsShared(false);
     setQuestion('');
+    // Drop the shared code so a refresh lands on the ask screen
+    if (window.location.search) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
   };
 
   // Dynamic page title based on state
@@ -125,7 +142,11 @@ export default function Home() {
           {/* Result Section */}
           {result && (
             <div className="result-section">
-              <GuaResult result={result} onNewReading={handleNewReading} />
+              <GuaResult
+                result={result}
+                onNewReading={handleNewReading}
+                shared={isShared}
+              />
             </div>
           )}
         </main>

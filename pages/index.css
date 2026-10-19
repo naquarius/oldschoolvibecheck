@@ -20,6 +20,8 @@
 :where(.app-container) button,
 :where(.app-container) textarea {
   font: inherit;
+  /* Buttons don't inherit this by default; needed for the 中文 lowercase rule */
+  text-transform: inherit;
 }
 
 :where(.app-container) textarea {

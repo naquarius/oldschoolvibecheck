@@ -1,5 +1,6 @@
 .copyResultContainer {
   display: flex;
+  flex-shrink: 0;
 }
 
 .copyButton {
@@ -9,7 +10,7 @@
   justify-content: center;
   gap: 0.5rem;
   width: 9rem;
-  min-height: 44px;
+  min-height: 52px;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -31,13 +32,22 @@
   flex-shrink: 0;
 }
 
-/* Very small phones: icon only, label stays for screen readers */
+/* The only action in the row: full width, always labelled */
+.fill {
+  flex: 1;
+}
+
+.fill .copyButton {
+  width: 100%;
+}
+
+/* Very small phones: icon only beside share, label stays for screen readers */
 @media (max-width: 359px) {
-  .copyButton {
+  .copyResultContainer:not(.fill) .copyButton {
     width: 44px;
   }
 
-  .copyText {
+  .copyResultContainer:not(.fill) .copyText {
     position: absolute;
     width: 1px;
     height: 1px;

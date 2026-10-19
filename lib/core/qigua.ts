@@ -1,6 +1,12 @@
 import { guaData } from '../data/gua-data';
 import { calculateThrowResult, throwThreeCoins } from './coin-logic';
-import { GuaPosition, GuaResultType, ThrowResult, Yao } from './types';
+import {
+  CoinThrow,
+  GuaPosition,
+  GuaResultType,
+  ThrowResult,
+  Yao,
+} from './types';
 
 /**
  * Creates a single yao (line) of the hexagram.
@@ -64,8 +70,20 @@ const generateChangedBinary = (yaos: Yao[]): string =>
 const findGuaByBinary = (binary: string) =>
   guaData.find((gua) => gua.binary === binary);
 
-export const qigua = (): GuaResultType => {
-  const yaos = generateYaos();
+export const qigua = (): GuaResultType => buildResult(generateYaos());
+
+/**
+ * Rebuilds a reading from known coin throws (bottom line first),
+ * e.g. from a shared link.
+ */
+export const qiguaFromThrows = (throws: CoinThrow[]): GuaResultType =>
+  buildResult(
+    throws.map((coins, index) =>
+      createYao((index + 1) as GuaPosition, calculateThrowResult(coins))
+    )
+  );
+
+const buildResult = (yaos: Yao[]): GuaResultType => {
   const originalBinary = yaosToBinary(yaos);
   const changingPositions = findChangingPositions(yaos);
   const changedBinary =

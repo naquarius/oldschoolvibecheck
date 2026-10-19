@@ -1,14 +1,19 @@
 import { useQuestion } from '@/lib/context/QuestionContext';
 import { GuaResultType } from '@/lib/core/types';
 import { i18n } from '@/lib/i18n';
+import { vibesShareText } from '@/lib/share';
 import { useState } from 'react';
 import styles from './CopyButton.module.css';
 
 interface CopyButtonProps {
   result: GuaResultType;
+  /** Vibes copies the same short message as share; classic copies the detailed reading. */
+  mode: 'vibe' | 'traditional';
+  /** Fill the row (when it's the only action) instead of the fixed width. */
+  fill?: boolean;
 }
 
-export const CopyButton = ({ result }: CopyButtonProps) => {
+export const CopyButton = ({ result, mode, fill = false }: CopyButtonProps) => {
   const [copySuccess, setCopySuccess] = useState(false);
   const { question } = useQuestion();
   const strings = i18n.getUiStrings();
@@ -33,7 +38,10 @@ export const CopyButton = ({ result }: CopyButtonProps) => {
         : strings.noChanges
     }`;
 
-    const formattedText = `${formattedQuestion}${formattedHexagrams}${formattedChanges}`;
+    const formattedText =
+      mode === 'vibe'
+        ? vibesShareText(result).full
+        : `${formattedQuestion}${formattedHexagrams}${formattedChanges}`;
 
     try {
       await navigator.clipboard.writeText(formattedText);
@@ -45,7 +53,7 @@ export const CopyButton = ({ result }: CopyButtonProps) => {
   };
 
   return (
-    <div className={styles.copyResultContainer}>
+    <div className={`${styles.copyResultContainer} ${fill ? styles.fill : ''}`}>
       <button onClick={handleCopyResult} className={styles.copyButton}>
         <svg
           className={styles.copyIcon}

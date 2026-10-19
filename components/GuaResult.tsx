@@ -8,8 +8,10 @@ import { useEffect, useState } from 'react';
 import { CopyButton } from './AppControls/CopyButton';
 import { CastRecord } from './CastRecord';
 import { ModeToggle } from './AppControls/ModeToggle';
+import { ShareButton } from './AppControls/ShareButton';
 import styles from './GuaResult.module.css';
 import { HexagramPlate } from './HexagramPlate';
+import { Sparkle } from './Sparkle';
 import { TraditionalCard } from './TraditionalCard';
 import { VibeCard } from './VibeCard';
 import { YaoChangeInfo } from './YaoChangeInfo';
@@ -20,15 +22,23 @@ const CAST_DURATION_MS = 3300;
 interface Props {
   result: GuaResultType;
   onNewReading: () => void;
+  /** Opened from someone else's link: no question, and invite them to ask their own. */
+  shared?: boolean;
 }
 
-export const GuaResult = ({ result, onNewReading }: Props) => {
+export const GuaResult = ({ result, onNewReading, shared = false }: Props) => {
   const { mode } = useApp();
   const { question } = useQuestion();
   const strings = i18n.getUiStrings();
   const showVibe = mode === 'vibe';
   // A fresh reading casts itself once; switching modes afterwards doesn't replay it
   const [casting, setCasting] = useState(true);
+  // Share only where the browser has a share sheet (phones on https); otherwise copy covers it
+  const [canShare, setCanShare] = useState(false);
+
+  useEffect(() => {
+    setCanShare(typeof navigator.share === 'function');
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setCasting(false), CAST_DURATION_MS);
@@ -50,10 +60,11 @@ export const GuaResult = ({ result, onNewReading }: Props) => {
     >
       <div className={styles.controls}>
         <ModeToggle />
-        <CopyButton result={result} />
       </div>
 
-      {question.trim() && (
+      {shared && <p className={styles.sharedNote}>{strings.sharedReading}</p>}
+
+      {!shared && question.trim() && (
         <figure className={styles.asked}>
           <figcaption className={styles.askedLabel}>{strings.asked}</figcaption>
           <blockquote className={styles.askedText}>{question}</blockquote>
@@ -113,11 +124,17 @@ export const GuaResult = ({ result, onNewReading }: Props) => {
         </div>
       )}
 
+      <div className={`${styles.actions} cast-reveal`}>
+        {canShare && <ShareButton result={result} />}
+        <CopyButton result={result} mode={mode} fill={!canShare} />
+      </div>
+
       <button
         onClick={onNewReading}
-        className={`${styles.newReading} cast-reveal`}
+        className={`${shared ? styles.askYourOwn : styles.newReading} cast-reveal`}
       >
-        {strings.newReading}
+        {shared ? strings.askYourOwn : strings.newReading}
+        {shared && <Sparkle className="cta-sparkle" size={18} />}
       </button>
     </div>
   );

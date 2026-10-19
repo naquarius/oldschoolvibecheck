@@ -62,6 +62,13 @@ export type UiStrings = {
   copyResult: string;
   copied: string;
 
+  // Share
+  share: string;
+  myVibe: string;
+  seeMyReading: string;
+  sharedReading: string;
+  askYourOwn: string;
+
   // Cast record
   howItWasCast: string;
   sixThrows: string;
