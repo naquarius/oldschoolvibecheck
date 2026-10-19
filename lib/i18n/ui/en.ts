@@ -2,14 +2,7 @@ import { UiStrings } from '../types';
 
 export const uiStringsEn: UiStrings = {
   // Common
-  readingComplete: 'reading complete ✨',
-  channelingEnergy: 'channeling energy...',
-  coin: 'coin',
-  heads: 'heads',
-  tails: 'tails',
-  reading: 'reading...',
   newReading: 'new reading',
-  readingYourEnergy: 'reading your energy...',
 
   // Header
   appTagline: 'ancient wisdom, modern vibes',
@@ -42,8 +35,6 @@ export const uiStringsEn: UiStrings = {
   traditionalMode: 'classic',
   currentSituation: 'the core',
   yourVibeToday: 'your vibe today',
-  theVibe: 'the vibe',
-  realTalk: 'real talk',
   theMove: 'the move',
   futureDirection: 'the shift',
 
@@ -54,8 +45,6 @@ export const uiStringsEn: UiStrings = {
   noChangingLines: 'no changing lines - focus on current situation guidance',
 
   // Coin Throw
-  cosmicReadingReady: 'your cosmic reading is ready! 🌟',
-  universeAligning: 'the universe is aligning your answer...',
 
   // Copy Result
   copyResult: 'copy result',

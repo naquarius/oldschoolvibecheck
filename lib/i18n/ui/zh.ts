@@ -2,14 +2,7 @@ import { UiStrings } from '../types';
 
 export const uiStringsZh: UiStrings = {
   // Common
-  readingComplete: '解读完成 ✨',
-  channelingEnergy: '正在为你下载宇宙答案... ⬇️',
-  coin: '铜钱',
-  heads: '正面',
-  tails: '反面',
-  reading: '解卦ing',
   newReading: '再来一卦',
-  readingYourEnergy: '嘘，别动，正在感应你的磁场... 🔮',
 
   // Header
   appTagline: '老祖宗的智慧，赛博朋克的范',
@@ -41,8 +34,6 @@ export const uiStringsZh: UiStrings = {
   traditionalMode: '玄机深解',
   currentSituation: '本卦',
   yourVibeToday: '今日氛围',
-  theVibe: '这波什么情况',
-  realTalk: '真实情况',
   theMove: '行动指南',
   futureDirection: '之卦',
 
@@ -53,8 +44,6 @@ export const uiStringsZh: UiStrings = {
   noChangingLines: '无变爻',
 
   // Coin Throw
-  cosmicReadingReady: '你的宇宙解读好了！🌟',
-  universeAligning: '宇宙正在给你对齐答案...',
 
   // Copy Result
   copyResult: '复制结果',

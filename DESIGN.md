@@ -266,7 +266,7 @@ A restrained cool-neutral palette with one mineral green family, a warm gold tha
 - **Body Lead** (400, 1.0625rem, 1.5): the hero subtitle (ink-soft, max 38ch, pretty wrap), the question field, and the quoted question on results (max 60ch).
 - **Reading** (400, 1.0625rem, 1.6 for vibes and 1.7 for classic judgments, max 62ch, pretty wrap): the reading text.
 - **Body** (500, 0.9375rem): the fact strip on the stone block, mode and copy buttons (700), the cast record rows (tabular figures), and the shift notice. The desktop tagline uses the same size at 400 in soft ink.
-- **Label** (700, 1rem, 1.4): section labels ("real talk", "the move", the classical judgment), the cast record's "how it was cast" title, and the landing's quoted question label.
+- **Label** (700, 1rem, 1.4): section labels ("the move", the classical judgment), the cast record's "how it was cast" title, and the landing's quoted question label.
 - **Small** (400 to 700, 0.875rem): footer text, header chip labels, the cast record's "6 throws" count (ink-soft), and the "I asked" label (700, ink-soft).
 
 ### Named Rules
@@ -344,7 +344,7 @@ The six real throws behind the hexagram, kept as a disclosure directly under the
 - **Rows:** top line first, as the hexagram reads on the page. Each row is a 4.5rem / auto / 1fr grid with 12px gaps and 7px vertical padding, split by the fainter hairline, in Body: "line N" in soft ink, the three real coins (26px cash coins, 4px apart, with the coin cast shadow), then "sum · kind" (old yin, young yang, young yin, old yang; 老阴, 少阳, 少阴, 老阳 in 中文). A changing line's text turns bold terra and adds "· changes" (变).
 
 ### Readings
-- **Vibe:** the vibe line at Headline size above the plate (its "your vibe today" heading prefix is visually hidden), then the cast record, then "real talk" and "the move" as plain labels over Reading text, 28px apart.
+- **Vibe:** the vibe line at Headline size (its "your vibe today" heading prefix is visually hidden), then one short unlabeled line in Body Lead (1.0625rem, 1.55) 10px below it and 28px above the plate, then the cast record, then "the move" as a plain label over Reading text. Copy follows `lib/data/vibes/VOICE.md`.
 - **Classic:** after the plate and the cast record, a shift notice (Body in ink-soft; "energy shift detected" in bold terra, or "stable energy" in bold ink), then one reading per hexagram: a hairline rule, 28px of space, the gua name in Headline Classic terra, a soft-ink meta line, and the classical judgment.
 - **Asked:** the "I asked" Small label over the visitor's question in Body Lead soft ink, unquoted.
 

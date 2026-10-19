@@ -11,12 +11,20 @@
 
 
 .vibeLine {
-  margin: 0 0 32px;
+  margin: 0 0 10px;
   font-size: clamp(2.125rem, 9.5vw, 3.5rem);
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.03em;
   text-wrap: balance;
+}
+
+.lead {
+  max-width: 62ch;
+  margin-bottom: 28px;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 
 .sections {
