@@ -33,6 +33,12 @@ export const GuaResult = ({ result, onNewReading, shared = false }: Props) => {
   const showVibe = mode === 'vibe';
   // A fresh reading casts itself once; switching modes afterwards doesn't replay it
   const [casting, setCasting] = useState(true);
+  // Share only where the browser has a share sheet (phones on https); otherwise copy covers it
+  const [canShare, setCanShare] = useState(false);
+
+  useEffect(() => {
+    setCanShare(typeof navigator.share === 'function');
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setCasting(false), CAST_DURATION_MS);
@@ -119,8 +125,8 @@ export const GuaResult = ({ result, onNewReading, shared = false }: Props) => {
       )}
 
       <div className={`${styles.actions} cast-reveal`}>
-        <ShareButton result={result} />
-        <CopyButton result={result} mode={mode} />
+        {canShare && <ShareButton result={result} />}
+        <CopyButton result={result} mode={mode} fill={!canShare} />
       </div>
 
       <button

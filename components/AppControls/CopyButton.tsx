@@ -9,9 +9,11 @@ interface CopyButtonProps {
   result: GuaResultType;
   /** Vibes copies the same short message as share; classic copies the detailed reading. */
   mode: 'vibe' | 'traditional';
+  /** Fill the row (when it's the only action) instead of the fixed width. */
+  fill?: boolean;
 }
 
-export const CopyButton = ({ result, mode }: CopyButtonProps) => {
+export const CopyButton = ({ result, mode, fill = false }: CopyButtonProps) => {
   const [copySuccess, setCopySuccess] = useState(false);
   const { question } = useQuestion();
   const strings = i18n.getUiStrings();
@@ -51,7 +53,7 @@ export const CopyButton = ({ result, mode }: CopyButtonProps) => {
   };
 
   return (
-    <div className={styles.copyResultContainer}>
+    <div className={`${styles.copyResultContainer} ${fill ? styles.fill : ''}`}>
       <button onClick={handleCopyResult} className={styles.copyButton}>
         <svg
           className={styles.copyIcon}

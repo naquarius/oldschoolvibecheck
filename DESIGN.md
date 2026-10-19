@@ -316,7 +316,7 @@ Confident and soft-edged: pills only.
 - **Hairline pill (new reading):** 52px, full width, transparent with a hairline border and ink text; hover paper-bright with an ink border.
 - **Ink pill (ask your own):** closes a shared reading. The throw button's pill (60px, ink, paper text) with its haloed gold sparkle.
 - **Header chips (language, boba):** transparent fill, 1px hairline border, ink text at 0.875rem, 40px tall. The language button is fixed at 3.5rem wide (700 label); the boba chip carries an 18px drawn cup icon whose pearls are cut out in paper. Hover washes to paper-bright with an ink border.
-- **Copy button:** a hairline pill beside share, fixed 9rem wide and 52px tall. In vibes mode it copies the same message as share; in classic it copies the detailed reading (question, both hexagrams, changing lines). It has a 16px inline SVG copy icon (a check once copied) and a 0.9375rem 700 label. Below 360px it goes icon-only at 44px square; the label stays for screen readers.
+- **Copy button:** a hairline pill beside share, fixed 9rem wide and 52px tall. In vibes mode it copies the same message as share; in classic it copies the detailed reading (question, both hexagrams, changing lines). It has a 16px inline SVG copy icon (a check once copied) and a 0.9375rem 700 label. Below 360px it goes icon-only at 44px square beside share; the label stays for screen readers. Where the browser has no share sheet (desktop, or a page that isn't https), the share pill is hidden and copy fills the row, always labelled, so two buttons never do the same thing.
 
 ### Chips (mode toggle)
 - **Style:** a hairline pill track with 3px padding holding two pill segments, each fixed at 5.75rem wide and 38px tall, 0.9375rem at 700.
